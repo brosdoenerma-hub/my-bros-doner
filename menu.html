@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Speisekarte | Bro's Döner</title>
+<style>
+body{
+background:#000;
+color:white;
+font-family:Arial,sans-serif;
+margin:0;
+padding:24px;
+max-width:430px;
+margin:auto
+}
+
+a{
+color:#ffd84a;
+text-decoration:none;
+font-weight:bold
+}
+
+h1{
+color:#ffd84a;
+margin:24px 0 40px 0;
+font-size:48px;
+}
+
+.section{
+border:1px solid #c99a00;
+border-radius:18px;
+padding:18px;
+margin:16px 0;
+background:#030303
+}
+
+h2{
+color:#ffd84a;
+margin-bottom:18px
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 60px 70px;
+align-items:center;
+gap:10px;
+padding:12px 0;
+border-bottom:1px dotted #5f4800;
+width:100%;
+}
+
+.row span:first-child{
+font-weight:700;
+line-height:1.2;
+}
+
+.menu-size{
+display:flex;
+align-items:flex-start;
+justify-content:flex-start;
+padding-top:4px;
+font-size:12px;
+font-weight:500;
+letter-spacing:.3px;
+color:#d8d8d8;
+opacity:.75;
+}
+
+.price{
+color:#f8f8f8;
+font-weight:bold;
+text-align:right;
+white-space:nowrap;
+text-shadow:0 0 6px rgba(255,215,0,.15)
+}
+
+.divider{
+display:none;
+}
+
+.product-row{
+padding:14px 0;
+border-bottom:1px dotted #5f4800;
+}
+
+.product-title{
+font-size:18px;
+font-weight:600;
+color:#fff;
+margin-bottom:10px;
+line-height:1.2;
+}
+
+.product-options{
+display:flex;
+flex-direction:column;
+gap:8px;
+padding-left:40%;
+}
+
+.product-option{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+}
+
+.product-size{
+font-size:15px;
+font-weight:500;
+color:#bdbdbd;
+opacity:.85;
+}
+
+.product-price{
+font-size:16px;
+font-weight:700;
+color:#f5f5f5;
+white-space:nowrap;
+text-shadow:0 0 6px rgba(255,215,0,.10);
+}
+
+.nuggets-box{
+display:flex;
+flex-direction:column;
+gap:4px;
+width:100%;
+margin:0;
+}
+
+.nuggets-row{
+display:grid;
+grid-template-columns:2fr 180px;
+align-items:start;
+gap:10px;
+padding:12px 0;
+border-bottom:1px dotted #5f4800;
+}
+
+.nuggets-title{
+display:block;
+padding-top:0px;
+}
+
+.nugget-item{
+display:grid;
+grid-template-columns:1fr 75px;
+align-items:center;
+gap:10px;
+}
+
+.nugget-item .menu-size{
+font-size:15px;
+font-weight:500;
+color:#bdbdbd;
+white-space:nowrap;
+opacity:.8;
+}
+
+.nugget-item .price{
+font-size:16px;
+font-weight:700;
+color:#f5f5f5;
+min-width:70px;
+text-align:right;
+white-space:nowrap;
+text-shadow:0 0 6px rgba(255,215,0,.10);
+}
+
+</style>
+</head>
+<body>
+<a href="index.html">‹ Zurück</a>
+<h1>Speisekarte</h1>
+
+<div class="section">
+
+<h2>Döner</h2>
+<div class="product-row">
+
+  <div class="product-title">
+    Steak Döner
+  </div>
+
+  <div class="product-options">
+
+    <div class="product-option">
+      <span class="product-size">Groß</span>
+      <span class="product-price">9.00</span>
+    </div>
+
+    <div class="product-option">
+      <span class="product-size">Klein</span>
+      <span class="product-price">7.00</span>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="product-row">
+
+  <div class="product-title">
+    Hackfleisch Döner
+  </div>
+
+  <div class="product-options">
+
+    <div class="product-option">
+      <span class="product-size">Groß</span>
+      <span class="product-price">7.50</span>
+    </div>
+
+    <div class="product-option">
+      <span class="product-size">Klein</span>
+      <span class="product-price">5.50</span>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="row">
+    <span>Dürüm Steak</span>
+    <span></span>
+    <span class="price">9.00</span>
+</div>
+
+<div class="row">
+    <span>Dürüm Hackfleisch</span>
+    <span></span>
+    <span class="price">7.50</span>
+</div>
+
+<div class="row">
+    <span>Steak Box</span>
+    <span></span>
+    <span class="price">9.00</span>
+</div>
+
+<div class="row">
+    <span>Hackfleisch Box</span>
+    <span></span>
+    <span class="price">7.50</span>
+</div>
+
+</div>
+
+
+<div class="section">
+<h2>Snack Menü</h2>
+
+<div class="row">
+    <span>Hotdog</span>
+    <span class="menu-size"></span>
+    <span class="price">4.00</span>
+</div>
+
+<div class="row">
+    <span>Hotdog mit Pommes</span>
+    <span class="menu-size"></span>
+    <span class="price">6.50</span>
+</div>
+
+<div class="nuggets-row">
+
+    <span class="nuggets-title">
+        Nuggets
+    </span>
+
+    <div class="nuggets-box">
+
+        <div class="nugget-item">
+            <span class="menu-size">6 Stück</span>
+            <span class="price">4.50</span>
+        </div>
+
+        <div class="nugget-item">
+            <span class="menu-size">9 Stück</span>
+            <span class="price">6.00</span>
+        </div>
+
+        <div class="nugget-item">
+            <span class="menu-size">12 Stück</span>
+            <span class="price">7.50</span>
+        </div>
+
+    </div>
+
+</div>
+<div class="divider"></div>
+<div class="row">
+    <span>Pommes</span>
+    <span class="menu-size"></span>
+    <span class="price">4.00</span>
+</div>
+
+</div>
+
+
+<div class="section">
+  <h2>Getränke</h2>
+
+  <div class="row">
+    <span>Red Bull <br>
+    <small style="font-size:11px;opacity:.5;">
+      + Pfand 0,25€
+    </small></span>
+    <span class="menu-size">vers. Sorten</span>
+    <span class="price">2.80</span>
+  </div>
+
+  <div class="row">
+    <span>Softgetränke<br>
+    <small style="font-size:11px;opacity:.5;">
+      + Pfand 0,25€
+    </small></span>
+    <span class="menu-size">Uludağ<br>Cola/Fanta/...</span>
+    <span class="price">2.50</span>
+  </div>
+
+   <div class="row">
+    <span>Şalgam</span>
+    <span class="menu-size"></span>
+    <span class="price">2.00</span>
+  </div>
+
+  <div class="row">
+    <span>Ayran</span>
+    <span class="menu-size"></span>
+    <span class="price">1.50</span>
+  </div>
+
+  <div class="row">
+    <span>Wasser<br>
+    <small style="font-size:11px;opacity:.5;">
+      + Pfand 0,25€
+    </small></span>
+    <span class="menu-size">0.5 Ltr</span>
+    <span class="price">1.50</span>
+  </div>
+
+  <div class="row">
+    <span>Kaffee Crema</span>
+    <span class="menu-size"></span>
+    <span class="price">2.00</span>
+  </div>
+  
+
+</div>
+
+<div class="section">
+<h2>Bowl</h2>
+<div class="row"><span>demnächst</span><span class="price"></span></div>
+</div>
+
+<div class="section">
+<h2>Lahmacun</h2>
+<div class="row"><span>demnächst im Sortiment !</span><span class="price"></span></div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.logo{
+position:absolute;
+left:50%;
+top:115px;
+transform:translateX(-50%);
+width:85%;
+z-index:10;
+pointer-events:none;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background: #000;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+}
+
+.phone {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  background: #000;
+}
+
+.design {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.hotspot {
+  position: absolute;
+  display: block;
+  z-index: 5;
+  border-radius: 20px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Top navigation */
+.nav-about {
+  left: 0%;
+  top: 0%;
+  width: 32%;
+  height: 10.2%;
+}
+
+.nav-menu {
+  left: 34%;
+  top: 0%;
+  width: 32%;
+  height: 10.2%;
+}
+
+.nav-location {
+  right: 0%;
+  top: 0%;
+  width: 32%;
+  height: 10.2%;
+}
+
+/* Contact cards */
+.call {
+  left: 6%;
+  top: 34.2%;
+  width: 88%;
+  height: 7.4%;
+}
+
+.whatsapp {
+  left: 6%;
+  top: 42.8%;
+  width: 88%;
+  height: 7.4%;
+}
+
+.instagram {
+  left: 6%;
+  top: 51.4%;
+  width: 88%;
+  height: 7.4%;
+}
+
+.tiktok {
+  left: 6%;
+  top: 60.1%;
+  width: 88%;
+  height: 7.4%;
+}
+
+.email {
+  left: 6%;
+  top: 68.7%;
+  width: 88%;
+  height: 7.4%;
+}
+
+.location {
+  left: 6%;
+  top: 77.3%;
+  width: 88%;
+  height: 7.4%;
+}
+
+.hours {
+  left: 6%;
+  top: 85.9%;
+  width: 88%;
+  height: 7.4%;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+@media (min-width: 431px) {
+  body {
+    background: #000;
+  }
+}
