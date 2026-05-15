@@ -48,13 +48,13 @@ body {
   -webkit-user-drag: none;
 }
 
-.hotspot {
-  position: absolute;
-  display: block;
-  z-index: 5;
-  border-radius: 20px;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: pan-y;
+.hotspot{
+position:absolute;
+display:block;
+z-index:5;
+border-radius:20px;
+-webkit-tap-highlight-color:transparent;
+touch-action:auto;
 }
 
 /* Top navigation */
@@ -142,8 +142,4 @@ body {
   body {
     background: #000;
   }
-}
-
-.hotspot{
-pointer-events:none !important;
 }
