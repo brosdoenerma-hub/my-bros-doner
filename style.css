@@ -143,3 +143,7 @@ body {
     background: #000;
   }
 }
+
+.hotspot{
+pointer-events:none !important;
+}
