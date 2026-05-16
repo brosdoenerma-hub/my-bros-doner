@@ -42,9 +42,9 @@ margin-bottom:18px
 
 .row{
 display:grid;
-grid-template-columns:1fr 60px 70px;
+grid-template-columns:minmax(0, 1fr) 90px 60px;
 align-items:center;
-gap:10px;
+gap:8px;
 padding:12px 0;
 border-bottom:1px dotted #5f4800;
 width:100%;
@@ -53,18 +53,19 @@ width:100%;
 .row span:first-child{
 font-weight:700;
 line-height:1.2;
+min-width:0;
 }
 
 .menu-size{
-display:flex;
-align-items:flex-start;
-justify-content:flex-start;
-padding-top:4px;
+display:block;
 font-size:12px;
 font-weight:500;
-letter-spacing:.3px;
-color:#d8d8d8;
-opacity:.75;
+letter-spacing:.2px;
+color:#bdbdbd;
+opacity:.8;
+line-height:1.2;
+text-align:left;
+white-space:normal;
 }
 
 .price{
@@ -72,7 +73,7 @@ color:#f8f8f8;
 font-weight:bold;
 text-align:right;
 white-space:nowrap;
-text-shadow:0 0 6px rgba(255,215,0,.15)
+text-shadow:0 0 6px rgba(255,215,0,.15);
 }
 
 .divider{
@@ -170,7 +171,7 @@ text-shadow:0 0 6px rgba(255,215,0,.10);
 }
 
 .drink-size{
-transform:translateX(-38px);
+transform:translateX(-18px);
 }
 
 </style>
