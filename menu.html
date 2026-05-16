@@ -166,7 +166,7 @@ opacity:.8;
 font-size:16px;
 font-weight:700;
 color:#f5f5f5;
-min-width:70px;
+min-width:52px;
 text-align:right;
 white-space:nowrap;
 text-shadow:0 0 6px rgba(255,215,0,.10);
@@ -174,16 +174,18 @@ text-shadow:0 0 6px rgba(255,215,0,.10);
 
 .drink-row{
 display:grid;
-grid-template-columns:1fr 115px 60px;
+grid-template-columns:minmax(0,1fr) 95px 52px;
 align-items:center;
 gap:8px;
 padding:12px 0;
 border-bottom:1px dotted #5f4800;
+overflow:hidden;
 }
 
 .drink-name{
 font-weight:700;
 line-height:1.2;
+min-width:0;
 }
 
 .drink-info{
@@ -198,9 +200,11 @@ white-space:normal;
 
 .drink-price{
 font-weight:700;
+font-size:16px;
 text-align:right;
 white-space:nowrap;
 color:#f8f8f8;
+min-width:52px;
 }
 
 </style>
@@ -337,46 +341,50 @@ color:#f8f8f8;
 <div class="section">
   <h2>Getränke</h2>
 
-  <div class="row">
-  <span>Red Bull</span>
-  <span class="menu-size">vers.<br>Sorten</span>
-  <span class="price">2.80</span>
-</div>
+  <div class="section">
+  <h2>Getränke</h2>
 
-<div class="row">
-  <span>Softgetränke</span>
-  <span class="menu-size">Uludağ<br>Cola/Fanta/…</span>
-  <span class="price">2.50</span>
-</div>
+  <div class="drink-row">
+    <span class="drink-name">Red Bull</span>
+    <span class="drink-info">vers.<br>Sorten</span>
+    <span class="drink-price">2.80</span>
+  </div>
 
-<div class="drink-row">
-  <span class="drink-name">Şalgam</span>
-  <span class="drink-info"></span>
-  <span class="drink-price">2.00</span>
-</div>
+  <div class="drink-row">
+    <span class="drink-name">Softgetränke</span>
+    <span class="drink-info">Uludağ<br>Cola/Fanta/…</span>
+    <span class="drink-price">2.50</span>
+  </div>
 
-<div class="drink-row">
-  <span class="drink-name">Ayran</span>
-  <span class="drink-info"></span>
-  <span class="drink-price">1.50</span>
-</div>
+  <div class="drink-row">
+    <span class="drink-name">Şalgam</span>
+    <span class="drink-info"></span>
+    <span class="drink-price">2.00</span>
+  </div>
 
-<div class="row">
-  <span>Red Bull</span>
-  <span class="menu-size">0,5 L</span>
-  <span class="price">1.50</span>
-</div>
+  <div class="drink-row">
+    <span class="drink-name">Ayran</span>
+    <span class="drink-info"></span>
+    <span class="drink-price">1.50</span>
+  </div>
 
-<div class="drink-row">
-  <span class="drink-name">Kaffee Crema</span>
-  <span class="drink-info"></span>
-  <span class="drink-price">2.00</span>
-</div>
+  <div class="drink-row">
+    <span class="drink-name">Wasser</span>
+    <span class="drink-info">0.5 Ltr</span>
+    <span class="drink-price">1.50</span>
+  </div>
 
-<div class="row">
-  <span>Softgetr.<br>Flaschen</span>
-  <span class="menu-size">1 L</span>
-  <span class="price">3.50</span>
+  <div class="drink-row">
+    <span class="drink-name">Kaffee Crema</span>
+    <span class="drink-info"></span>
+    <span class="drink-price">2.00</span>
+  </div>
+
+  <div class="drink-row">
+    <span class="drink-name">Softgetr.<br>Flaschen</span>
+    <span class="drink-info">1 L</span>
+    <span class="drink-price">3.50</span>
+  </div>
 </div>
 
 </div>
@@ -448,7 +456,7 @@ color:#f8f8f8;
 
   </div>
 
-<<div class="section">
+<div class="section">
   <h2>Für Schüler</h2>
 
   <div class="drink-row">
