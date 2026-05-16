@@ -42,10 +42,10 @@ margin-bottom:18px
 
 .row{
 display:grid;
-grid-template-columns:minmax(0, 1fr) 90px 60px;
+grid-template-columns:minmax(140px,1fr) 90px 65px;
 align-items:center;
-gap:8px;
-padding:12px 0;
+gap:10px;
+padding:14px 0;
 border-bottom:1px dotted #5f4800;
 width:100%;
 }
@@ -57,23 +57,23 @@ min-width:0;
 }
 
 .menu-size{
-display:block;
-font-size:12px;
+font-size:14px;
 font-weight:500;
-letter-spacing:.2px;
 color:#bdbdbd;
-opacity:.8;
-line-height:1.2;
+opacity:.85;
+line-height:1.15;
 text-align:left;
 white-space:normal;
+word-break:break-word;
 }
 
 .price{
 color:#f8f8f8;
-font-weight:bold;
+font-weight:700;
+font-size:16px;
 text-align:right;
 white-space:nowrap;
-text-shadow:0 0 6px rgba(255,215,0,.15);
+min-width:60px;
 }
 
 .divider{
@@ -335,16 +335,16 @@ color:#f8f8f8;
 <div class="section">
   <h2>Getränke</h2>
 
-  <div class="drink-row">
-  <span class="drink-name">Red Bull</span>
-  <span class="drink-info">vers. Sorten</span>
-  <span class="drink-price">2.80</span>
+  <div class="row">
+  <span>Red Bull</span>
+  <span class="menu-size">vers.<br>Sorten</span>
+  <span class="price">2.80</span>
 </div>
 
-<div class="drink-row">
-  <span class="drink-name">Softgetränke</span>
-  <span class="drink-info">Uludağ<br>Cola/Fanta/...</span>
-  <span class="drink-price">2.50</span>
+<div class="row">
+  <span>Softgetränke</span>
+  <span class="menu-size">Uludağ<br>Cola/Fanta/…</span>
+  <span class="price">2.50</span>
 </div>
 
 <div class="drink-row">
@@ -371,10 +371,10 @@ color:#f8f8f8;
   <span class="drink-price">2.00</span>
 </div>
 
-<div class="drink-row">
-  <span class="drink-name">Softgetr. Flaschen</span>
-  <span class="drink-info">1 L</span>
-  <span class="drink-price">3.50</span>
+<div class="row">
+  <span>Softgetr.<br>Flaschen</span>
+  <span class="menu-size">1 L</span>
+  <span class="price">3.50</span>
 </div>
 
 </div>
@@ -446,36 +446,53 @@ color:#f8f8f8;
 
   </div>
 
-<div class="section">
+<<div class="section">
   <h2>Für Schüler</h2>
 
-  <div class="row">
-    <span>
+  <div class="drink-row">
+
+    <div class="drink-name">
       Alle Schüler erhalten<br>
       10% Rabatt<br>
       egal mit oder ohne Eltern<br>
-      <small style="font-size:12px;opacity:.5;">
+
+      <small style="
+      font-size:12px;
+      opacity:.55;
+      font-weight:400;
+      line-height:1.4;
+      display:block;
+      margin-top:6px;
+      ">
         nicht kombinierbar mit Kids Menü
       </small>
-    </span>
+    </div>
 
-    <span class="menu-size"></span>
-    <span class="price">10%</span>
+    <div></div>
+
+    <div class="drink-price">
+      10%
+    </div>
+
   </div>
 </div>
 
 <div class="section">
   <h2>Demnächst</h2>
 
-  <div class="row">
-    <span>
+  <div class="drink-row">
+
+    <div class="drink-name">
       Stammkunden<br>
       Bonus Sammler<br>
-      der 11. Döner geht aufs Haus
-    </span>
+      der 11. Döner<br>
+      geht aufs Haus
+    </div>
 
-    <span class="menu-size"></span>
-    <span class="price"></span>
+    <div></div>
+
+    <div class="drink-price"></div>
+
   </div>
 </div>
 
