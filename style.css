@@ -332,13 +332,13 @@ text-decoration:none;
 transition:.25s ease;
 border-radius:18px;
 padding:10px 6px;
+display:block;
+color:inherit;
 }
 
-.review-box:hover{
+.review-box:hover,
+.review-box:active{
 background:rgba(255,215,0,.03);
-box-shadow:
-0 0 14px rgba(255,215,0,.08);
+box-shadow:0 0 14px rgba(255,215,0,.08);
 transform:translateY(-2px);
-}
-
 }
