@@ -1,42 +1,200 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Bro's Döner Mannheim</title>
-  <meta name="theme-color" content="#000000" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bro's Döner</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
 
-<main class="phone">
+<div class="container">
 
-  <img src="assets/design.png" alt="Bro's Döner" class="design" />
-  
+  <div class="top-nav">
 
-  <!-- Navigation oben -->
-  <a class="hotspot nav-about" href="#info" aria-label="Über uns"></a>
-  <a class="hotspot nav-menu" href="menu.html" aria-label="Speisekarte"></a>
-  <a class="hotspot nav-location" href="https://maps.google.com/?q=Maybachstr.+18,+68169+Mannheim" target="_blank" rel="noopener" aria-label="Standort"></a>
+    <a href="menu.html" class="nav-item">
+      <i class="fa-solid fa-clipboard-list"></i>
+      <span>Speisekarte</span>
+    </a>
 
-  <!-- Buttons -->
-  <a class="hotspot call" href="tel:+491785190405" aria-label="Anrufen"></a>
-  <a class="hotspot whatsapp" href="https://wa.me/491785190405" target="_blank" rel="noopener" aria-label="WhatsApp"></a>
-  <a class="hotspot instagram" href="https://instagram.com/brosdoenermannheim" target="_blank" rel="noopener" aria-label="Instagram"></a>
-  <a class="hotspot tiktok" href="https://tiktok.com/@brosdoener" target="_blank" rel="noopener" aria-label="TikTok"></a>
-  <a class="hotspot email" href="mailto:brosdoener.ma@gmail.com" aria-label="E-Mail"></a>
-  <a class="hotspot location" href="https://maps.google.com/?q=Maybachstr.+18,+68169+Mannheim" target="_blank" rel="noopener" aria-label="Standort öffnen"></a>
-  <a class="hotspot hours" href="#oeffnungszeiten" aria-label="Öffnungszeiten"></a>
+    <a href="menu.html#schueler" class="nav-item">
+      <i class="fa-solid fa-tags"></i>
+      <span>Angebote</span>
+    </a>
 
-  <section id="info" class="sr-only">
-    Bro's Döner Mannheim. Premium Qualität, frisch zubereitet.
-  </section>
+    <a href="https://maps.google.com/?q=Maybachstr.+18,+Mannheim" target="_blank" class="nav-item">
+      <i class="fa-solid fa-location-dot"></i>
+      <span>Standort</span>
+    </a>
 
-  <section id="oeffnungszeiten" class="sr-only">
-    Öffnungszeiten: Montag bis Samstag 11:00 bis 21:00 Uhr.
-  </section>
+  </div>
 
-</main>
+  <div class="gold-line"></div>
+
+  <div class="logo-box">
+    <img src="assets/logo.png" alt="Bro's Döner Logo">
+  </div>
+
+  <div class="cards">
+
+    <a href="menu.html" class="card">
+      <div class="icon-circle">
+        <i class="fa-solid fa-clipboard-list"></i>
+      </div>
+      <div class="card-text">
+        <h3>Speisekarte</h3>
+        <p>Unsere aktuellen Gerichte</p>
+      </div>
+      <div class="arrow">
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+    </a>
+
+    <a href="menu.html#schueler" class="card">
+      <div class="icon-circle">
+        <i class="fa-solid fa-tags"></i>
+      </div>
+      <div class="card-text">
+        <h3>Angebote</h3>
+        <p>Schüler Rabatt & Aktionen</p>
+      </div>
+      <div class="arrow">
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+    </a>
+
+    <a href="tel:+491785190405" class="card">
+      <div class="icon-circle">
+        <i class="fa-solid fa-phone"></i>
+      </div>
+      <div class="card-text">
+        <h3>Anrufen</h3>
+        <p>+49 178 5190405</p>
+      </div>
+      <div class="arrow">
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+    </a>
+
+    <a href="https://wa.me/491785190405" target="_blank" class="card">
+      <div class="icon-circle">
+        <i class="fa-brands fa-whatsapp"></i>
+      </div>
+      <div class="card-text">
+        <h3>WhatsApp</h3>
+        <p>+49 178 5190405</p>
+      </div>
+      <div class="arrow">
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+    </a>
+
+    <a href="https://instagram.com/brosdoener.mannheim" target="_blank" class="card">
+      <div class="icon-circle">
+        <i class="fa-brands fa-instagram"></i>
+      </div>
+      <div class="card-text">
+        <h3>Instagram</h3>
+        <p>brosdoener.mannheim</p>
+      </div>
+      <div class="arrow">
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+    </a>
+
+    <a href="https://tiktok.com/@brosdoener" target="_blank" class="card">
+      <div class="icon-circle">
+        <i class="fa-brands fa-tiktok"></i>
+      </div>
+      <div class="card-text">
+        <h3>TikTok</h3>
+        <p>brosdoener</p>
+      </div>
+      <div class="arrow">
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+    </a>
+
+    <a href="mailto:brosdoener.ma@gmail.com" class="card">
+      <div class="icon-circle">
+        <i class="fa-solid fa-envelope"></i>
+      </div>
+      <div class="card-text">
+        <h3>E-Mail</h3>
+        <p>brosdoener.ma@gmail.com</p>
+      </div>
+      <div class="arrow">
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+    </a>
+
+    <a href="https://maps.google.com/?q=Maybachstr.+18,+Mannheim" target="_blank" class="card">
+      <div class="icon-circle">
+        <i class="fa-solid fa-location-dot"></i>
+      </div>
+      <div class="card-text">
+        <h3>Standort</h3>
+        <p>Maybachstr. 18, Mannheim</p>
+      </div>
+      <div class="arrow">
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+    </a>
+
+    <div class="card">
+      <div class="icon-circle">
+        <i class="fa-regular fa-clock"></i>
+      </div>
+      <div class="card-text">
+        <h3>Öffnungszeiten</h3>
+        <p>Mo - Sa 11-20 Uhr</p>
+      </div>
+      <div class="arrow">
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+
+    <div class="footer-box">
+      <i class="fa-solid fa-star"></i>
+      <h4>Premium Qualität</h4>
+      <p>Beste Zutaten.<br>Echter Geschmack.</p>
+    </div>
+
+    <div class="footer-box">
+      <i class="fa-solid fa-utensils"></i>
+      <h4>Frisch zubereitet</h4>
+      <p>Täglich frisch<br>für dich.</p>
+    </div>
+
+   <a href="DEIN_GOOGLE_REZENSIONS_LINK"
+target="_blank"
+class="footer-box review-box">
+
+  <i class="fa-regular fa-heart"></i>
+
+  <h4>Bewerte uns</h4>
+
+  <p>
+    Danke für eure<br>
+    Google Rezensionen
+  </p>
+
+</a>
+
+  </div>
+
+</div>
 
 </body>
 </html>
