@@ -11,6 +11,20 @@ background:#000;
 overflow-x:hidden;
 }
 
+/* iPHONE BUTTON FIX */
+
+button{
+-webkit-tap-highlight-color:transparent;
+}
+
+body{
+font-family:'Inter',sans-serif;
+color:#fff;
+display:flex;
+justify-content:center;
+padding:14px;
+}
+
 body{
 font-family:'Inter',sans-serif;
 color:#fff;
@@ -90,12 +104,6 @@ outline:none;
 box-shadow:none;
 }
 
-
-
-.nav-button:active,
-.nav-button:focus{
-background:transparent !important;
-}
 
 .nav-item i{
 font-size:28px;
