@@ -15,14 +15,16 @@
 
 <body>
 
+
+
 <div class="container">
 
   <div class="top-nav">
 
-    <a href="menu.html" class="nav-item">
-      <i class="fa-solid fa-clipboard-list"></i>
-      <span>Speisekarte</span>
-    </a>
+    <button type="button" class="nav-item nav-button" onclick="openQR()">
+  <i class="fa-solid fa-qrcode"></i>
+  <span>Scan & Bestellen</span>
+</button>
 
     <a href="menu.html#sparmenue" class="nav-item">
   <i class="fa-solid fa-fire"></i>
@@ -223,6 +225,27 @@
   </a>
 
 </div>
+
+<div class="qr-popup" id="qrPopup">
+  <div class="qr-content">
+    <span class="close-qr" onclick="closeQR()">&times;</span>
+
+    <img src="assets/qr.png" alt="QR Code">
+
+    <h3>SCAN & BESTELLEN</h3>
+    <p>Scanne den QR Code<br>für unsere Speisekarte</p>
+  </div>
+</div>
+
+<script>
+function openQR(){
+  document.getElementById("qrPopup").style.display = "flex";
+}
+
+function closeQR(){
+  document.getElementById("qrPopup").style.display = "none";
+}
+</script>
 
 </body>
 </html>
