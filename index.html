@@ -11,6 +11,63 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+.card-button{
+  width:100%;
+  border:none;
+  text-align:left;
+  font:inherit;
+  cursor:pointer;
+  background:inherit;
+  color:inherit;
+}
+
+.hours-content{
+  max-width:520px;
+  width:90%;
+}
+
+.hours-list{
+  margin-top:24px;
+  border-top:1px solid rgba(255,216,74,.35);
+  border-bottom:1px solid rgba(255,216,74,.35);
+}
+
+.hours-list div{
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  padding:13px 0;
+  border-bottom:1px solid rgba(255,255,255,.09);
+  color:#f7f7f7;
+  font-size:16px;
+  letter-spacing:.4px;
+}
+
+.hours-list div:last-child{
+  border-bottom:none;
+}
+
+.hours-list span{
+  color:#ffd84a;
+  font-weight:700;
+}
+
+.hours-list strong{
+  color:#fff;
+  font-weight:600;
+}
+
+.hours-note{
+  margin-top:20px;
+  color:#f7f7f7;
+  font-size:15px;
+  line-height:1.6;
+  text-align:center;
+}
+</style>
+
 </head>
 
 <body>
@@ -26,7 +83,8 @@
   <span>Scan & Bestellen</span>
 </button>
 
-    <a href="menu.html#sparmenue" class="nav-item">
+
+    <a href="sparmenue.html" class="nav-item">
   <i class="fa-solid fa-fire"></i>
   <span>Spar Menü</span>
 </a>
@@ -59,17 +117,21 @@
       </div>
     </a>
 
-    <a href="menu.html#sparmenue" class="card">
+    <a href="sparmenue.html" class="card">
+
   <div class="icon-circle">
     <i class="fa-solid fa-fire"></i>
   </div>
+
   <div class="card-text">
     <h3>Spar Menü</h3>
     <p>Menü-Angebote & Nuggets</p>
   </div>
+
   <div class="arrow">
     <i class="fa-solid fa-angle-right"></i>
   </div>
+
 </a>
 
     <a href="tel:+491785190405" class="card">
@@ -172,18 +234,19 @@
       </div>
     </a>
 
-    <div class="card">
+    
+    <button type="button" class="card card-button" onclick="toggleHours()">
       <div class="icon-circle">
         <i class="fa-regular fa-clock"></i>
       </div>
       <div class="card-text">
         <h3>Öffnungszeiten</h3>
-        <p>Mo - Sa 11-20 Uhr</p>
+        <p>Hier rein!</p>
       </div>
       <div class="arrow">
         <i class="fa-solid fa-angle-right"></i>
       </div>
-    </div>
+    </button>
 
   </div>
 
@@ -226,6 +289,27 @@
 
 </div>
 
+
+<div class="qr-popup" id="hoursPopup">
+  <div class="qr-content hours-content">
+    <span class="close-qr" onclick="closeHours()">&times;</span>
+
+    <h3>ÖFFNUNGSZEITEN</h3>
+
+    <div class="hours-list">
+      <div><span>Montag - Freitag</span><strong>12:00 - 21:00 Uhr</strong></div>
+      <div><span>Samtag</span><strong>11:00 - 21:00 Uhr</strong></div>
+      <div><span>Sonntag und Feiertags</span><strong>14:00 - 21:00 Uhr</strong></div>
+      <div><span>Für abweichende Öffnungszeiten werden Sie hier informiert </span><strong></strong></div>
+    </div>
+
+    <p class="hours-note">
+      Maybachstr. 18, 68169 Mannheim<br>
+      Tel. + WhatsApp: 0178 / 51 90 405
+    </p>
+  </div>
+</div>
+
 <div class="qr-popup" id="qrPopup">
   <div class="qr-content">
     <span class="close-qr" onclick="closeQR()">&times;</span>
@@ -238,14 +322,120 @@
 </div>
 
 <script>
+const qrPopup = document.getElementById("qrPopup");
+const hoursPopup = document.getElementById("hoursPopup");
+
 function openQR(){
-  document.getElementById("qrPopup").style.display = "flex";
+  closeHours();
+  qrPopup.style.display = "flex";
 }
 
 function closeQR(){
-  document.getElementById("qrPopup").style.display = "none";
+  qrPopup.style.display = "none";
 }
+
+function toggleHours(){
+  closeQR();
+
+  if(hoursPopup.style.display === "flex"){
+    hoursPopup.style.display = "none";
+  }else{
+    hoursPopup.style.display = "flex";
+  }
+}
+
+function closeHours(){
+  hoursPopup.style.display = "none";
+}
+
+qrPopup.addEventListener("click", function(e){
+  if(e.target === qrPopup){
+    closeQR();
+  }
+});
+
+hoursPopup.addEventListener("click", function(e){
+  if(e.target === hoursPopup){
+    closeHours();
+  }
+});
+
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    closeQR();
+    closeHours();
+  }
+});
 </script>
 
+<!-- TEST MODUS DEAKTIVIEREN -->
+
+<!--
+
+<button id="testToggle">
+TEST MODUS
+</button>
+
+<div id="testPanel">
+
+  <button onclick="togglePrices()">
+    Preise AN/AUS
+  </button>
+
+  <button onclick="changePrice('10,00')">
+    10€
+  </button>
+
+  <button onclick="changePrice('12,50')">
+    12,50€
+  </button>
+
+  <button onclick="changePrice('15,00')">
+    15€
+  </button>
+
+</div>
+
+<script>
+
+const toggleBtn = document.getElementById("testToggle");
+const panel = document.getElementById("testPanel");
+
+toggleBtn.onclick = () => {
+
+  if(panel.style.display === "flex"){
+    panel.style.display = "none";
+  }else{
+    panel.style.display = "none";
+  }
+
+};
+
+function togglePrices(){
+
+  document.querySelectorAll(".price-main")
+  .forEach(price => {
+
+    if(price.parentElement.style.display === "none"){
+      price.parentElement.style.display = "flex";
+    }else{
+      price.parentElement.style.display = "none";
+    }
+
+  });
+
+}
+
+function changePrice(newPrice){
+
+  document.querySelectorAll(".price-main")
+  .forEach(price => {
+    price.innerText = newPrice;
+  });
+
+}
+
+</script> -->
+ 
 </body>
 </html>
