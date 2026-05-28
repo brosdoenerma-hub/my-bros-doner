@@ -13,15 +13,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-.card-button{
-  width:100%;
-  border:none;
-  text-align:left;
-  font:inherit;
-  cursor:pointer;
-  background:inherit;
-  color:inherit;
-}
+
 
 .hours-content{
   max-width:520px;
@@ -269,7 +261,7 @@
 
   <!-- Impressum & Datenschutz -->
 
-  <a href="rechtliches.html" class="card legal-card">
+   <a href="rechtliches.html" class="card legal-card">
 
     <div class="icon-circle">
         <i class="fa-solid fa-scale-balanced"></i>
@@ -403,74 +395,7 @@ document.addEventListener("keydown", function(e){
 });
 </script>
 
-<!-- TEST MODUS DEAKTIVIEREN -->
 
-<!--
-
-<button id="testToggle">
-TEST MODUS
-</button>
-
-<div id="testPanel">
-
-  <button onclick="togglePrices()">
-    Preise AN/AUS
-  </button>
-
-  <button onclick="changePrice('10,00')">
-    10€
-  </button>
-
-  <button onclick="changePrice('12,50')">
-    12,50€
-  </button>
-
-  <button onclick="changePrice('15,00')">
-    15€
-  </button>
-
-</div>
-
-<script>
-
-const toggleBtn = document.getElementById("testToggle");
-const panel = document.getElementById("testPanel");
-
-toggleBtn.onclick = () => {
-
-  if(panel.style.display === "flex"){
-    panel.style.display = "none";
-  }else{
-    panel.style.display = "none";
-  }
-
-};
-
-function togglePrices(){
-
-  document.querySelectorAll(".price-main")
-  .forEach(price => {
-
-    if(price.parentElement.style.display === "none"){
-      price.parentElement.style.display = "flex";
-    }else{
-      price.parentElement.style.display = "none";
-    }
-
-  });
-
-}
-
-function changePrice(newPrice){
-
-  document.querySelectorAll(".price-main")
-  .forEach(price => {
-    price.innerText = newPrice;
-  });
-
-}
-
-</script> -->
  
 </body>
 </html>
