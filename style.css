@@ -636,27 +636,18 @@ color:#ffd84a;
 .legal-card{
 margin-top:20px;
 }
-
 /* iPhone Telefonnummern & E-Mail nicht blau anzeigen */
 
-a[href^="tel"]{
+a[href^="tel"],
+a[href^="tel"]:link,
+a[href^="tel"]:visited,
+a[href^="tel"]:hover,
+a[href^="tel"]:active,
+a[href^="mailto"],
+a[href^="mailto"]:link,
+a[href^="mailto"]:visited,
+a[href^="mailto"]:hover,
+a[href^="mailto"]:active{
 color:#ffd84a !important;
-text-decoration:none;
-}
-
-a[href^="tel"]:visited{
-color:#ffd84a !important;
-}
-
-a[href^="mailto"]{
-color:#ffd84a !important;
-text-decoration:none;
-}
-
-a[href^="mailto"]:visited{
-color:#ffd84a !important;
-}
-
-a[href^="mailto"]:hover{
-color:#ffd84a !important;
+text-decoration:none !important;
 }
