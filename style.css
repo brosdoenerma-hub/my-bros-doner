@@ -637,7 +637,7 @@ color:#ffd84a;
 margin-top:20px;
 }
 
-/* iPhone Telefonnummern nicht blau anzeigen */
+/* iPhone Telefonnummern & E-Mail nicht blau anzeigen */
 
 a[href^="tel"]{
 color:#ffd84a !important;
@@ -648,15 +648,15 @@ a[href^="tel"]:visited{
 color:#ffd84a !important;
 }
 
-a[href^="tel"]:hover{
-color:#ffd84a !important;
-}
-
 a[href^="mailto"]{
 color:#ffd84a !important;
 text-decoration:none;
 }
 
 a[href^="mailto"]:visited{
+color:#ffd84a !important;
+}
+
+a[href^="mailto"]:hover{
 color:#ffd84a !important;
 }
