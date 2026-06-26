@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glücksrad | MY BRO'S DÖNER</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+background:#000;
+color:#fff;
+font-family:'Inter',sans-serif;
+min-height:100vh;
+display:flex;
+justify-content:center;
+padding:18px;
+}
+
+.page{
+width:100%;
+max-width:430px;
+text-align:center;
+}
+
+.back{
+display:block;
+text-align:left;
+color:#ffd84a;
+text-decoration:none;
+font-weight:700;
+margin-bottom:24px;
+}
+
+h1{
+color:#ffd84a;
+font-size:34px;
+text-transform:uppercase;
+margin-bottom:8px;
+}
+
+.sub{
+font-size:14px;
+color:#cfcfcf;
+line-height:1.5;
+margin-bottom:22px;
+}
+
+.wheel-wrap{
+position:relative;
+width:330px;
+height:330px;
+margin:0 auto 24px;
+}
+
+.pointer{
+position:absolute;
+top:-4px;
+left:50%;
+transform:translateX(-50%);
+z-index:5;
+width:0;
+height:0;
+border-left:18px solid transparent;
+border-right:18px solid transparent;
+border-top:38px solid #ffd84a;
+filter:drop-shadow(0 0 8px rgba(255,216,74,.6));
+}
+
+.wheel{
+width:330px;
+height:330px;
+border-radius:50%;
+border:6px solid #d4aa00;
+position:relative;
+overflow:hidden;
+transition:transform 4.5s cubic-bezier(.12,.72,.12,1);
+box-shadow:
+0 0 25px rgba(255,216,74,.25),
+inset 0 0 25px rgba(0,0,0,.8);
+background:conic-gradient(
+#111 0deg 45deg,
+#2b2100 45deg 90deg,
+#111 90deg 135deg,
+#2b2100 135deg 180deg,
+#111 180deg 225deg,
+#2b2100 225deg 270deg,
+#111 270deg 315deg,
+#2b2100 315deg 360deg
+);
+}
+
+.wheel-text{
+position:absolute;
+width:120px;
+font-size:12px;
+font-weight:900;
+color:#ffd84a;
+text-align:center;
+left:105px;
+top:18px;
+transform-origin:60px 147px;
+text-shadow:0 0 5px rgba(0,0,0,.8);
+}
+
+.spin-btn{
+width:100%;
+padding:17px;
+border-radius:22px;
+border:1.5px solid #d4aa00;
+background:linear-gradient(180deg,#ffd84a,#b98200);
+color:#000;
+font-size:20px;
+font-weight:900;
+cursor:pointer;
+box-shadow:0 0 18px rgba(255,216,74,.25);
+}
+
+.spin-btn:disabled{
+opacity:.45;
+cursor:not-allowed;
+}
+
+.result{
+display:none;
+margin-top:22px;
+padding:22px;
+border-radius:24px;
+border:1.5px solid #d4aa00;
+background:#050505;
+box-shadow:0 0 20px rgba(255,216,74,.12);
+}
+
+.result h2{
+color:#ffd84a;
+font-size:24px;
+margin-bottom:12px;
+}
+
+.result p{
+font-size:15px;
+line-height:1.6;
+color:#f1f1f1;
+}
+
+.code{
+margin-top:14px;
+font-size:22px;
+font-weight:900;
+color:#22c55e;
+letter-spacing:1px;
+}
+
+.valid{
+margin-top:10px;
+font-size:12px;
+color:#aaa;
+line-height:1.5;
+}
+
+.notice{
+margin-top:22px;
+font-size:12px;
+color:#8f8f8f;
+line-height:1.5;
+}
+
+.home-btn{
+display:block;
+margin-top:22px;
+padding:14px;
+border-radius:18px;
+border:1px solid rgba(212,170,0,.7);
+color:#ffd84a;
+text-decoration:none;
+font-weight:700;
+}
+
+@keyframes pop{
+0%{transform:scale(.9);opacity:0}
+100%{transform:scale(1);opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<a href="index.html" class="back">‹ Zurück</a>
+
+<h1>Bro's Glücksrad</h1>
+
+<p class="sub">
+Drehe 1x täglich und sichere dir mit etwas Glück einen Tages-Gutschein.
+</p>
+
+<div class="wheel-wrap">
+  <div class="pointer"></div>
+
+  <div class="wheel" id="wheel">
+    <div class="wheel-text" style="transform:rotate(22deg)">Softgetränk</div>
+    <div class="wheel-text" style="transform:rotate(67deg)">Pommes</div>
+    <div class="wheel-text" style="transform:rotate(112deg)">10% Rabatt</div>
+    <div class="wheel-text" style="transform:rotate(157deg)">Gratis Sauce</div>
+    <div class="wheel-text" style="transform:rotate(202deg)">Leider nichts</div>
+    <div class="wheel-text" style="transform:rotate(247deg)">20% Rabatt</div>
+    <div class="wheel-text" style="transform:rotate(292deg)">Ayran</div>
+    <div class="wheel-text" style="transform:rotate(337deg)">Döner Jackpot</div>
+  </div>
+</div>
+
+<button class="spin-btn" id="spinBtn" onclick="spinWheel()">
+JETZT DREHEN
+</button>
+
+<div class="result" id="resultBox">
+  <h2 id="resultTitle"></h2>
+  <p id="resultText"></p>
+  <div class="code" id="couponCode"></div>
+  <div class="valid" id="validText"></div>
+</div>
+
+<p class="notice">
+Hinweis: Der Gutschein-Code ist nur am Tag des Drehens gültig und muss vor Ort vorgezeigt werden.
+</p>
+
+<a href="index.html" class="home-btn">Zur Startseite</a>
+
+</div>
+
+<script>
+const prizes = [
+  "Gratis Softgetränk",
+  "Gratis Pommes",
+  "10% Rabatt",
+  "Gratis Sauce",
+  "Leider heute kein Gewinn",
+  "20% Rabatt",
+  "Gratis Ayran",
+  "Döner Jackpot"
+];
+
+const wheel = document.getElementById("wheel");
+const spinBtn = document.getElementById("spinBtn");
+const resultBox = document.getElementById("resultBox");
+const resultTitle = document.getElementById("resultTitle");
+const resultText = document.getElementById("resultText");
+const couponCode = document.getElementById("couponCode");
+const validText = document.getElementById("validText");
+
+let currentRotation = 0;
+
+function todayKey(){
+  const d = new Date();
+  return d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+}
+
+function makeCode(){
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let code = "BRO-";
+  for(let i=0;i<5;i++){
+    code += chars[Math.floor(Math.random()*chars.length)];
+  }
+  return code;
+}
+
+function checkDailySpin(){
+  const savedDay = localStorage.getItem("brosWheelDay");
+  const savedPrize = localStorage.getItem("brosWheelPrize");
+  const savedCode = localStorage.getItem("brosWheelCode");
+
+  if(savedDay === todayKey()){
+    spinBtn.disabled = true;
+    spinBtn.textContent = "HEUTE BEREITS GEDREHT";
+
+    resultBox.style.display = "block";
+    resultBox.style.animation = "pop .25s ease";
+
+    resultTitle.textContent = "Heute schon gedreht";
+    resultText.textContent = "Dein heutiges Ergebnis: " + savedPrize;
+    couponCode.textContent = savedCode || "";
+    validText.textContent = "Gültig nur heute: " + savedDay;
+  }
+}
+
+function spinWheel(){
+  spinBtn.disabled = true;
+
+  const randomIndex = Math.floor(Math.random() * prizes.length);
+  const segmentAngle = 360 / prizes.length;
+
+  const targetAngle = 360 - (randomIndex * segmentAngle + segmentAngle / 2);
+  const extraSpins = 360 * 6;
+
+  currentRotation += extraSpins + targetAngle;
+
+  wheel.style.transform = "rotate(" + currentRotation + "deg)";
+
+  setTimeout(() => {
+    const prize = prizes[randomIndex];
+    const code = prize.includes("Leider") ? "" : makeCode();
+
+    localStorage.setItem("brosWheelDay", todayKey());
+    localStorage.setItem("brosWheelPrize", prize);
+    localStorage.setItem("brosWheelCode", code);
+
+    resultBox.style.display = "block";
+    resultBox.style.animation = "pop .25s ease";
+
+    if(prize.includes("Leider")){
+      resultTitle.textContent = "Schade!";
+      resultText.textContent = "Heute leider kein Gewinn. Morgen kannst du wieder drehen.";
+      couponCode.textContent = "";
+    }else{
+      resultTitle.textContent = "🎉 Glückwunsch!";
+      resultText.textContent = "Du hast gewonnen: " + prize;
+      couponCode.textContent = code;
+    }
+
+    validText.textContent = "Gültig nur heute: " + todayKey();
+    spinBtn.textContent = "HEUTE BEREITS GEDREHT";
+  }, 4600);
+}
+
+checkDailySpin();
+</script>
+
+</body>
+</html>
