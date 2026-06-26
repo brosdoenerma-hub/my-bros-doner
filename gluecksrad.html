@@ -202,14 +202,14 @@ Drehe 1x täglich und sichere dir mit etwas Glück einen Tages-Gutschein.
   <div class="pointer"></div>
 
   <div class="wheel" id="wheel">
-    <div class="wheel-text" style="transform:rotate(22deg)">Softgetränk</div>
-    <div class="wheel-text" style="transform:rotate(67deg)">Pommes</div>
-    <div class="wheel-text" style="transform:rotate(112deg)">10% Rabatt</div>
-    <div class="wheel-text" style="transform:rotate(157deg)">Gratis Sauce</div>
-    <div class="wheel-text" style="transform:rotate(202deg)">Leider nichts</div>
-    <div class="wheel-text" style="transform:rotate(247deg)">20% Rabatt</div>
-    <div class="wheel-text" style="transform:rotate(292deg)">Ayran</div>
-    <div class="wheel-text" style="transform:rotate(337deg)">Döner Jackpot</div>
+    <div class="wheel-text" style="transform:rotate(22deg)">5% Rabatt</div>
+<div class="wheel-text" style="transform:rotate(67deg)">10% Rabatt</div>
+<div class="wheel-text" style="transform:rotate(112deg)">Gratis Sauce</div>
+<div class="wheel-text" style="transform:rotate(157deg)">Gratis Ayran</div>
+<div class="wheel-text" style="transform:rotate(202deg)">25% Rabatt</div>
+<div class="wheel-text" style="transform:rotate(247deg)">Gratis Pommes</div>
+<div class="wheel-text" style="transform:rotate(292deg)">Döner Jackpot</div>
+<div class="wheel-text" style="transform:rotate(337deg)">Nochmal drehen</div>
   </div>
 </div>
 
@@ -233,15 +233,22 @@ Hinweis: Der Gutschein-Code ist nur am Tag des Drehens gültig und muss vor Ort 
 </div>
 
 <script>
-const prizes = [
-  "Gratis Softgetränk",
-  "Gratis Pommes",
+const displayPrizes = [
+  "5% Rabatt",
   "10% Rabatt",
   "Gratis Sauce",
-  "Leider heute kein Gewinn",
-  "20% Rabatt",
   "Gratis Ayran",
-  "Döner Jackpot"
+  "25% Rabatt",
+  "Gratis Pommes",
+  "Döner Jackpot",
+  "Nochmal drehen"
+];
+
+const normalPrizes = [
+  "5% Rabatt",
+  "10% Rabatt",
+  "Gratis Sauce",
+  "Gratis Ayran"
 ];
 
 const wheel = document.getElementById("wheel");
@@ -254,18 +261,60 @@ const validText = document.getElementById("validText");
 
 let currentRotation = 0;
 
-function todayKey(){
+function todayString(){
   const d = new Date();
-  return d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+  return d.toISOString().split("T")[0];
+}
+
+function yesterdayString(){
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return d.toISOString().split("T")[0];
 }
 
 function makeCode(){
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let code = "BRO-";
-  for(let i=0;i<5;i++){
-    code += chars[Math.floor(Math.random()*chars.length)];
+  for(let i = 0; i < 5; i++){
+    code += chars[Math.floor(Math.random() * chars.length)];
   }
   return code;
+}
+
+function getStreakForToday(){
+  const lastSpin = localStorage.getItem("brosLastSpin");
+  let streak = Number(localStorage.getItem("brosStreak") || 0);
+
+  if(lastSpin === todayString()){
+    return streak;
+  }
+
+  if(lastSpin === yesterdayString()){
+    streak++;
+  }else{
+    streak = 1;
+  }
+
+  localStorage.setItem("brosLastSpin", todayString());
+  localStorage.setItem("brosStreak", streak);
+
+  return streak;
+}
+
+function choosePrize(){
+  const streak = getStreakForToday();
+
+  if(streak >= 60){
+    localStorage.setItem("brosStreak", 0);
+    return "Gratis Pommes";
+  }
+
+  if(streak >= 20){
+    localStorage.setItem("brosStreak", 0);
+    return "25% Rabatt";
+  }
+
+  return normalPrizes[Math.floor(Math.random() * normalPrizes.length)];
 }
 
 function checkDailySpin(){
@@ -273,13 +322,11 @@ function checkDailySpin(){
   const savedPrize = localStorage.getItem("brosWheelPrize");
   const savedCode = localStorage.getItem("brosWheelCode");
 
-  if(savedDay === todayKey()){
+  if(savedDay === todayString()){
     spinBtn.disabled = true;
     spinBtn.textContent = "HEUTE BEREITS GEDREHT";
 
     resultBox.style.display = "block";
-    resultBox.style.animation = "pop .25s ease";
-
     resultTitle.textContent = "Heute schon gedreht";
     resultText.textContent = "Dein heutiges Ergebnis: " + savedPrize;
     couponCode.textContent = savedCode || "";
@@ -290,38 +337,29 @@ function checkDailySpin(){
 function spinWheel(){
   spinBtn.disabled = true;
 
-  const randomIndex = Math.floor(Math.random() * prizes.length);
-  const segmentAngle = 360 / prizes.length;
+  const prize = choosePrize();
+  const winningIndex = displayPrizes.indexOf(prize);
+  const segmentAngle = 360 / displayPrizes.length;
 
-  const targetAngle = 360 - (randomIndex * segmentAngle + segmentAngle / 2);
+  const targetAngle = 360 - (winningIndex * segmentAngle + segmentAngle / 2);
   const extraSpins = 360 * 6;
 
   currentRotation += extraSpins + targetAngle;
-
   wheel.style.transform = "rotate(" + currentRotation + "deg)";
 
   setTimeout(() => {
-    const prize = prizes[randomIndex];
-    const code = prize.includes("Leider") ? "" : makeCode();
+    const code = makeCode();
 
-    localStorage.setItem("brosWheelDay", todayKey());
+    localStorage.setItem("brosWheelDay", todayString());
     localStorage.setItem("brosWheelPrize", prize);
     localStorage.setItem("brosWheelCode", code);
 
     resultBox.style.display = "block";
-    resultBox.style.animation = "pop .25s ease";
+    resultTitle.textContent = "🎉 Glückwunsch!";
+    resultText.textContent = "Du hast gewonnen: " + prize;
+    couponCode.textContent = code;
+    validText.textContent = "Gültig nur heute: " + todayString();
 
-    if(prize.includes("Leider")){
-      resultTitle.textContent = "Schade!";
-      resultText.textContent = "Heute leider kein Gewinn. Morgen kannst du wieder drehen.";
-      couponCode.textContent = "";
-    }else{
-      resultTitle.textContent = "🎉 Glückwunsch!";
-      resultText.textContent = "Du hast gewonnen: " + prize;
-      couponCode.textContent = code;
-    }
-
-    validText.textContent = "Gültig nur heute: " + todayKey();
     spinBtn.textContent = "HEUTE BEREITS GEDREHT";
   }, 4600);
 }
