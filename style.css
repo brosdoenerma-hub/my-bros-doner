@@ -651,3 +651,50 @@ a[href^="mailto"]:active{
 color:#ffd84a !important;
 text-decoration:none !important;
 }
+
+.delivery-news{
+
+    width:100%;
+    text-align:center;
+
+    margin:20px auto 45px;
+
+    color:#ffd84a;
+
+    font-size:26px;
+    font-weight:900;
+    line-height:1.15;
+    letter-spacing:1px;
+    text-transform:uppercase;
+
+    opacity:.92;
+
+    text-shadow:
+        0 0 2px rgba(255,216,74,.18),
+        0 0 5px rgba(255,216,74,.10);
+
+    animation:deliveryPulse 2s ease-in-out infinite;
+}
+
+@keyframes deliveryPulse{
+
+    0%,100%{
+        opacity:.92;
+        text-shadow:
+            0 0 2px rgba(255,216,74,.18),
+            0 0 5px rgba(255,216,74,.10);
+    }
+
+    50%{
+        opacity:1;
+        text-shadow:
+            0 0 4px rgba(255,216,74,.28),
+            0 0 8px rgba(255,216,74,.18);
+    }
+
+}
+
+.lieferando{
+    color:#ff8000;
+    font-weight:800;
+}
