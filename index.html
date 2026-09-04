@@ -9,11 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260904c">
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="Bro's Döner Startseite"><img src="assets/logo.png" alt="Bro's Döner"></a>
+    <a class="brand" href="#top" aria-label="Bro's Döner Startseite"><img src="assets/logo-premium-clean.png" alt="Bro's Döner"></a>
     <button class="status hours-trigger" id="hoursTrigger" type="button" aria-expanded="false" aria-controls="hoursRoll">
       <span class="status-dot"></span><span class="status-copy"><strong id="openState">Geöffnet</strong><small id="openDetail">bis 21:00</small></span><i>⌄</i>
     </button>
@@ -40,7 +40,7 @@
         <a class="primary" href="#speisekarte">Jetzt bestellen <span>→</span></a>
         <div class="trust"><span>✦ Frisch zubereitet</span><span>✦ Abholung & Lieferung</span></div>
       </div>
-      <div class="hero-food"><div class="glow"></div><img src="assets/products/kalb-steak.jpg" alt="Frischer Kalb Steak Döner"></div>
+      <div class="hero-food hero-range"><div class="glow"></div><img class="hero-main" src="assets/candidates/hero-variante-3-hell-web.jpg" alt="Dürüm, Bowls, Box, Nuggets, Pommes und Getränke von Bro's Döner"><img class="hero-watermark" src="assets/logo-premium-clean.png" alt=""></div>
     </section>
 
     <section class="info-strip" aria-label="Schnellinformationen">
@@ -57,18 +57,18 @@
         <p>Wähle dein Lieblingsgericht und passe jede Zutat nach deinem Geschmack an.</p>
       </div>
       <nav class="categories" aria-label="Speisekarten-Kategorien">
-        <button class="active" data-filter="all">Alle</button><button class="offer-tab" data-filter="offer">Sparangebote</button><button class="offer-tab" data-filter="menu">Menüs</button><button data-filter="doener">Döner</button><button data-filter="dueruem">Dürüm</button><button data-filter="box">Box & Bowl</button><button data-filter="snack">Snacks</button><button data-filter="extra">Extras</button><button data-filter="drink">Getränke</button>
+        <button class="active" data-filter="all">Alle</button><button class="offer-tab" data-filter="offer">Sparangebote</button><button class="offer-tab" data-filter="menu">Menüs</button><button data-filter="bowl">Bowls</button><button data-filter="doener">Döner</button><button data-filter="dueruem">Dürüm</button><button data-filter="box">Boxen</button><button data-filter="snack">Snacks</button><button data-filter="extra">Extras</button><button data-filter="drink">Getränke</button>
       </nav>
       <div class="product-grid" id="productGrid"></div>
     </section>
 
     <section class="quality">
       <div><p class="eyebrow">Bro's Versprechen</p><h2>Keine Abkürzungen.<br>Nur voller Geschmack.</h2></div>
-      <div class="quality-grid"><article><b>01</b><h3>Frische Zutaten</h3><p>Täglich knackig vorbereitet und erst bei deiner Bestellung kombiniert.</p></article><article><b>02</b><h3>Deine Auswahl</h3><p>Fleisch, Salat, Soßen und Extras – genau so, wie du es magst.</p></article><article><b>03</b><h3>Schnell bestellt</h3><p>Warenkorb prüfen, WhatsApp öffnen und Bestellung absenden.</p></article></div>
+      <div class="quality-grid"><article><b>01</b><h3>Frische Zutaten</h3><p>Täglich knackig vorbereitet und erst bei deiner Bestellung kombiniert.</p></article><article><b>02</b><h3>Deine Auswahl</h3><p>Fleisch, Salat, Soßen und Extras – genau so, wie du es magst.</p></article><article class="direct-order"><b>03</b><h3>Leben und leben lassen</h3><p>Wir versuchen, unsere Preise so fair wie möglich zu halten, damit du deinen Döner jederzeit genießen kannst.</p><p>Du kannst auch über Lieferando bestellen. Wegen der hohen Servicegebühren freuen wir uns jedoch besonders über deine direkte Bestellung bei uns.</p><strong>Danke für deine Unterstützung!</strong></article></div>
     </section>
   </main>
 
-  <footer><img src="assets/logo.png" alt=""><p>Maybachstraße 18 · Mannheim<br><a href="tel:+491785190405">+49 178 5190405</a></p><div><a href="rechtliches.html">Impressum</a><a href="rechtliches.html">Datenschutz</a><a href="allergene.html">Allergene</a></div></footer>
+  <footer><img src="assets/logo-premium-clean.png" alt=""><p>Maybachstraße 18 · Mannheim<br><a href="tel:+491785190405">+49 178 5190405</a></p><div><a href="rechtliches.html">Impressum</a><a href="rechtliches.html">Datenschutz</a><a href="allergene.html">Allergene</a></div></footer>
 
   <button class="floating-cart" id="floatingCart" hidden><span><b id="floatingCount">0</b> Artikel</span><strong id="floatingTotal">0,00 €</strong><i>Warenkorb →</i></button>
 
@@ -85,7 +85,7 @@
       <button class="close" data-close="cartOverlay" aria-label="Schließen">×</button>
       <div class="sheet-body"><p class="eyebrow">Fast geschafft</p><h2 id="cartTitle">Deine Bestellung</h2><div id="cartItems"></div><div class="cart-total"><span>Gesamt</span><strong id="cartTotal">0,00 €</strong></div>
         <div class="fulfilment"><button class="active" data-mode="Abholung">Abholung</button><button data-mode="Lieferung">Lieferung</button></div>
-        <div class="payment-choice"><p>Zahlungsart</p><div><button class="active" data-payment="Barzahlung">Bar bezahlen</button><button data-payment="Kartenzahlung">Mit Karte bezahlen</button></div><small>Kartenzahlung ist bei Bro's Döner möglich.</small></div>
+        <div class="payment-choice"><p>Zahlungsart</p><div><button class="active" data-payment="Barzahlung">Bar bezahlen</button><button data-payment="Kartenzahlung">Mit Karte bezahlen</button></div><small id="paymentHint">Kartenzahlung ist bei Abholung möglich.</small></div>
         <div class="customer-fields"><label>Name<input id="customerName" placeholder="Dein Name"></label><label>Gewünschte Uhrzeit<input id="customerTime" type="time"></label><label id="addressLabel" hidden>Lieferadresse<input id="customerAddress" placeholder="Straße, Hausnummer, Ort"></label><label>Anmerkung<textarea id="customerNote" placeholder="Optionaler Hinweis"></textarea></label></div>
         <div class="delivery-note" id="deliveryNote" hidden><span>⌖</span><p><strong>Hinweis zum Liefergebiet</strong>Bei weiter entfernten Lieferadressen kann Bro's Döner eine Bestellung ablehnen. Durch die vielen Baustellen in Mannheim und Ludwigshafen sind manche Fahrten leider nicht effizient möglich. Wir bitten um dein Verständnis.</p></div>
         <div class="fair-order-note">
