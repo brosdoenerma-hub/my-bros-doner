@@ -87,6 +87,7 @@
         <div class="fulfilment"><button class="active" data-mode="Abholung">Abholung</button><button data-mode="Lieferung">Lieferung</button></div>
         <div class="payment-choice"><p>Zahlungsart</p><div><button class="active" data-payment="Barzahlung">Bar bezahlen</button><button data-payment="Kartenzahlung">Mit Karte bezahlen</button></div><small>Kartenzahlung ist bei Bro's Döner möglich.</small></div>
         <div class="customer-fields"><label>Name<input id="customerName" placeholder="Dein Name"></label><label>Gewünschte Uhrzeit<input id="customerTime" type="time"></label><label id="addressLabel" hidden>Lieferadresse<input id="customerAddress" placeholder="Straße, Hausnummer, Ort"></label><label>Anmerkung<textarea id="customerNote" placeholder="Optionaler Hinweis"></textarea></label></div>
+        <div class="delivery-note" id="deliveryNote" hidden><span>⌖</span><p><strong>Hinweis zum Liefergebiet</strong>Bei weiter entfernten Lieferadressen kann Bro's Döner eine Bestellung ablehnen. Durch die vielen Baustellen in Mannheim und Ludwigshafen sind manche Fahrten leider nicht effizient möglich. Wir bitten um dein Verständnis.</p></div>
         <div class="fair-order-note">
           <span>♡</span>
           <div><strong>Bitte fair bestellen</strong><p>Bitte gib deine Bestellung nur auf, wenn du sie wirklich abholen oder annehmen möchtest. Unsere Gerichte werden frisch für dich zubereitet und können anschließend oft nicht an andere Gäste verkauft werden – im schlimmsten Fall müssen sie entsorgt werden. Bewusste Spaß- oder Fake-Bestellungen können rechtliche Konsequenzen haben. Bestelle deshalb bitte verantwortungsvoll und mit gutem Gewissen. Vielen Dank für dein Verständnis!</p></div>
@@ -95,6 +96,11 @@
         <p class="order-note">Die Bestellung wird vorbereitet in WhatsApp geöffnet. Sie ist erst nach Bestätigung durch Bro's Döner verbindlich.</p>
         <button class="whatsapp" id="sendWhatsapp">Über WhatsApp bestellen <span>↗</span></button>
       </div>
+    </section>
+  </div>
+  <div class="overlay" id="minimumOverlay" hidden>
+    <section class="notice-sheet" role="alertdialog" aria-modal="true" aria-labelledby="minimumTitle">
+      <button class="close" data-close="minimumOverlay" aria-label="Schließen">×</button><span class="notice-icon">🛵</span><p class="eyebrow">Lieferung</p><h2 id="minimumTitle">Mindestbestellwert nicht erreicht</h2><p>Für Lieferungen gilt ein Mindestbestellwert von <strong>22,00 €</strong>. Bitte ergänze noch Artikel im Wert von <strong id="minimumMissing">0,00 €</strong> oder wähle Abholung.</p><button class="primary full" type="button" data-close="minimumOverlay">Bestellung ergänzen <span>→</span></button>
     </section>
   </div>
   <script src="app.js"></script>
