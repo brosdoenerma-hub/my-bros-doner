@@ -1,407 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bro's Döner</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-<style>
-
-
-.hours-content{
-  max-width:520px;
-  width:90%;
-}
-
-.hours-list{
-  margin-top:24px;
-  border-top:1px solid rgba(255,216,74,.35);
-  border-bottom:1px solid rgba(255,216,74,.35);
-}
-
-.hours-list div{
-  display:flex;
-  justify-content:space-between;
-  gap:24px;
-  padding:13px 0;
-  border-bottom:1px solid rgba(255,255,255,.09);
-  color:#f7f7f7;
-  font-size:16px;
-  letter-spacing:.4px;
-}
-
-.hours-list div:last-child{
-  border-bottom:none;
-}
-
-.hours-list span{
-  color:#ffd84a;
-  font-weight:700;
-}
-
-.hours-list strong{
-  color:#fff;
-  font-weight:600;
-}
-
-.hours-note{
-  margin-top:20px;
-  color:#f7f7f7;
-  font-size:15px;
-  line-height:1.6;
-  text-align:center;
-}
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080807">
+  <title>Bro's Döner – Online bestellen</title>
+  <meta name="description" content="Bro's Döner in Mannheim – frisch konfigurieren und bequem per WhatsApp bestellen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-
-
-<div class="container">
-
-  <div class="top-nav">
-
-<button type="button" class="nav-item nav-button" onclick="openQR()">
-  <i class="fa-solid fa-qrcode"></i>
-  <span>Scan & Bestellen</span>
-</button>
-
-
-    <a href="sparmenue.html" class="nav-item">
-  <i class="fa-solid fa-fire"></i>
-  <span>Spar Menü</span>
-</a>
-
-    <a href="https://maps.google.com/?q=Maybachstr.+18,+Mannheim" target="_blank" class="nav-item">
-      <i class="fa-solid fa-location-dot"></i>
-      <span>Standort</span>
-    </a>
-
-  </div>
-
-  <div class="gold-line"></div>
-
-  <div class="logo-box">
-    <img src="assets/logo.png" alt="Bro's Döner Logo">
-  </div>
-
-  <div class="delivery-news">
-    Wir haben wieder<br>
-    Geöffnet<br>
-    <br> <span class="lieferando"></span>
-</div>
-
-
-<div class="cards">
-
-    <a href="menu.html" class="card">
-      <div class="icon-circle">
-        <i class="fa-solid fa-clipboard-list"></i>
-      </div>
-      <div class="card-text">
-        <h3>Speisekarte</h3>
-        <p>Unsere aktuellen Gerichte</p>
-      </div>
-      <div class="arrow">
-        <i class="fa-solid fa-angle-right"></i>
-      </div>
-    </a>
-
-    <a href="sparmenue.html" class="card">
-
-  <div class="icon-circle">
-    <i class="fa-solid fa-fire"></i>
-  </div>
-
-  <div class="card-text">
-    <h3>Spar Menü</h3>
-    <p>Menü-Angebote & Nuggets</p>
-  </div>
-
-  <div class="arrow">
-    <i class="fa-solid fa-angle-right"></i>
-  </div>
-
-</a>
-
-<a href="allergene.html" class="card">
-
-  <div class="icon-circle">
-    <i class="fa-solid fa-circle-info"></i>
-  </div>
-
-  <div class="card-text">
-    <h3>Allergene</h3>
-    <p>Zutaten & Allergene ansehen</p>
-  </div>
-
-  <div class="arrow">
-    <i class="fa-solid fa-angle-right"></i>
-  </div>
-
-</a>
-
-    <a href="tel:+491785190405" class="card">
-      <div class="icon-circle">
-        <i class="fa-solid fa-phone"></i>
-      </div>
-      <div class="card-text">
-        <h3>Anrufen</h3>
-        <p>+49 178 5190405</p>
-      </div>
-      <div class="arrow">
-        <i class="fa-solid fa-angle-right"></i>
-      </div>
-    </a>
-
-    <!-- ausgeblendet Whatsapp
-
-    <a href="https://wa.me/491785190405" target="_blank" class="card">
-      <div class="icon-circle">
-        <i class="fa-brands fa-whatsapp"></i>
-      </div>
-      <div class="card-text">
-        <h3>WhatsApp</h3>
-        <p>+49 178 5190405</p>
-      </div>
-      <div class="arrow">
-        <i class="fa-solid fa-angle-right"></i>
-      </div>
-    </a>
-
-    -->
-    <!-- HIER -->
-     
-    <a href="https://wa.me/491785190405?text=Hallo%2C%20ich%20möchte%20eine%20Lieferung%20bestellen." target="_blank" class="card">
-
-  <div class="icon-circle">
-    <i class="fa-solid fa-motorcycle"></i>
-  </div>
-
-  <div class="card-text">
-    <h3>Lieferung</h3>
-    <p>Bestellung per WhatsApp</p>
-  </div>
-
-  <div class="arrow">
-    <i class="fa-solid fa-angle-right"></i>
-  </div>
-
-</a>
-
-    <a href="https://www.instagram.com/mybrosdoener/" target="_blank" class="card">
-      <div class="icon-circle">
-        <i class="fa-brands fa-instagram"></i>
-      </div>
-      <div class="card-text">
-        <h3>Instagram</h3>
-        <p>mybrosdoener</p>
-      </div>
-      <div class="arrow">
-        <i class="fa-solid fa-angle-right"></i>
-      </div>
-    </a>
-
-    <a href="https://www.tiktok.com/@my.bros.dner?_r=1&_t=ZG-96RJ5mmctub" target="_blank" class="card">
-      <div class="icon-circle">
-        <i class="fa-brands fa-tiktok"></i>
-      </div>
-      <div class="card-text">
-        <h3>TikTok</h3>
-        <p>my.bros.dner</p>
-      </div>
-      <div class="arrow">
-        <i class="fa-solid fa-angle-right"></i>
-      </div>
-    </a>
-
-    <a href="mailto:brosdoener.ma@gmail.com" class="card">
-      <div class="icon-circle">
-        <i class="fa-solid fa-envelope"></i>
-      </div>
-      <div class="card-text">
-        <h3>E-Mail</h3>
-        <p>brosdoener.ma@gmail.com</p>
-      </div>
-      <div class="arrow">
-        <i class="fa-solid fa-angle-right"></i>
-      </div>
-    </a>
-
-    <a href="https://maps.google.com/?q=Maybachstr.+18,+Mannheim" target="_blank" class="card">
-      <div class="icon-circle">
-        <i class="fa-solid fa-location-dot"></i>
-      </div>
-      <div class="card-text">
-        <h3>Standort</h3>
-        <p>Maybachstr. 18, Mannheim</p>
-      </div>
-      <div class="arrow">
-        <i class="fa-solid fa-angle-right"></i>
-      </div>
-    </a>
-
-    
-    <button type="button" class="card card-button" onclick="toggleHours()">
-      <div class="icon-circle">
-        <i class="fa-regular fa-clock"></i>
-      </div>
-      <div class="card-text">
-        <h3>Öffnungszeiten</h3>
-        <p>Hier rein!</p>
-      </div>
-      <div class="arrow">
-        <i class="fa-solid fa-angle-right"></i>
-      </div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Bro's Döner Startseite"><img src="assets/logo.png" alt="Bro's Döner"></a>
+    <button class="status hours-trigger" id="hoursTrigger" type="button" aria-expanded="false" aria-controls="hoursRoll">
+      <span class="status-dot"></span><span class="status-copy"><strong id="openState">Geöffnet</strong><small id="openDetail">bis 21:00</small></span><i>⌄</i>
     </button>
-
-  </div>
-
-  <!-- Impressum & Datenschutz -->
-
-   <a href="rechtliches.html" class="card legal-card">
-
-    <div class="icon-circle">
-        <i class="fa-solid fa-scale-balanced"></i>
+    <button class="icon-button" id="cartTop" aria-label="Warenkorb öffnen">🛒 <b id="cartCount">0</b></button>
+  </header>
+  <aside class="hours-roll" id="hoursRoll" aria-hidden="true">
+    <div class="roll-bar top-roll"><span></span></div>
+    <div class="hours-paper">
+      <p class="eyebrow">Bro's Döner Mannheim</p>
+      <h2>Öffnungszeiten</h2>
+      <div class="hours-row"><span>Montag – Samstag</span><strong>11:30 – 21:00 Uhr</strong></div>
+      <div class="hours-row"><span>Sonn- & Feiertage</span><strong>Demnächst geöffnet</strong></div>
+      <p class="hours-address">Maybachstraße 18, 68169 Mannheim<br><a href="tel:+491785190405">Tel. & WhatsApp: 0178 5190405</a></p>
     </div>
+    <div class="roll-bar bottom-roll"><span></span></div>
+  </aside>
 
-    <div class="card-text">
-        <h3>Impressum & Datenschutz</h3>
-        <p>Rechtliche Hinweise & Datenschutz</p>
-    </div>
-  
-</a>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Mannheim · Maybachstraße 18</p>
+        <h1>Echter Geschmack.<br><em>Dein Döner.</em></h1>
+        <p class="lead">Frisch belegt, so wie du ihn willst. In wenigen Schritten konfigurieren und über WhatsApp bestellen.</p>
+        <a class="primary" href="#speisekarte">Jetzt bestellen <span>→</span></a>
+        <div class="trust"><span>✦ Frisch zubereitet</span><span>✦ Abholung & Lieferung</span></div>
+      </div>
+      <div class="hero-food"><div class="glow"></div><img src="assets/products/kalb-steak.jpg" alt="Frischer Kalb Steak Döner"></div>
+    </section>
 
-</a>
+    <section class="info-strip" aria-label="Schnellinformationen">
+      <a href="https://maps.google.com/?q=Maybachstr.+18,+Mannheim" target="_blank" rel="noopener"><span>⌖</span><div><small>Standort</small><strong>Maybachstr. 18</strong></div></a>
+      <a href="tel:+491785190405"><span>☎</span><div><small>Telefon</small><strong>0178 5190405</strong></div></a>
+      <a href="https://wa.me/491785190405" target="_blank" rel="noopener"><span>◉</span><div><small>WhatsApp</small><strong>Direkt schreiben</strong></div></a>
+      <div><span>◷</span><div><small>Heute</small><strong>Bis 21:00 Uhr</strong></div></div>
+      <div class="payment-info"><span>▣</span><div><small>Zahlung</small><strong>Karte & bar</strong></div></div>
+    </section>
 
- <div class="footer">
+    <section class="menu" id="speisekarte">
+      <div class="section-head">
+        <div><p class="eyebrow">Frisch für dich</p><h2>Was darf's sein?</h2></div>
+        <p>Wähle dein Lieblingsgericht und passe jede Zutat nach deinem Geschmack an.</p>
+      </div>
+      <nav class="categories" aria-label="Speisekarten-Kategorien">
+        <button class="active" data-filter="all">Alle</button><button class="offer-tab" data-filter="offer">Sparangebote</button><button class="offer-tab" data-filter="menu">Menüs</button><button data-filter="doener">Döner</button><button data-filter="dueruem">Dürüm</button><button data-filter="box">Box & Bowl</button><button data-filter="snack">Snacks</button><button data-filter="extra">Extras</button><button data-filter="drink">Getränke</button>
+      </nav>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
 
-  <div class="footer-box">
-    <i class="fa-solid fa-star"></i>
-    <h4>Premium Qualität</h4>
-    <p>
-      Beste Zutaten.<br>
-      Echter Geschmack.
-    </p>
+    <section class="quality">
+      <div><p class="eyebrow">Bro's Versprechen</p><h2>Keine Abkürzungen.<br>Nur voller Geschmack.</h2></div>
+      <div class="quality-grid"><article><b>01</b><h3>Frische Zutaten</h3><p>Täglich knackig vorbereitet und erst bei deiner Bestellung kombiniert.</p></article><article><b>02</b><h3>Deine Auswahl</h3><p>Fleisch, Salat, Soßen und Extras – genau so, wie du es magst.</p></article><article><b>03</b><h3>Schnell bestellt</h3><p>Warenkorb prüfen, WhatsApp öffnen und Bestellung absenden.</p></article></div>
+    </section>
+  </main>
+
+  <footer><img src="assets/logo.png" alt=""><p>Maybachstraße 18 · Mannheim<br><a href="tel:+491785190405">+49 178 5190405</a></p><div><a href="rechtliches.html">Impressum</a><a href="rechtliches.html">Datenschutz</a><a href="allergene.html">Allergene</a></div></footer>
+
+  <button class="floating-cart" id="floatingCart" hidden><span><b id="floatingCount">0</b> Artikel</span><strong id="floatingTotal">0,00 €</strong><i>Warenkorb →</i></button>
+
+  <div class="overlay" id="configOverlay" hidden>
+    <section class="sheet config-sheet" role="dialog" aria-modal="true" aria-labelledby="configTitle">
+      <button class="close" data-close="configOverlay" aria-label="Schließen">×</button>
+      <div class="sheet-image"><img id="configImage" src="assets/products/kalb-steak.jpg" alt=""></div>
+      <div class="sheet-body"><p class="eyebrow">Jetzt zusammenstellen</p><h2 id="configTitle"></h2><p id="configDesc" class="muted"></p><form id="configForm"></form><button class="primary full" id="addToCart" type="button">In den Warenkorb <span id="configPrice"></span></button></div>
+    </section>
   </div>
 
-  <div class="footer-box">
-    <i class="fa-solid fa-utensils"></i>
-    <h4>Frisch zubereitet</h4>
-    <p>
-      Täglich frisch<br>
-      für dich.
-    </p>
+  <div class="overlay" id="cartOverlay" hidden>
+    <section class="sheet cart-sheet" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <button class="close" data-close="cartOverlay" aria-label="Schließen">×</button>
+      <div class="sheet-body"><p class="eyebrow">Fast geschafft</p><h2 id="cartTitle">Deine Bestellung</h2><div id="cartItems"></div><div class="cart-total"><span>Gesamt</span><strong id="cartTotal">0,00 €</strong></div>
+        <div class="fulfilment"><button class="active" data-mode="Abholung">Abholung</button><button data-mode="Lieferung">Lieferung</button></div>
+        <div class="payment-choice"><p>Zahlungsart</p><div><button class="active" data-payment="Barzahlung">Bar bezahlen</button><button data-payment="Kartenzahlung">Mit Karte bezahlen</button></div><small>Kartenzahlung ist bei Bro's Döner möglich.</small></div>
+        <div class="customer-fields"><label>Name<input id="customerName" placeholder="Dein Name"></label><label>Gewünschte Uhrzeit<input id="customerTime" type="time"></label><label id="addressLabel" hidden>Lieferadresse<input id="customerAddress" placeholder="Straße, Hausnummer, Ort"></label><label>Anmerkung<textarea id="customerNote" placeholder="Optionaler Hinweis"></textarea></label></div>
+        <div class="fair-order-note">
+          <span>♡</span>
+          <div><strong>Bitte fair bestellen</strong><p>Bitte gib deine Bestellung nur auf, wenn du sie wirklich abholen oder annehmen möchtest. Unsere Gerichte werden frisch für dich zubereitet und können anschließend oft nicht an andere Gäste verkauft werden – im schlimmsten Fall müssen sie entsorgt werden. Bewusste Spaß- oder Fake-Bestellungen können rechtliche Konsequenzen haben. Bestelle deshalb bitte verantwortungsvoll und mit gutem Gewissen. Vielen Dank für dein Verständnis!</p></div>
+        </div>
+        <p class="order-note">Die Bestellung wird vorbereitet in WhatsApp geöffnet. Sie ist erst nach Bestätigung durch Bro's Döner verbindlich.</p>
+        <button class="whatsapp" id="sendWhatsapp">Über WhatsApp bestellen <span>↗</span></button>
+      </div>
+    </section>
   </div>
-
-  <a
-    href="https://g.page/r/CbKfTHmi-brPEAE/review"
-    target="_blank"
-    class="footer-box review-box"
-  >
-
-    <i class="fa-regular fa-heart"></i>
-
-    <h4>Bewerte uns</h4>
-
-    <p>
-      Danke für eure<br>
-      Google Rezensionen
-    </p>
-
-  </a>
-
-</div>
-
-
-<div class="qr-popup" id="hoursPopup">
-  <div class="qr-content hours-content">
-    <span class="close-qr" onclick="closeHours()">&times;</span>
-
-    <h3>ÖFFNUNGSZEITEN</h3>
-
-    <div class="hours-list">
-      <div><span>Montag - Samstag</span><strong>11:30 - 21:00 Uhr</strong></div>
-      <div><span>An Sonn- und Feiertagen</span><strong>Schon bald für Sie da</strong></div>
-      <div><span>Für abweichende Öffnungszeiten werden Sie hier informiert </span><strong></strong></div>
-    </div>
-
-    <p class="hours-note">
-      Maybachstr. 18, 68169 Mannheim<br>
-      Tel. + WhatsApp:<br> 0178 / 51 90 405
-    </p>
-  </div>
-</div>
-
-<div class="qr-popup" id="qrPopup">
-  <div class="qr-content">
-    <span class="close-qr" onclick="closeQR()">&times;</span>
-
-    <img src="assets/qr.png" alt="QR Code">
-
-    <h3>SCAN & BESTELLEN</h3>
-    <p>Scanne den QR Code<br>für unsere Speisekarte</p>
-  </div>
-</div>
-
-<script>
-const qrPopup = document.getElementById("qrPopup");
-const hoursPopup = document.getElementById("hoursPopup");
-const WHEEL_ENABLED = false;
-function openQR(){
-  closeHours();
-  qrPopup.style.display = "flex";
-}
-
-function closeQR(){
-  qrPopup.style.display = "none";
-}
-
-function toggleHours(){
-  closeQR();
-
-  if(hoursPopup.style.display === "flex"){
-    hoursPopup.style.display = "none";
-  }else{
-    hoursPopup.style.display = "flex";
-  }
-}
-
-function closeHours(){
-  hoursPopup.style.display = "none";
-}
-
-qrPopup.addEventListener("click", function(e){
-  if(e.target === qrPopup){
-    closeQR();
-  }
-});
-
-hoursPopup.addEventListener("click", function(e){
-  if(e.target === hoursPopup){
-    closeHours();
-  }
-});
-
-document.addEventListener("keydown", function(e){
-  if(e.key === "Escape"){
-    closeQR();
-    closeHours();
-  }
-});
-
-</script>
-
-
- 
+  <script src="app.js"></script>
 </body>
 </html>
