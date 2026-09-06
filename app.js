@@ -19,7 +19,7 @@ const products=[
  {id:'extra-cheese',name:'Käse',category:'extra',price:1,tag:'Topping',desc:'Herzhafter Käse als zusätzliches Topping.',icon:'🧀'},
  {id:'extra-pepper',name:'Peperoni',category:'extra',price:1,tag:'Topping',desc:'Würzige Peperoni für deinen Extra-Kick.',icon:'🌶️'},
  {id:'extra-jalapeno',name:'Jalapeños',category:'extra',price:1,tag:'Topping',desc:'Scharfe Jalapeños als zusätzliches Topping.',icon:'🫑'},
- {id:'extra-sauce',name:'Extra Soße',category:'extra',price:1,tag:'Extra',desc:'Eine zusätzliche Portion deiner Wunschsoße.',icon:'🥣',sizes:[['Knoblauchsoße',1],['Kräutersoße',1],['Scharfe Soße',1]]},
+ {id:'extra-sauce',name:'Extra Soße',category:'extra',price:1,tag:'Extra',desc:'Eine zusätzliche Portion deiner Wunschsoße.',icon:'🥣',sizes:[['Knoblauchsoße',1],['Kräutersoße',1],['Cocktailsoße',1],['Scharfe Soße',1]]},
  {id:'extra-ketchup',name:'Ketchup',category:'extra',price:.5,tag:'Dip',desc:'Eine zusätzliche Portion Ketchup.',icon:'🍅'},
  {id:'extra-mayo',name:'Mayonnaise',category:'extra',price:.5,tag:'Dip',desc:'Eine zusätzliche Portion Mayonnaise.',icon:'🥚'},
  {id:'extra-mustard',name:'Senf',category:'extra',price:.5,tag:'Dip',desc:'Eine zusätzliche Portion Senf.',icon:'🟡'},
@@ -33,17 +33,18 @@ const products=[
  {id:'softdrink-1l',name:'Softgetränk 1 l',category:'drink',price:3.35,deposit:.25,tag:'Literflasche',desc:'3,35 € zzgl. 0,25 € Pfand. Verschiedene Sorten.',image:'softdrinks.jpg'}
 ];
 const ingredients=['Salat','Tomaten','Weißkraut','Rotkraut','Zwiebeln'];
-const sauces=['Knoblauchsoße','Kräutersoße','Scharfe Soße'];
+const sauces=['Knoblauchsoße','Kräutersoße','Cocktailsoße','Scharfe Soße'];
 const basicSauces=['Ketchup','Mayonnaise','Senf'];
 const menuDrinks=['Cola','Fanta','Sprite','Uludağ','Ayran','Wasser'];
 const extras=[['Käse',1],['Peperoni',1],['Jalapeños',1],['Extra Fleisch',2.5],['Extra Soße',1]];
 let cart=[],current=null,mode='Abholung',payment='Barzahlung';
 const euro=n=>n.toLocaleString('de-DE',{style:'currency',currency:'EUR'});
 const itemBasePrice=p=>p.price+(p.deposit||0);
+const isHalalProduct=p=>['offer','menu','bowl','doener','dueruem','box'].includes(p.category)||p.id==='nuggets'||p.id==='extra-meat';
 const grid=document.querySelector('#productGrid');
 
 function renderProducts(filter='all'){
- grid.innerHTML=products.filter(p=>filter==='all'||p.category===filter).map(p=>`<article class="product visual"><div class="product-image ${p.icon?'symbol-image':''}">${p.icon?`<span aria-hidden="true">${p.icon}</span>`:`<img src="assets/products/${p.image}" alt="${p.name}" loading="lazy">`}</div><div class="product-body"><span class="product-tag">${p.tag}</span><h3>${p.name}</h3><p>${p.desc}</p><div class="product-footer"><strong>${p.small||p.category==='menu'?'ab ':''}${euro(p.small||itemBasePrice(p))}${p.deposit?'<small> inkl. Pfand</small>':''}</strong><button data-product="${p.id}">${p.config||p.sizes?'Konfigurieren':'Hinzufügen'} +</button></div></div></article>`).join('');
+ grid.innerHTML=products.filter(p=>filter==='all'||p.category===filter).map(p=>`<article class="product visual"><div class="product-image ${p.icon?'symbol-image':''}">${p.icon?`<span aria-hidden="true">${p.icon}</span>`:`<img src="assets/products/${p.image}" alt="${p.name}" loading="lazy">`}</div><div class="product-body"><span class="product-tag">${p.tag}</span>${isHalalProduct(p)?'<span class="halal-badge">✓ 100 % Halal</span>':''}<h3>${p.name}</h3><p>${p.desc}</p><div class="product-footer"><strong>${p.small||p.category==='menu'?'ab ':''}${euro(p.small||itemBasePrice(p))}${p.deposit?'<small> inkl. Pfand</small>':''}</strong><button data-product="${p.id}">${p.config||p.sizes?'Konfigurieren':'Hinzufügen'} +</button></div></div></article>`).join('');
 }
 function chip(type,value,label,checked=false,extra=''){return `<label class="chip"><input type="${type}" name="${value.startsWith('size')?'size':value.startsWith('sauce')?'sauce':value.startsWith('drink')?'drink':'option'}" value="${value}" ${checked?'checked':''} data-extra="${extra}"><span>${label}</span></label>`}
 function groupedCart(){
