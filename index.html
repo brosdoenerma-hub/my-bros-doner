@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260906a">
+  <link rel="stylesheet" href="styles.css?v=20260912b">
 </head>
 <body>
   <header class="topbar">
@@ -84,8 +84,9 @@
   <div class="overlay" id="cartOverlay" hidden>
     <section class="sheet cart-sheet" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
       <button class="close" data-close="cartOverlay" aria-label="Schließen">×</button>
-      <div class="sheet-body"><p class="eyebrow">Fast geschafft</p><h2 id="cartTitle">Deine Bestellung</h2><div id="cartItems"></div><div class="cart-total"><span>Gesamt</span><strong id="cartTotal">0,00 €</strong></div>
-        <div class="fulfilment"><button class="active" data-mode="Abholung">Abholung</button><button data-mode="Lieferung">Lieferung</button></div>
+      <div class="sheet-body"><p class="eyebrow">Fast geschafft</p><h2 id="cartTitle">Deine Bestellung</h2><div id="cartItems"></div><div id="serviceFeeRow" hidden><p>Warenwert: <strong id="goodsSubtotal">0,00 €</strong><br>Servicegebühr Lieferung: <strong id="serviceFeeValue">2,00 €</strong></p></div><div class="cart-total"><span>Gesamt</span><strong id="cartTotal">0,00 €</strong></div>
+        <div class="fulfilment"><button class="active" data-mode="Abholung">Abholung</button><button data-mode="Lieferung">Lieferung +2,00 €</button></div>
+        <p class="order-note">Bei Lieferung berechnen wir 2,00 € Servicegebühr pro Bestellung. Mindestbestellwert: 22,00 € Warenwert ohne Servicegebühr. Bei Abholung entfällt die Gebühr.</p>
         <div class="payment-choice"><p>Zahlungsart</p><div><button class="active" data-payment="Barzahlung">Bar bezahlen</button><button data-payment="Kartenzahlung">Mit Karte bezahlen</button></div><small id="paymentHint">Kartenzahlung ist bei Abholung möglich.</small></div>
         <div class="customer-fields"><label>Name<input id="customerName" placeholder="Dein Name"></label><label>Gewünschte Uhrzeit<input id="customerTime" type="time"></label><label id="addressLabel" hidden>Lieferadresse<input id="customerAddress" placeholder="Straße, Hausnummer, Ort"></label><label>Anmerkung<textarea id="customerNote" placeholder="Optionaler Hinweis"></textarea></label></div>
         <div class="delivery-note" id="deliveryNote" hidden><span>⌖</span><p><strong>Hinweis zum Liefergebiet</strong>Bei weiter entfernten Lieferadressen kann Bro's Döner eine Bestellung ablehnen. Durch die vielen Baustellen in Mannheim und Ludwigshafen sind manche Fahrten leider nicht effizient möglich. Wir bitten um dein Verständnis.</p></div>
@@ -104,6 +105,6 @@
       <button class="close" data-close="minimumOverlay" aria-label="Schließen">×</button><span class="notice-icon">🛵</span><p class="eyebrow">Lieferung</p><h2 id="minimumTitle">Mindestbestellwert nicht erreicht</h2><p>Für Lieferungen gilt ein Mindestbestellwert von <strong>22,00 €</strong>. Bitte ergänze noch Artikel im Wert von <strong id="minimumMissing">0,00 €</strong> oder wähle Abholung.</p><button class="primary full" type="button" data-close="minimumOverlay">Bestellung ergänzen <span>→</span></button>
     </section>
   </div>
-  <script src="app.js?v=20260906a"></script>
+  <script src="app.js?v=20260912c"></script>
 </body>
 </html>
