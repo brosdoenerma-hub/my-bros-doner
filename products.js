@@ -7,7 +7,7 @@ const products=[
  {id:'kids-menu',name:'Kids Menü',category:'menu',price:9.9,tag:'Für Kinder',desc:'Halber Döner oder 4 Nuggets, kleine Pommes und Capri-Sonne. Eine Dip-Soße gratis.',image:'kids-menu.jpg',sizes:[['Halber Döner',9.9],['4 Nuggets',9.9]],sauceMode:'oneFree'},
  {id:'bowl-steak',name:'Steak Döner Bowl',category:'bowl',price:13,tag:'Bowl',desc:'Steak-Dönerfleisch, Pommes und frische Zutaten.',image:'bowl.jpg',config:true},
  {id:'bowl-chicken',name:'Hähnchen Döner Bowl',category:'bowl',price:10,tag:'Bowl',desc:'Hähnchen-Dönerfleisch, Pommes und frische Zutaten.',image:'bowl-haehnchen.jpg',config:true},
- {id:'steak',name:'Kalb Steak Döner',category:'doener',price:8.5,small:6,tag:'Bestseller',desc:'Saftiges Kalb-Steakfleisch im knusprigen Brot.',image:'kalb-steak.jpg',config:true},
+ {id:'steak',name:'Kalb Steak Döner',category:'doener',price:8.5,small:5,tag:'Bestseller',desc:'Saftiges Kalb-Steakfleisch im knusprigen Brot.',image:'kalb-steak.jpg',config:true},
  {id:'chicken',name:'Hähnchen Döner',category:'doener',price:6,small:4,tag:'Klassiker',desc:'Würziges Hähnchenfleisch, frisch vom Spieß.',image:'haehnchen.jpg',config:true},
  {id:'dueruem-steak',name:'Dürüm Steak',category:'dueruem',price:9,tag:'Dürüm',desc:'Kalb-Steakfleisch eingerollt im dünnen Fladen.',image:'dueruem.jpg',config:true},
  {id:'dueruem-chicken',name:'Dürüm Hähnchen',category:'dueruem',price:6.5,tag:'Dürüm',desc:'Hähnchen und Wunschzutaten im frischen Dürüm.',image:'dueruem.jpg',config:true},
