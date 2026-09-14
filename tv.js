@@ -24,7 +24,12 @@ const cardAllergens={
  3:['Döner: A · G · K<br>Dürüm: A · G · Ayran bei Auswahl: G','Döner: A · G · K<br>Dürüm: A · G · Ayran bei Auswahl: G'],
  4:['Ayran: G · Milch zum Kaffee: G','Nuggets: A · C · Pommes: A*<br>Mayonnaise: C · J','Käse: G · Knoblauch / Kräuter: C · G<br>Scharfe Soße: J · Mayonnaise: C · J']
 };
-function showBoard(index){document.querySelector('#board').innerHTML=panels[index]();
+function showBoard(index){const sauceNotice=saucePricing.enabled&&saucePricing.additionalPrice>0?`Erste Soße gratis · jede weitere +${money(saucePricing.additionalPrice)}`:'Soßenauswahl kostenlos';
+ document.querySelector('#board').innerHTML=panels[index]()
+ .replace('Soßen zu Döner & Dürüm:','Soßen zu Döner, Dürüm, Bowl & Box:')
+ .replace('Erste Soße gratis · jede weitere +0,50 €.',sauceNotice+'.')
+ .replace('1. Soße gratis, weitere +0,50 €.',sauceNotice+'.')
+ .replace('Erste Döner-Soße gratis · jede weitere +0,50 €',sauceNotice);
  const cards=[...document.querySelectorAll('#board article.card')];
  (cardAllergens[index]||[]).forEach((text,i)=>{const label=document.createElement('p');label.className='product-allergens';label.innerHTML='<b>Allergene</b> '+text;const card=cards[i];(card.querySelector('.inside')||card.querySelector('.mini > div')||card).append(label)});
  if(index>0){const hint=document.createElement('div');hint.className='allergen-selection-hint';hint.textContent='Soßen & Extras je nach Auswahl: separate Übersicht. A* = mögliche Glutenspuren bei Pommes.';document.querySelector('.footer-meta').before(hint)}

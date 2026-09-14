@@ -1,5 +1,14 @@
 # Bro’s TV-Tafeln bearbeiten und exportieren
 
+## Weitere ausgewählte Soßen kostenlos anbieten
+
+Ganz oben in `products.js` steht:
+```js
+const saucePricing={enabled:true,additionalPrice:0.50};
+```
+`enabled:false` deaktiviert den Aufpreis für weitere ausgewählte Soßen bei Döner, Dürüm, Bowl, Box und Döner-Menüs/Sparangeboten. `enabled:true` aktiviert ihn wieder. `additionalPrice` ist der Preis je weiterer Soße; die erste bleibt gratis. Hinweise und Berechnung auf Website und TV passen sich an.
+Separate Extra-Soßenportionen (+1 €) und Ketchup/Mayo/Senf bei Snacks haben eigene Preise und bleiben unverändert. Nach Änderung speichern, veröffentlichen und die Seite auf Handy/TV neu laden. Bereits zusammengestellte Warenkörbe müssen neu erstellt werden.
+
 ## TV2: automatischer Wechsel
 
 Lokale Vorschau: `http://localhost:4175/tv.html?tv=2`

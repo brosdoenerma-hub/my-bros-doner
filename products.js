@@ -1,3 +1,6 @@
+// Aufpreise für weitere ausgewählte Soßen bei Döner, Dürüm, Bowl, Box und Döner-Menüs.
+// false = diese Soßenauswahl kostenlos. Separate Extra-Portionen und Snack-Dips bleiben unverändert.
+const saucePricing={enabled:true,additionalPrice:0.50};
 const products=[
  {id:'spar-steak',name:'Steak Kalb Sparangebot',category:'offer',price:10,tag:'Bestseller · Sparangebot',desc:'Ganzer Steak-Döner plus Getränk. Als Dürüm +0,50 €.',image:'kalb-steak.jpg',sizes:[['Ganzer Döner',10],['Dürüm',10.5]],drinks:true,config:true},
  {id:'spar-chicken',name:'Hähnchen Sparangebot',category:'offer',price:7.5,tag:'Beliebt · Sparangebot',desc:'Ganzer Hähnchen-Döner plus Getränk. Als Dürüm +0,50 €.',image:'haehnchen.jpg',sizes:[['Ganzer Döner',7.5],['Dürüm',8]],drinks:true,config:true},
