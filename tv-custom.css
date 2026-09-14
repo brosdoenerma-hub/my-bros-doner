@@ -1,0 +1,6 @@
+/* Eigene Anpassungen hier eintragen. Wird nach allen anderen TV-Styles geladen.
+   Beispiel: .board header h1 { font-size: 76px; }
+   Beispiel: .board header img { transform: translate(-20px, 10px); }
+   Beispiel nur Hauptbild auf Tafel 01:
+   :root .board .hero-photo { transform: translate(-20px, -10px) scale(1.05); }
+   Nach Änderungen Vorschau und 4K-Export prüfen. */

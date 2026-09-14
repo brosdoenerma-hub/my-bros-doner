@@ -1,37 +1,3 @@
-const products=[
- {id:'spar-steak',name:'Steak Kalb Sparangebot',category:'offer',price:10,tag:'Bestseller · Sparangebot',desc:'Großer Steak-Döner oder Dürüm plus Softgetränk.',image:'kalb-steak.jpg',sizes:[['Großer Döner',10],['Dürüm',10]],drinks:true,config:true},
- {id:'spar-chicken',name:'Hähnchen Sparangebot',category:'offer',price:7.5,tag:'Beliebt · Sparangebot',desc:'Großer Hähnchen-Döner oder Dürüm plus Softgetränk.',image:'haehnchen.jpg',sizes:[['Großer Döner',7.5],['Dürüm',7.5]],drinks:true,config:true},
- {id:'menu-1',name:'Menü 1 · Steak',category:'menu',price:13,tag:'Premium Menü',desc:'Großer Steak-Döner oder Dürüm, Pommes und Softgetränk.',image:'menu-steak-v2.jpg',sizes:[['Großer Döner',13],['Dürüm',13]],drinks:true,config:true},
- {id:'menu-2',name:'Menü 2 · Hähnchen',category:'menu',price:11,tag:'Bestseller Menü',desc:'Großer Hähnchen-Döner oder Dürüm, Pommes und Softgetränk.',image:'menu-haehnchen-v2.jpg',sizes:[['Großer Döner',11],['Dürüm',11]],drinks:true,config:true},
- {id:'nugget-menu',name:'Nugget Menü',category:'menu',price:9,tag:'Menü-Angebot',desc:'Nuggets, Pommes und ein Softgetränk. Eine Dip-Soße gratis.',image:'nuggets.jpg',sizes:[['6 Nuggets',9],['9 Nuggets',10],['12 Nuggets',11]],drinks:true,sauceMode:'oneFree'},
- {id:'kids-menu',name:'Kids Menü',category:'menu',price:9.9,tag:'Für Kinder',desc:'Kleiner Döner oder 4 Nuggets, kleine Pommes und Fruchtsaft. Eine Dip-Soße gratis.',image:'kids-menu.jpg',sizes:[['Kleiner Döner',9.9],['4 Nuggets',9.9]],sauceMode:'oneFree'},
- {id:'bowl-steak',name:'Steak Döner Bowl',category:'bowl',price:13,tag:'Bowl',desc:'Steak-Dönerfleisch, Pommes und frische Zutaten.',image:'bowl.jpg',config:true},
- {id:'bowl-chicken',name:'Hähnchen Döner Bowl',category:'bowl',price:10,tag:'Bowl',desc:'Hähnchen-Dönerfleisch, Pommes und frische Zutaten.',image:'bowl-haehnchen.jpg',config:true},
- {id:'steak',name:'Kalb Steak Döner',category:'doener',price:8.5,small:6.5,tag:'Bestseller',desc:'Saftiges Kalb-Steakfleisch im knusprigen Brot.',image:'kalb-steak.jpg',config:true},
- {id:'chicken',name:'Hähnchen Döner',category:'doener',price:5,small:4,tag:'Klassiker',desc:'Würziges Hähnchenfleisch, frisch vom Spieß.',image:'haehnchen.jpg',config:true},
- {id:'dueruem-steak',name:'Dürüm Steak',category:'dueruem',price:8.5,tag:'Dürüm',desc:'Kalb-Steakfleisch eingerollt im dünnen Fladen.',image:'dueruem.jpg',config:true},
- {id:'dueruem-chicken',name:'Dürüm Hähnchen',category:'dueruem',price:6,tag:'Dürüm',desc:'Hähnchen und Wunschzutaten im frischen Dürüm.',image:'dueruem.jpg',config:true},
- {id:'box-steak',name:'Kalb Steak Box',category:'box',price:8.5,tag:'Box',desc:'Steakfleisch mit Pommes – ohne Salat.',image:'box-steak.jpg',config:'box'},
- {id:'box-chicken',name:'Hähnchen Box',category:'box',price:6,tag:'Box',desc:'Hähnchenfleisch mit Pommes – ohne Salat.',image:'box-haehnchen.jpg',config:'box'},
- {id:'nuggets',name:'Chicken Nuggets',category:'snack',price:4.5,tag:'Snack',desc:'Knusprige Nuggets – wahlweise 6, 9 oder 12 Stück. Dips nach Wunsch.',image:'nuggets.jpg',sizes:[['6 Stück',4.5],['9 Stück',6],['12 Stück',7.5]],sauceMode:'paidBasic'},
- {id:'pommes',name:'Pommes',category:'snack',price:4,tag:'Snack',desc:'Goldbraun und knusprig. Ketchup, Mayo oder Senf: eine Portion gratis.',image:'pommes.jpg',config:'fries',sauceMode:'oneFree'},
- {id:'extra-meat',name:'Extra Fleisch',category:'extra',price:2.5,tag:'Extra',desc:'Eine zusätzliche Portion Dönerfleisch.',icon:'🥩'},
- {id:'extra-cheese',name:'Käse',category:'extra',price:1,tag:'Topping',desc:'Herzhafter Käse als zusätzliches Topping.',icon:'🧀'},
- {id:'extra-pepper',name:'Peperoni',category:'extra',price:1,tag:'Topping',desc:'Würzige Peperoni für deinen Extra-Kick.',icon:'🌶️'},
- {id:'extra-jalapeno',name:'Jalapeños',category:'extra',price:1,tag:'Topping',desc:'Scharfe Jalapeños als zusätzliches Topping.',icon:'🫑'},
- {id:'extra-sauce',name:'Extra Soße',category:'extra',price:1,tag:'Extra',desc:'Eine zusätzliche Portion deiner Wunschsoße.',icon:'🥣',sizes:[['Knoblauchsoße',1],['Kräutersoße',1],['Cocktailsoße',1],['Scharfe Soße',1]]},
- {id:'extra-ketchup',name:'Ketchup',category:'extra',price:.5,tag:'Dip',desc:'Eine zusätzliche Portion Ketchup.',icon:'🍅'},
- {id:'extra-mayo',name:'Mayonnaise',category:'extra',price:.5,tag:'Dip',desc:'Eine zusätzliche Portion Mayonnaise.',icon:'🥚'},
- {id:'extra-mustard',name:'Senf',category:'extra',price:.5,tag:'Dip',desc:'Eine zusätzliche Portion Senf.',icon:'🟡'},
- {id:'redbull',name:'Red Bull',category:'drink',price:2.45,deposit:.25,tag:'Energy',desc:'2,45 € zzgl. 0,25 € Pfand. Verschiedene Sorten.',image:'energy.jpg'},
- {id:'softdrink',name:'Softgetränke',category:'drink',price:1.95,deposit:.25,tag:'Kaltgetränk',desc:'1,95 € zzgl. 0,25 € Pfand. Uludağ, Cola, Fanta und weitere Sorten.',image:'softdrinks.jpg'},
- {id:'fruchtsaft',name:'Capri-Sonne',category:'drink',price:1.5,tag:'Fruchtsaftgetränk',desc:'Capri-Sonne – fruchtig und gut gekühlt.',image:'fruchtsaft.jpg'},
- {id:'salgam',name:'Şalgam',category:'drink',price:2,deposit:.25,tag:'Türkischer Klassiker',desc:'2,00 € zzgl. 0,25 € Pfand. Würzig und gut gekühlt.',image:'salgam.jpg'},
- {id:'ayran',name:'Ayran',category:'drink',price:1.5,tag:'Getränk',desc:'Der erfrischende Klassiker zum Döner.',image:'ayran.jpg'},
- {id:'wasser',name:'Wasser 0,5 l',category:'drink',price:1.5,deposit:.25,tag:'Getränk',desc:'1,50 € zzgl. 0,25 € Pfand. Still oder sprudelnd.',image:'wasser.jpg'},
- {id:'kaffee',name:'Kaffee Crema',category:'drink',price:2,tag:'Heißgetränk',desc:'Festpreis 2,00 €. Milch und Zucker auf Wunsch kostenlos.',image:'kaffee.jpg',config:'coffee'},
- {id:'softdrink-1l',name:'Softgetränk 1 l',category:'drink',price:3.35,deposit:.25,tag:'Literflasche',desc:'3,35 € zzgl. 0,25 € Pfand. Verschiedene Sorten.',image:'softdrinks.jpg'}
-];
 const ingredients=['Salat','Tomaten','Weißkraut','Rotkraut','Zwiebeln'];
 const sauces=['Knoblauchsoße','Kräutersoße','Cocktailsoße','Scharfe Soße'];
 const basicSauces=['Ketchup','Mayonnaise','Senf'];
@@ -58,7 +24,7 @@ function groupedCart(){
 function openConfig(id){
  current=products.find(p=>p.id===id); document.querySelector('#configTitle').textContent=current.name; document.querySelector('#configDesc').textContent=current.desc; document.querySelector('#configImage').src=`assets/products/${current.image}`; document.querySelector('#configImage').alt=current.name;
  let html='';
- if(current.small)html+=`<div class="option-group"><h3>Größe wählen</h3><div class="chips">${chip('radio','size-large',`Groß · ${euro(current.price)}`,true,current.price)}${chip('radio','size-small',`Klein · ${euro(current.small)}`,false,current.small)}</div></div>`;
+ if(current.small)html+=`<div class="option-group"><h3>Portion wählen</h3><div class="chips">${chip('radio','size-large',`Ganzer Döner · ${euro(current.price)}`,true,current.price)}${chip('radio','size-small',`Halber Döner · ${euro(current.small)}`,false,current.small)}</div></div>`;
  if(current.sizes)html+=`<div class="option-group"><h3>${current.category==='menu'||current.category==='offer'?'Variante wählen':'Menge wählen'}</h3><div class="chips">${current.sizes.map((s,i)=>chip('radio',`size-${i}`,`${s[0]} · ${euro(s[1])}`,i===0,s[1])).join('')}</div></div>`;
  if(current.drinks)html+=`<div class="option-group"><h3>Inklusivgetränk wählen</h3><div class="chips">${menuDrinks.map((x,i)=>chip('radio',`drink-${i}`,x,i===0)).join('')}</div></div>`;
  if(current.sauceMode){const free=current.sauceMode==='oneFree';html+=`<div class="option-group"><h3>${free?'Dip-Soßen · 1 gratis':'Dip-Soßen · je 0,50 €'}</h3><div class="chips">${basicSauces.map((x,i)=>`<label class="chip"><input type="checkbox" name="sauce" value="basic-${i}" data-sauce-tier="basic"><span>${x}${free?'':` · +${euro(.5)}`}</span></label>`).join('')}</div>${free?'<p class="option-hint">Die erste Auswahl ist gratis, jede weitere kostet 0,50 €.</p>':''}</div><div class="option-group"><h3>Hausgemachte Soßen <small>(je +1,00 €)</small></h3><div class="chips">${sauces.map((x,i)=>chip('checkbox',`sauce-extra-${i}`,`${x} · +${euro(1)}`,false,1)).join('')}</div></div>`}
