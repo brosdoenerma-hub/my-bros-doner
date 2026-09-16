@@ -13,7 +13,7 @@ const isHalalProduct=p=>['offer','menu','bowl','doener','dueruem','box'].include
 const grid=document.querySelector('#productGrid');
 
 function renderProducts(filter='all'){
- grid.innerHTML=products.filter(p=>filter==='all'||p.category===filter).map(p=>`<article class="product visual"><div class="product-image ${p.icon?'symbol-image':''}">${p.icon?`<span aria-hidden="true">${p.icon}</span>`:`<img src="assets/products/${p.image}" alt="${p.name}" loading="lazy">`}</div><div class="product-body"><span class="product-tag">${p.tag}</span>${isHalalProduct(p)?'<span class="halal-badge">✓ 100 % Halal</span>':''}<h3>${p.name}</h3><p>${p.desc}</p><div class="product-footer"><strong>${p.small||p.category==='menu'?'ab ':''}${euro(p.small||itemBasePrice(p))}${p.deposit?'<small> inkl. Pfand</small>':''}</strong><button data-product="${p.id}">${p.config||p.sizes?'Konfigurieren':'Hinzufügen'} +</button></div></div></article>`).join('');
+ grid.innerHTML=products.filter(p=>filter==='all'||p.category===filter).map(p=>`<article class="product visual"><div class="product-image ${p.icon?'symbol-image':''}">${p.category==='offer'||p.id==='nugget-menu'?comboPhoto(p.id):p.icon?`<span aria-hidden="true">${p.icon}</span>`:`<img src="assets/products/${p.image}" alt="${p.name}" loading="lazy">`}</div><div class="product-body"><span class="product-tag">${p.tag}</span>${isHalalProduct(p)?'<span class="halal-badge">✓ 100 % Halal</span>':''}<h3>${p.name}</h3><p>${p.desc}</p><div class="product-footer"><strong>${p.small||p.category==='menu'?'ab ':''}${euro(p.small||itemBasePrice(p))}${p.deposit?'<small> inkl. Pfand</small>':''}</strong><button data-product="${p.id}">${p.config||p.sizes?'Konfigurieren':'Hinzufügen'} +</button></div></div></article>`).join('');
 }
 function chip(type,value,label,checked=false,extra=''){return `<label class="chip"><input type="${type}" name="${value.startsWith('size')?'size':value.startsWith('sauce')?'sauce':value.startsWith('drink')?'drink':'option'}" value="${value}" ${checked?'checked':''} data-extra="${extra}"><span>${label}</span></label>`}
 function groupedCart(){
@@ -22,7 +22,7 @@ function groupedCart(){
  return groups;
 }
 function openConfig(id){
- current=products.find(p=>p.id===id); document.querySelector('#configTitle').textContent=current.name; document.querySelector('#configDesc').textContent=current.desc; document.querySelector('#configImage').src=`assets/products/${current.image}`; document.querySelector('#configImage').alt=current.name;
+ current=products.find(p=>p.id===id); document.querySelector('#configTitle').textContent=current.name; document.querySelector('#configDesc').textContent=current.desc; document.querySelector('#configImage').src=`assets/products/${current.configImage||current.image}`; document.querySelector('#configImage').alt=current.name;
  let html='';
  if(current.small)html+=`<div class="option-group"><h3>Portion wählen</h3><div class="chips">${chip('radio','size-large',`Ganzer Döner · ${euro(current.price)}`,true,current.price)}${chip('radio','size-small',`Halber Döner · ${euro(current.small)}`,false,current.small)}</div></div>`;
  if(current.sizes)html+=`<div class="option-group"><h3>${current.category==='menu'||current.category==='offer'?'Variante wählen':'Menge wählen'}</h3><div class="chips">${current.sizes.map((s,i)=>chip('radio',`size-${i}`,`${s[0]} · ${euro(s[1])}`,i===0,s[1])).join('')}</div></div>`;

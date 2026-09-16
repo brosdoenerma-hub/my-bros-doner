@@ -2,11 +2,11 @@
 // false = diese Soßenauswahl kostenlos. Separate Extra-Portionen und Snack-Dips bleiben unverändert.
 const saucePricing={enabled:true,additionalPrice:0.50};
 const products=[
- {id:'spar-steak',name:'Steak Kalb Sparangebot',category:'offer',price:10,tag:'Bestseller · Sparangebot',desc:'Ganzer Steak-Döner plus Getränk. Als Dürüm +0,50 €.',image:'kalb-steak.jpg',sizes:[['Ganzer Döner',10],['Dürüm',10.5]],drinks:true,config:true},
- {id:'spar-chicken',name:'Hähnchen Sparangebot',category:'offer',price:7.5,tag:'Beliebt · Sparangebot',desc:'Ganzer Hähnchen-Döner plus Getränk. Als Dürüm +0,50 €.',image:'haehnchen.jpg',sizes:[['Ganzer Döner',7.5],['Dürüm',8]],drinks:true,config:true},
+ {id:'spar-steak',name:'Steak Kalb Sparangebot',category:'offer',price:10,tag:'Bestseller · Sparangebot',desc:'Ganzer Steak-Döner plus Getränk. Als Dürüm +0,50 €.',image:'angebot-kalb-getraenk.png',configImage:'kalb-steak.jpg',sizes:[['Ganzer Döner',10],['Dürüm',10.5]],drinks:true,config:true},
+ {id:'spar-chicken',name:'Hähnchen Sparangebot',category:'offer',price:7.5,tag:'Beliebt · Sparangebot',desc:'Ganzer Hähnchen-Döner plus Getränk. Als Dürüm +0,50 €.',image:'angebot-haehnchen-getraenk.png',configImage:'haehnchen.jpg',sizes:[['Ganzer Döner',7.5],['Dürüm',8]],drinks:true,config:true},
  {id:'menu-1',name:'Menü 1 · Steak',category:'menu',price:13,tag:'Premium Menü',desc:'Ganzer Steak-Döner, Pommes und Getränk. Als Dürüm +0,50 €.',image:'menu-steak-v2.jpg',sizes:[['Ganzer Döner',13],['Dürüm',13.5]],drinks:true,config:true},
  {id:'menu-2',name:'Menü 2 · Hähnchen',category:'menu',price:11,tag:'Bestseller Menü',desc:'Ganzer Hähnchen-Döner, Pommes und Getränk. Als Dürüm +0,50 €.',image:'menu-haehnchen-v2.jpg',sizes:[['Ganzer Döner',11],['Dürüm',11.5]],drinks:true,config:true},
- {id:'nugget-menu',name:'Nugget Menü',category:'menu',price:9,tag:'Menü-Angebot',desc:'Nuggets, Pommes und ein Softgetränk. Eine Dip-Soße gratis.',image:'nuggets.jpg',sizes:[['6 Nuggets',9],['9 Nuggets',10],['12 Nuggets',11]],drinks:true,sauceMode:'oneFree'},
+ {id:'nugget-menu',name:'Nugget Menü',category:'menu',price:9,tag:'Menü-Angebot',desc:'Nuggets, Pommes und ein Softgetränk. Eine Dip-Soße gratis.',image:'angebot-nuggets-getraenk.png',configImage:'nuggets.jpg',sizes:[['6 Nuggets',9],['9 Nuggets',10],['12 Nuggets',11]],drinks:true,sauceMode:'oneFree'},
  {id:'kids-menu',name:'Kids Menü',category:'menu',price:9.9,tag:'Für Kinder',desc:'Halber Döner oder 4 Nuggets, kleine Pommes und Capri-Sonne. Eine Dip-Soße gratis.',image:'kids-menu.jpg',sizes:[['Halber Döner',9.9],['4 Nuggets',9.9]],sauceMode:'oneFree'},
  {id:'bowl-steak',name:'Steak Döner Bowl',category:'bowl',price:13,tag:'Bowl',desc:'Steak-Dönerfleisch, Pommes und frische Zutaten.',image:'bowl.jpg',config:true},
  {id:'bowl-chicken',name:'Hähnchen Döner Bowl',category:'bowl',price:10,tag:'Bowl',desc:'Hähnchen-Dönerfleisch, Pommes und frische Zutaten.',image:'bowl-haehnchen.jpg',config:true},
