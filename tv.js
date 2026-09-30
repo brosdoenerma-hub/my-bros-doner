@@ -37,6 +37,7 @@ function showBoard(index){const sauceNotice=saucePricing.enabled&&saucePricing.a
 function resize(){document.querySelector('#board').style.transform=`scale(${document.querySelector('#stage').clientWidth/1920})`}
 document.querySelectorAll('[data-board]').forEach(button=>button.addEventListener('click',()=>showBoard(Number(button.dataset.board))));window.addEventListener('resize',resize);
 showBoard(tv2Slideshow?0:Math.max(0,Math.min(4,(Number(location.hash.slice(1))||1)-1)));
+window.addEventListener('bros:catalog-sync',()=>showBoard(Math.max(0,Math.min(4,(Number(location.hash.slice(1))||1)-1))));
 if(tv2Slideshow){
  // TV2: Tafel 01 und 04, jeweils 15 Sekunden. Andere URLs bleiben statisch.
  const sequence=[0,3];let position=0;

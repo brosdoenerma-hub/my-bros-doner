@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Bro’s · TV-Steuerung</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;900&family=Oswald:wght@500;600;700&display=swap">
+  <style>
+    :root{--gold:#f0d47b;--cream:#f5f0e5;--muted:#aaa69b;--line:#4c4229}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:radial-gradient(circle at 80% 0,#30230c 0,transparent 42%),#090908;color:var(--cream);font-family:"DM Sans",Arial,sans-serif;padding:34px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:22px;border:1px solid var(--line);border-radius:28px;padding:22px 28px;background:#141411}
+    header img{width:155px;height:86px;object-fit:contain;filter:brightness(1.35)}
+    h1{font:700 clamp(42px,6vw,82px)/1 Oswald,sans-serif;margin:0;color:var(--gold);text-transform:uppercase}
+    p{color:var(--muted);font-size:18px;line-height:1.5;margin:8px 0 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:28px}
+    article{border:1px solid var(--line);border-radius:24px;background:#141411;padding:24px;min-height:230px;display:flex;flex-direction:column;gap:12px}
+    article span{color:var(--gold);font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+    article h2{font:600 34px/1.05 Oswald,sans-serif;margin:0;text-transform:uppercase}
+    .actions{display:grid;gap:10px;margin-top:auto}
+    a{display:block;text-align:center;text-decoration:none;border-radius:999px;padding:13px 16px;font-weight:900;border:1px solid var(--line);color:var(--cream)}
+    a.primary{background:var(--gold);color:#090908;border-color:var(--gold)}
+    footer{margin-top:24px;color:var(--muted);text-align:center}
+    code{color:var(--gold)}
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>TV-Steuerung</h1>
+      <p>Hier kannst du jede TV-Tafel einzeln öffnen, prüfen und als PNG speichern.</p>
+      <p><strong>Zentrale Preise:</strong> Wenn BRO’S-OS läuft, liest Webseite/TV automatisch <code>http://localhost:8790/api/catalog</code>. Wenn nicht erreichbar, bleibt die lokale Sicherung <code>products.js</code> aktiv.</p>
+    </div>
+    <img src="assets/logo-premium-clean.png" alt="my Bro’s Döner">
+  </header>
+  <main class="grid">
+    <article>
+      <span>TV 01</span>
+      <h2>Bestellen / QR</h2>
+      <p>Starttafel mit QR-Code und Kontaktdaten.</p>
+      <div class="actions"><a class="primary" href="tv.html#1">Ansehen</a><a href="tv.html?export=1#1">Exportmodus</a></div>
+    </article>
+    <article>
+      <span>TV 02</span>
+      <h2>Döner & Bowl</h2>
+      <p>Klassiker, Bowls und Boxen im alten 16:9-Layout.</p>
+      <div class="actions"><a class="primary" href="tv.html#2">Ansehen</a><a href="tv.html?export=1#2">Exportmodus</a></div>
+    </article>
+    <article>
+      <span>TV 03</span>
+      <h2>Menüs</h2>
+      <p>Döner-Menüs, Nugget-Menü und Kids-Menü.</p>
+      <div class="actions"><a class="primary" href="tv.html#3">Ansehen</a><a href="tv.html?export=1#3">Exportmodus</a></div>
+    </article>
+    <article>
+      <span>TV 04</span>
+      <h2>Sparangebote</h2>
+      <p>Sparangebote mit Getränk.</p>
+      <div class="actions"><a class="primary" href="tv.html#4">Ansehen</a><a href="tv.html?export=1#4">Exportmodus</a></div>
+    </article>
+    <article>
+      <span>TV 05</span>
+      <h2>Drinks & Extras</h2>
+      <p>Getränke, Snacks und Extras.</p>
+      <div class="actions"><a class="primary" href="tv.html#5">Ansehen</a><a href="tv.html?export=1#5">Exportmodus</a></div>
+    </article>
+    <article>
+      <span>TV 02 Wechsel</span>
+      <h2>01 / 04 Automatisch</h2>
+      <p>Für TV 2: wechselt zwischen Bestellen und Sparangeboten.</p>
+      <div class="actions"><a class="primary" href="tv.html?tv=2">Ansehen</a><a href="tv.html?tv=2&export=1">Exportmodus</a></div>
+    </article>
+  </main>
+  <footer>
+    Direkte Links: <code>tv.html#1</code> bis <code>tv.html#5</code> · Export: <code>tv.html?export=1#1</code> · Preisänderung zentral über BRO’S-OS Admin: <code>http://localhost:5173/admin</code>
+  </footer>
+</body>
+</html>
