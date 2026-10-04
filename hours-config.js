@@ -17,7 +17,7 @@ const shopHours = {
       date: "2026-10-04",
       hours: [{ open: "11:30", close: "23:00" }],
       title: "Messe Sonderöffnungszeiten",
-      note: "Bis einschließlich 11.10.2026 haben wir täglich bis 23:00 Uhr geöffnet."
+      note: "Bis einschließlich 11.10.2026 haben wir täglich länger geöffnet."
     },
     {
       date: "2026-10-05",
