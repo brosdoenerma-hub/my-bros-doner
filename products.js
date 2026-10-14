@@ -1,6 +1,6 @@
 // Automatisch aus BRO'S-OS exportiert.
 // Bilder/Layout-Felder bleiben aus der statischen Webseite erhalten.
-// Export: 14.10.2026, 21:45:59
+// Export: 14.10.2026, 22:19:51
 const saucePricing={enabled:true,additionalPrice:0.5};
 const products=[
  {id:"spar-steak",name:"Steak Kalb Sparangebot",category:"offer",price:10,tag:"Bestseller · Sparangebot",desc:"Ganzer Steak-Döner plus Getränk. Als Dürüm +0,50 €.",image:"angebot-kalb-getraenk.png",configImage:"kalb-steak.jpg",sizes:[["Ganzer Döner",10],["Dürüm",10.5]],drinks:true,config:true,sauceMode:"additionalPaid"},
