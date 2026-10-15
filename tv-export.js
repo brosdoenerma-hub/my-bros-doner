@@ -20,6 +20,7 @@ exportButton.addEventListener('click',async()=>{
    doc.querySelectorAll('nav,aside,.export-controls').forEach(e=>e.style.display='none');
    const stage=doc.querySelector('#stage');stage.style.cssText='width:1920px;height:1080px;position:relative;overflow:hidden';
    doc.querySelector('#board').style.transform='none';
+   doc.querySelectorAll('#board .tv-order-message').forEach(el=>{el.style.animation='none';el.style.opacity='1';el.style.transform='none'});
    doc.querySelectorAll('#board img').forEach((img,i)=>{img.src=prepared[i];img.style.objectFit='fill';img.style.filter='none'});
   }});
   if(canvas.width!==3840||canvas.height!==2160)throw new Error('Exportgröße ist nicht 4K.');

@@ -1,0 +1,56 @@
+/* Draft additions to the existing TV layout. 1920 × 1080 safe area. */
+:root .board.tv-order, :root .board.tv-sunday {background:radial-gradient(ellipse at 10% 75%,#272215 0,transparent 55%),#0d0e0b;}
+:root .board.tv-order header,:root .board.tv-sunday header {margin-bottom:34px;border-bottom-color:#65542e;height:118px;}
+:root .board.tv-order header h1,:root .board.tv-sunday header h1 {font-size:55px;}
+.tv-order-layout{display:grid;grid-template-columns:1fr 650px;gap:76px;height:744px;align-items:center;}
+.tv-order-kicker{display:inline-flex;align-items:center;gap:14px;font-size:21px;font-weight:700;letter-spacing:3px;color:#ead094;text-transform:uppercase;}
+.tv-order-kicker:before{content:'';height:10px;width:10px;background:#ead094;border-radius:50%;}
+.board .tv-order-title{font:600 124px/1.04 Oswald,sans-serif;letter-spacing:-2px;margin:24px 0 28px;color:#f9f3e5;text-transform:uppercase;}
+.tv-order-title em{font-style:normal;color:#f0d47b;}
+.board .tv-order-copy{font-size:30px;line-height:1.5;color:#d5cdbb;max-width:950px;}
+.tv-order-steps{display:flex;gap:32px;margin-top:40px;border-top:1px solid #5e5031;padding-top:27px;}
+.tv-order-steps span{font-size:23px;color:#eee7d8;}.tv-order-steps b{display:inline-grid;place-items:center;border:1px solid #827048;border-radius:50%;width:36px;height:36px;margin-right:12px;color:#f0d47b;font-size:20px;}
+.board .tv-order-contact{font-size:26px;margin-top:40px;color:#f0d47b;letter-spacing:1px;}
+.tv-qr-panel{height:716px;background:#f6f0df;border-radius:24px;padding:28px 36px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 0 1px #cdb671;color:#16180f;}
+.board .tv-qr-panel img{width:530px;height:530px;object-fit:contain;display:block;background:#fff;border-radius:4px;flex-shrink:0;}
+.board .tv-qr-panel h2{font:600 37px/1.2 Oswald,sans-serif;margin-top:20px;color:#171a12;text-align:center;}
+.board .tv-qr-panel p{color:#4e503f;font-size:22px;margin-top:8px;text-align:center;}
+.tv-simple-footer{position:absolute;left:64px;right:64px;bottom:28px;border-top:1px solid #50462d;padding-top:16px;display:flex;align-items:center;justify-content:space-between;color:#bdb4a0;font-size:20px;}
+.tv-simple-footer strong{color:#e7d3a3;font-weight:600;}
+.tv-sunday-layout{display:grid;grid-template-columns:1fr 660px;gap:70px;align-items:center;height:744px;}
+.tv-sunday-kicker{display:inline-block;border:1px solid #9d8146;border-radius:100px;padding:13px 22px;font-size:21px;font-weight:700;letter-spacing:3px;color:#f0d47b;text-transform:uppercase;}
+.board .tv-sunday-title{font:600 138px/1.04 Oswald,sans-serif;color:#f6efe1;text-transform:uppercase;margin:28px 0 26px;letter-spacing:-2px;}
+.tv-sunday-title em{color:#f0d47b;font-style:normal;}
+.board .tv-sunday-message{font-size:31px;line-height:1.55;color:#d8cfbb;max-width:940px;}
+.tv-hours-panel{border-radius:24px;background:#f0d47b;color:#17190f;padding:48px 40px;position:relative;min-height:560px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.tv-hours-panel .tv-hours-label{font-size:23px;letter-spacing:4px;font-weight:700;color:#47452e;text-transform:uppercase;}
+.tv-hours-panel .tv-hours-day{font:600 56px/1.1 Oswald,sans-serif;color:#17190f;margin:20px 0 23px;text-transform:uppercase;}
+.tv-hours-panel .tv-hours-time{font:600 108px/1 Oswald,sans-serif;letter-spacing:-2px;color:#17190f;white-space:nowrap;}
+.tv-hours-panel .tv-hours-unit{font-size:25px;letter-spacing:7px;margin-top:14px;color:#49462f;}
+.tv-hours-panel .tv-hours-date{border-top:1px solid #ae954f;margin-top:35px;padding-top:27px;text-align:center;font-size:25px;color:#242719;}
+.tv-hours-panel .tv-hours-date strong{font-size:29px;}
+.tv-sunday-tail{font-size:23px;letter-spacing:2px;color:#f0d47b;margin-top:32px;}
+.board.tv-order:after,.board.tv-sunday:after{content:'';position:absolute;width:7px;left:0;top:0;bottom:0;background:#f0d47b;}
+.preview-bar{padding:18px 28px;background:#222319;border-block:1px solid #51452c;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+.preview-bar a{color:#f0d47b;text-decoration:none;border:1px solid #675733;padding:12px 18px;border-radius:8px;font-size:15px;}.preview-bar strong{margin-right:18px;}
+.export .preview-bar{display:none;}
+
+/* Revised QR concept: fixed QR and independent, readable text slides. */
+.board.tv-order .tv-order-title{font-size:114px;line-height:1.08;margin:22px 0 26px;}
+.tv-order-left{align-self:center;}
+#orderMessage{min-height:446px;}
+.tv-order-message{animation:tv-message-in .45s ease both;}
+.tv-slide-dots{display:flex;align-items:center;gap:12px;margin-top:34px;}
+.tv-slide-dots>span{width:10px;height:10px;background:#57513e;border-radius:50%;}
+.tv-slide-dots>span.active{background:#f0d47b;width:34px;border-radius:8px;}
+.tv-slide-dots small{font-size:17px;letter-spacing:2px;color:#c6bca3;margin-left:14px;}
+.board.tv-order .tv-order-steps{margin-top:24px;gap:26px;}
+.board.tv-order .tv-order-steps span{font-size:22px;}
+.board.tv-order .tv-order-steps b{margin-right:9px;}
+.board.tv-order .tv-order-contact{margin-top:28px;}
+.board.tv-order .tv-qr-panel h2{font-size:39px;}
+.board.tv-order .tv-qr-panel p{font-size:22px;line-height:1.35;}
+@keyframes tv-message-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.tv-order-message{animation:none;}}
+
+.tv-slide-fixed .tv-order-message{animation:none!important;opacity:1!important;transform:none!important;}
