@@ -1,11 +1,37 @@
-// true = Hinweis sichtbar, false = Hinweis ausgeschaltet.
-// Nur Information: Öffnungszeiten und Bestellannahme werden dadurch NICHT geändert.
-const shopNotice={
- enabled:true,
- eyebrow:'Aktuelle Mitteilung',
- title:'Messe Sonderöffnungszeiten bis 11.10.2026',
- message:'Bis einschließlich 11.10.2026 sind wir von Mo.-Do. von 11:30 bis 22:00 Uhr und Fr.+Sa. bis 23.30 Uhr und So. 15:00 bis 22:00 Uhr für euch da.',
- cta:'Heute bis 23:00 Uhr',
- tone:'gold',
- showOnWebsite:true
+// Aktuelle Öffnungszeiten für den heutigen Tag ermitteln
+function getTodayClosingTime() {
+  const today = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Europe/Berlin",
+    weekday: "short"
+  }).format(new Date());
+
+  const days = {
+    Sun: 0,
+    Mon: 1,
+    Tue: 2,
+    Wed: 3,
+    Thu: 4,
+    Fri: 5,
+    Sat: 6
+  };
+
+  const dayNumber = days[today];
+  const hours = shopHours.weekly[dayNumber];
+
+  if (!hours || hours[0]?.closed) {
+    return "Heute geschlossen";
+  }
+
+  return `Heute bis ${hours[0].close} Uhr`;
+}
+
+// Mitteilung
+const shopNotice = {
+  "enabled": true,
+  "eyebrow": "Aktuelle Mitteilung",
+  "title": "Jetzt starten wir versuchsweise Sonntags",
+  "message": "Ab dem 18.10.2026 sind wir Sonntags von 15:00 bis 21:00 Uhr für euch da.",
+  "cta": /* bros:auto-cta */ (()=>{const cfg=shopHours;const parts=new Intl.DateTimeFormat('en-CA',{timeZone:cfg.timezone||'Europe/Berlin',year:'numeric',month:'2-digit',day:'2-digit',weekday:'short'}).formatToParts(new Date());const p=Object.fromEntries(parts.map(p=>[p.type,p.value]));const key=p.year+'-'+p.month+'-'+p.day;const day={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[p.weekday];const rows=(cfg.specialDays||[]).find(d=>d.date===key)?.hours||cfg.weekly[day]||[];const open=rows.filter(r=>!r.closed&&r.close);return open.length?'Heute bis '+open[open.length-1].close+' Uhr':'Heute geschlossen';})(),
+  "tone": "gold",
+  "showOnWebsite": true
 };
