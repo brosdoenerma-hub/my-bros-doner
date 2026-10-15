@@ -70,8 +70,9 @@ if(tvSequence){
   schedule();
  }else{
   const sequence=tvSequence;let position=0;
-  const advance=()=>{position=(position+1)%sequence.length;showBoard(sequence[position]);timer=setTimeout(advance,5000);};
-  timer=setTimeout(advance,5000);
+  const boardDuration=tvParams.get('loop')==='sunday'?10000:5000;
+  const advance=()=>{position=(position+1)%sequence.length;showBoard(sequence[position]);timer=setTimeout(advance,boardDuration);};
+  timer=setTimeout(advance,boardDuration);
  }
  window.addEventListener('pagehide',()=>clearTimeout(timer),{once:true});
  window.addEventListener('pageshow',event=>{if(event.persisted)location.reload()});
