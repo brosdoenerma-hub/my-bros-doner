@@ -54,3 +54,8 @@
 @media(prefers-reduced-motion:reduce){.tv-order-message{animation:none;}}
 
 .tv-slide-fixed .tv-order-message{animation:none!important;opacity:1!important;transform:none!important;}
+
+/* TV viewing distance: prominent, stable three-step ordering strip. */
+.board.tv-order .tv-order-steps{display:grid;grid-template-columns:.95fr 1.55fr 1.05fr;gap:12px;margin-top:24px;padding-top:0;border-top:0;}
+.board.tv-order .tv-order-steps span{display:flex;align-items:center;justify-content:center;gap:12px;min-height:100px;padding:16px 12px;background:#f0d47b;border:1px solid #f0d47b;border-radius:12px;color:#17190f;font:600 36px/1.1 Oswald,sans-serif;white-space:nowrap;}
+.board.tv-order .tv-order-steps b{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;margin:0;background:#17190f;color:#f0d47b;border:0;border-radius:50%;font:600 37px/1 Oswald,sans-serif;}
