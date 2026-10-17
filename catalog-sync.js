@@ -33,8 +33,15 @@
   }
 
   function syncOne(catalogProduct, catalog) {
-    const target = byId.get(catalogProduct.id);
-    if (!target) return;
+    let target = byId.get(catalogProduct.id);
+    if (!target) {
+      target={id:catalogProduct.id, icon:catalogProduct.icon||'🍽️', tvStatus:catalogProduct.tvStatus||'pending', config:catalogProduct.workflow?.some(s=>['salad','sauces','extras','bread'].includes(s))?'workflow':false, drinks:catalogProduct.workflow?.includes('drink')};
+      localProducts.push(target);byId.set(target.id,target);
+    }
+    target.active=catalogProduct.active!==false;
+    target.workflow=catalogProduct.workflow;
+    target.tvStatus=catalogProduct.tvStatus??target.tvStatus??'ready';
+    target.tvPresentation=catalogProduct.tvPresentation;
     const keep = oldImageFields.get(catalogProduct.id) || {};
     target.name = catalogProduct.name ?? target.name;
     target.category = catalogProduct.category ?? target.category;
@@ -43,18 +50,22 @@
     target.tag = catalogProduct.tag ?? target.tag;
     target.desc = catalogProduct.description ?? target.desc;
     target.image = keep.image || catalogProduct.sourceImage || target.image;
+    if(catalogProduct.imageUrl){target.image=catalogProduct.imageUrl.startsWith('/')?String(config.apiUrl).replace(/\/$/,'')+catalogProduct.imageUrl:catalogProduct.imageUrl;delete target.icon;}
     target.configImage = keep.configImage || target.configImage;
     target.icon = keep.icon ?? target.icon;
-    target.config = keep.config ?? target.config;
-    target.drinks = keep.drinks ?? target.drinks;
+    if(catalogProduct.imageUrl||(!keep.icon&&target.image))delete target.icon;
+    target.config = ['coffee','box'].includes(keep.config)?keep.config:catalogProduct.workflow?.some(s=>['salad','sauces','extras','bread'].includes(s))?'workflow':false;
+    target.drinks = catalogProduct.workflow?.includes('drink');
     target.sauceMode = catalogProduct.sauceMode ?? keep.sauceMode ?? target.sauceMode;
 
     const rows = variantRows(catalog, catalogProduct.id);
     if (rows.length) target.sizes = rows;
+    else delete target.sizes;
 
     const half = rows.find((row) => row[0] === "Halber Döner");
     const full = rows.find((row) => row[0] === "Ganzer Döner");
-    if (half) target.small = half[1];
+    if (half && catalogProduct.category === "doener") target.small = half[1];
+    else delete target.small;
     if (full) target.price = full[1];
   }
 
@@ -66,14 +77,21 @@
       pricing.additionalPrice ?? saucePricing.additionalPrice;
   }
 
+  let base=String(config.apiUrl||'').replace(/\/$/,'');
+  if(typeof location!=='undefined'&&/^https?:\/\/(localhost|127\.0\.0\.1)(:|\/|$)/.test(base)&&!['localhost','127.0.0.1'].includes(location.hostname)){
+    if(location.protocol==='http:'&&/^(192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.)/.test(location.hostname))base=base.replace(/(localhost|127\.0\.0\.1)/,location.hostname);
+    else base='';
+  }
   async function loadCatalog() {
-    const base = String(config.apiUrl || "").replace(/\/$/, "");
     if (!base) return;
     try {
       const response = await fetch(`${base}/api/catalog`, { cache: "no-store" });
       if (!response.ok) throw new Error(`API ${response.status}`);
       const catalog = await response.json();
+      const available=new Set((catalog.products||[]).filter(p=>p.active!==false).map(p=>p.id));
+      for(const p of localProducts)if(!available.has(p.id))p.active=false;
       (catalog.products || []).forEach((product) => syncOne(product, catalog));
+      window.brosCatalogData={categories:catalog.categories||[],options:catalog.options||{}};
       syncSaucePricing(catalog);
       status.connected = true;
       status.version = catalog.version ?? null;
@@ -90,4 +108,13 @@
   }
 
   window.brosSyncCatalog = loadCatalog;
+  if(!base){status.message='Veröffentlichter BRO’S-OS-Katalog aktiv';return;}
+  void loadCatalog();
+  const poll=typeof setInterval==='function'?setInterval(loadCatalog,30000):null;
+  const events=typeof EventSource==='function'?new EventSource(base+'/api/catalog/events'):null;
+  events?.addEventListener('catalog',loadCatalog);
+  if(typeof window.addEventListener==='function'){
+    window.addEventListener('pagehide',()=>{if(poll)clearInterval(poll);events?.close();},{once:true});
+    window.addEventListener('pageshow',event=>{if(event.persisted)location.reload();});
+  }
 })();

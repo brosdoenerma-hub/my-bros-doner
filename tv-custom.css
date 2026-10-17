@@ -4,3 +4,27 @@
    Beispiel nur Hauptbild auf Tafel 01:
    :root .board .hero-photo { transform: translate(-20px, -10px) scale(1.05); }
    Nach Änderungen Vorschau und 4K-Export prüfen. */
+
+/* Whole-size assortment: emphasize the two main choices on TV 02. */
+.board.tv-classics-large .grid.four>.card .row{padding:19px 0;align-items:center;gap:12px;}
+.board.tv-classics-large .grid.four>.card .row>span{font:600 48px/1.05 Oswald,sans-serif;color:#f0d47b;}
+.board.tv-classics-large .grid.four>.card .row>strong{font:600 52px/1.05 Oswald,sans-serif;white-space:nowrap;}
+
+.board .tv-assigned-card{overflow:hidden;display:flex;flex-direction:column;}
+.board .tv-assigned-card>img{width:100%;height:270px;object-fit:cover;}
+.board .tv-assigned-card .inside{padding:22px;}
+.board .tv-assigned-card h2{font:600 44px/1.05 Oswald,sans-serif;margin:0 0 12px;}
+.board .tv-assigned-card .tv-assigned-description{font-size:24px;line-height:1.25;margin:0 0 14px;}
+.board .tv-assigned-card .row{font-size:30px;padding:8px 0;}
+.board .tv-assigned-card .price{font-size:62px;color:#f0d47b;}
+.board .tv-assigned-card .product-allergens{font-size:18px;}
+
+.board .tv-assigned-card>img{height:190px;}
+.board .tv-assigned-card h2{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:38px;}
+.board .tv-assigned-card .tv-assigned-description{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:20px;}
+.board.tv-classics-large .grid.four>.tv-assigned-card .row{padding:7px 0;}
+.board.tv-classics-large .grid.four>.tv-assigned-card .row>span,.board.tv-classics-large .grid.four>.tv-assigned-card .row>strong{font-size:28px;}
+/* Leave breathing room for the longer Bowl/Box labels and the footer. */
+.board.tv-classics-large .grid.four>.card .row{padding:16px 0;}
+.board.tv-classics-large .grid.four>.card:nth-child(n+3):not(.tv-assigned-card) .row>span{font-size:44px;}
+.board.tv-classics-large .grid.four>.card:nth-child(n+3):not(.tv-assigned-card) .row>strong{font-size:48px;}
