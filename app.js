@@ -1,3 +1,4 @@
+const germanLabel=el=>window.brosGermanText?window.brosGermanText(el):el.textContent;
 const ingredients=['Salat','Tomaten','Weißkraut','Rotkraut','Zwiebeln'];
 const sauces=['Knoblauchsoße','Kräutersoße','Cocktailsoße','Scharfe Soße'];
 const basicSauces=['Ketchup','Mayonnaise','Senf'];
@@ -65,13 +66,13 @@ function addConfigured(){
  if(!current||current.active===false){closeOverlay('configOverlay');return;}
  const checked=[...document.querySelectorAll('#configForm input:checked')]; let price=itemBasePrice(current); const size=checked.find(i=>i.name==='size');if(size)price=Number(size.dataset.extra)+(current.deposit||0);checked.filter(i=>(i.type==='checkbox'||i.name==='bread')).forEach(i=>price+=Number(i.dataset.extra||0));price+=sauceTierPrice(checked);
  const allIngredients=ingredients.every(x=>checked.some(i=>i.value===x));
- const detailParts=checked.filter(i=>!i.value.startsWith('size')&&!(allIngredients&&ingredients.includes(i.value))).map(i=>i.value.startsWith('sauce')||i.value.startsWith('drink')||i.dataset.sauceTier?i.nextElementSibling.textContent:i.value);
+ const detailParts=checked.filter(i=>!i.value.startsWith('size')&&!(allIngredients&&ingredients.includes(i.value))).map(i=>i.value.startsWith('sauce')||i.value.startsWith('drink')||i.name==='bread'||i.dataset.sauceTier?germanLabel(i.nextElementSibling):i.value);
  if(allIngredients)detailParts.unshift('Mit allem');
  const normalSauces=checked.filter(i=>/^sauce-\d+$/.test(i.value)).length;
  if(hasDoenerSaucePricing(current)&&normalSauceFee(normalSauces)>0)detailParts.push(`Soßen-Aufpreis: +${euro(normalSauceFee(normalSauces))}`);
  let details=detailParts.join(', ');
  if(current.deposit)details+=(details?', ':'')+`inkl. ${euro(current.deposit)} Pfand`;
- const recipient=document.querySelector('#itemRecipient').value.trim();cart.push({name:current.name,price,details,size:size?size.nextElementSibling.textContent.split(' · ')[0]:'',recipient});closeOverlay('configOverlay');updateCart();
+ const recipient=document.querySelector('#itemRecipient').value.trim();cart.push({name:current.name,price,details,size:size?germanLabel(size.nextElementSibling).split(' · ')[0]:'',recipient});closeOverlay('configOverlay');updateCart();
 }
 function quickAdd(id){const p=products.find(x=>x.id===id&&x.active!==false);if(!p)return;cart.push({name:p.name,price:itemBasePrice(p),details:p.deposit?`inkl. ${euro(p.deposit)} Pfand`:'',size:''});updateCart()}
 function updateCart(){const total=cart.reduce((s,x)=>s+x.price,0);document.querySelector('#cartCount').textContent=cart.length;document.querySelector('#floatingCount').textContent=cart.length;updateOrderSummary();document.querySelector('#floatingCart').hidden=!cart.length;const send=document.querySelector('#sendWhatsapp'),blocked=mode==='Lieferung'&&total<22;send.classList.toggle('minimum-blocked',blocked);send.title=blocked?'Mindestbestellwert für Lieferung: 22,00 €':''}

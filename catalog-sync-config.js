@@ -3,5 +3,5 @@
 // Wenn die API nicht erreichbar ist, bleibt products.js als sichere lokale Fallback-Liste aktiv.
 window.BROS_CATALOG_SYNC = {
   enabled: true,
-  apiUrl: "http://localhost:8790",
+  apiUrl: "http://192.168.178.95:8790",
 };

@@ -38,6 +38,8 @@
       target={id:catalogProduct.id, icon:catalogProduct.icon||'🍽️', tvStatus:catalogProduct.tvStatus||'pending', config:catalogProduct.workflow?.some(s=>['salad','sauces','extras','bread'].includes(s))?'workflow':false, drinks:catalogProduct.workflow?.includes('drink')};
       localProducts.push(target);byId.set(target.id,target);
     }
+    target.translations=catalogProduct.translations;
+    target.variantTranslations=Object.fromEntries((catalog.variants||[]).filter(v=>v.productId===catalogProduct.id&&v.translations).map(v=>[v.name,v.translations]));
     target.active=catalogProduct.active!==false;
     target.workflow=catalogProduct.workflow;
     target.tvStatus=catalogProduct.tvStatus??target.tvStatus??'ready';
@@ -82,6 +84,7 @@
     if(location.protocol==='http:'&&/^(192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.)/.test(location.hostname))base=base.replace(/(localhost|127\.0\.0\.1)/,location.hostname);
     else base='';
   }
+  if(typeof location!=='undefined'&&location.protocol==='https:'&&base.startsWith('http:'))base='';
   async function loadCatalog() {
     if (!base) return;
     try {
