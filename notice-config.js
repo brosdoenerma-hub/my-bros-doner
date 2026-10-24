@@ -31,7 +31,7 @@ const shopNotice = {
   "eyebrow": "Aktuelle Mitteilung",
   "title": "",
   "message": "Sonntag am 25.10.2026, Geschlossen",
-  "cta": "Heute bis 21:00 Uhr",
+  "cta": "",
   "tone": "gold",
   "showOnWebsite": true
 };
