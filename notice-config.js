@@ -30,7 +30,7 @@ const shopNotice = {
   "enabled": true,
   "eyebrow": "Aktuelle Mitteilung",
   "title": "",
-  "message": "Sonntag am 25.10.2026, Geschlossen",
+  "message": "Demnächst führen wir Treue Bonuskarte ein, freu dich auf deinen 11. Gratis Döner !",
   "cta": "",
   "tone": "gold",
   "showOnWebsite": true
