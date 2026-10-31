@@ -29,8 +29,8 @@ function getTodayClosingTime() {
 const shopNotice = {
   "enabled": true,
   "eyebrow": "Aktuelle Mitteilung",
-  "title": "",
-  "message": "Demnächst führen wir Treue Bonuskarte ein, freu dich auf deinen 11. Gratis Döner !",
+  "title": "Demnächst führen wir Treue Bonuskarte ein, freu dich auf deinen 11. Gratis Döner !",
+  "message": "Vergiss nicht danach zu fragen !",
   "cta": "",
   "tone": "gold",
   "showOnWebsite": true
