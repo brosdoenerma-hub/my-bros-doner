@@ -16,11 +16,16 @@ exportButton.addEventListener('click',async()=>{
    const dw=img.naturalWidth*ratio,dh=img.naturalHeight*ratio;
    ctx.filter=style.filter;ctx.drawImage(img,(w-dw)/2,(h-dh)/2,dw,dh);return c.toDataURL('image/png');
   });
-  const canvas=await html2canvas(board,{width:1920,height:1080,scale:2,backgroundColor:'#090908',windowWidth:1920,windowHeight:1080,scrollX:0,scrollY:0,logging:false,onclone:doc=>{
+  const canvas=await html2canvas(board,{width:1920,height:1080,scale:2,x:0,y:0,backgroundColor:'#090908',windowWidth:1920,windowHeight:1080,scrollX:0,scrollY:0,logging:false,onclone:doc=>{
    doc.querySelectorAll('nav,aside,.export-controls').forEach(e=>e.style.display='none');
    const stage=doc.querySelector('#stage');stage.style.cssText='width:1920px;height:1080px;position:relative;overflow:hidden';
-   doc.querySelector('#board').style.transform='none';
-   doc.querySelectorAll('#board .tv-order-message').forEach(el=>{el.style.animation='none';el.style.opacity='1';el.style.transform='none'});
+   const exportBoard=doc.querySelector('#board');
+   doc.body.querySelectorAll('link[rel=stylesheet],style').forEach(style=>doc.head.append(style));
+   doc.body.replaceChildren(exportBoard);
+   doc.body.style.cssText='margin:0;width:1920px;height:1080px;overflow:hidden';
+   exportBoard.style.cssText='position:absolute;left:0;top:0;width:1920px;height:1080px;transform:none;transform-origin:top left';
+   const freeze=doc.createElement('style');freeze.textContent='*,*:before,*:after{animation:none!important;transition:none!important}.brand-reveal:after{display:none!important}';doc.head.append(freeze);
+   doc.querySelectorAll('#board .tv-order-message,#board .notice-slide,#board .brand-reveal,#board .brand-reveal img').forEach(el=>{el.style.animation='none';el.style.opacity='1';el.style.transform='none'});
    doc.querySelectorAll('#board img').forEach((img,i)=>{img.src=prepared[i];img.style.objectFit='fill';img.style.filter='none'});
   }});
   if(canvas.width!==3840||canvas.height!==2160)throw new Error('Exportgröße ist nicht 4K.');
