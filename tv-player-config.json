@@ -1,24 +1,28 @@
 {
+  "version": 1,
   "intervalMs": 3000,
   "slides": [
     {
+      "id": "sunday-1",
       "type": "sunday",
-      "enabled": true,
-      "id": "sunday-1"
+      "enabled": true
     },
     {
+      "id": "soup-2",
       "type": "soup",
       "enabled": true,
-      "id": "soup-2"
+      "title": "Tagessuppe",
+      "message": "„Täglich frisch – nur solange der Vorrat reicht.“\nLinsen- oder Yayla Çorbası nach Tagesangebot. Mit Dönerbrot, Brot inklusive.",
+      "image": "assets/products/neue-produkte/tagessuppe-linsen.jpg"
     },
     {
+      "id": "upcoming-3",
       "type": "upcoming",
       "enabled": true,
       "kicker": "Freut euch – demnächst bei BRO’S",
       "title": "Mini-Hähnchenschnitzel",
       "message": "Mit Mini-Kartoffeln und Kräuterjoghurtsoße mit Dill.",
-      "image": "assets/products/mini-haehnchenschnitzel-vorschau.jpg",
-      "id": "upcoming-3"
+      "image": "assets/products/mini-haehnchenschnitzel-vorschau.jpg"
     },
     {
       "id": "falafel",
@@ -48,17 +52,16 @@
       "image": "assets/products/lahmacun-vorschau.jpg"
     },
     {
+      "id": "configure-4",
       "type": "configure",
-      "enabled": true,
-      "id": "configure-4"
+      "enabled": true
     },
     {
+      "id": "logo-5",
       "type": "logo",
-      "enabled": true,
-      "id": "logo-5"
+      "enabled": true
     }
   ],
-  "version": 1,
   "playlists": [
     {
       "id": "tv-order",
