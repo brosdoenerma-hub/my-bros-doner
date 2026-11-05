@@ -1,0 +1,4 @@
+.remember-option label{display:flex;align-items:center;gap:12px;font-weight:700;cursor:pointer}
+.remember-option input[type=checkbox]{width:21px;height:21px;accent-color:#f2d577;flex-shrink:0}
+.remember-option a{color:#f2d577;text-decoration:underline}
+.remember-option [role=status]{min-height:2.5em}
