@@ -31,13 +31,16 @@
   activeRequests.add(form);
   const button=document.getElementById('addToCart');button.disabled=true;
   const inputs=[...form.querySelectorAll('input:checked')].filter(input=>input!==checkbox).map(input=>({name:input.name,value:input.value,salad:input.hasAttribute('data-salad'),label:(window.brosGermanText?window.brosGermanText(input.nextElementSibling):input.nextElementSibling?.textContent||'').split(' · ')[0].trim()}));
+  const recipient=String(form.querySelector('#itemRecipient')?.value||'').trim().slice(0,30);
+  const suffix=recipient?' · für '+recipient:'';
+  const favoriteName=product.name.slice(0,80-suffix.length)+suffix;
   const controls=[...form.querySelectorAll('input,button,select')].map(element=>[element,element.disabled]);
   controls.forEach(([element])=>{element.disabled=true;});
   try {
    note('Auswahl wird im Kundenkonto gespeichert …');
    const catalog=await api('/catalog');
    const selection=window.brosBuildRememberSelection(product,inputs,websiteOptions,catalog);
-   await api('/favorites','POST',{name:product.name.slice(0,80),productId:product.id,selection});
+   await api('/favorites','POST',{name:favoriteName,productId:product.id,selection});
    checkbox.checked=false;
    note('Für später im Kundenkonto gespeichert.');
    return true;
