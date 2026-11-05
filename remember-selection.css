@@ -2,3 +2,11 @@
 .remember-option input[type=checkbox]{width:21px;height:21px;accent-color:#f2d577;flex-shrink:0}
 .remember-option a{color:#f2d577;text-decoration:underline}
 .remember-option [role=status]{min-height:2.5em}
+
+/* Customer account access beside the existing cart. */
+.topbar{column-gap:12px}
+.bros-account-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:99px;background:var(--surface2);color:var(--gold2);text-decoration:none;font-size:14px;font-weight:700;white-space:nowrap;flex-shrink:0}
+.bros-account-link:hover{border-color:var(--gold2);background:#242017}
+.bros-account-link:focus-visible{outline:2px solid var(--gold2);outline-offset:4px}
+.bros-account-link svg{display:block;flex-shrink:0}
+@media(max-width:600px){.bros-account-link{padding:10px;min-width:44px}.bros-account-link span{display:none}.topbar{column-gap:8px}}
