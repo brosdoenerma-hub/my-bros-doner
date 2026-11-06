@@ -1,0 +1,36 @@
+:root[data-theme=dark]{color-scheme:dark}
+:root[data-theme=light]{color-scheme:light;--bg:#faf8f2;--surface:#fff;--surface2:#f1ecdf;--gold:#806018;--gold2:#eed07a;--cream:#22251e;--muted:#5d6055;--line:rgba(104,83,32,.24);--green:#17783c}
+:root[data-theme=light] body{background:var(--bg);color:var(--cream)}
+:root[data-theme=light] .topbar,:root[data-theme=light] .legal-nav{background:#fffdf8;border-bottom-color:var(--line)}
+:root[data-theme=light] .brand img,:root[data-theme=light] .legal-brand img{filter:none!important}
+:root[data-theme=light] .hero-copy{background:linear-gradient(90deg,rgba(250,248,242,.97),rgba(250,248,242,.82) 76%,rgba(250,248,242,.12))}
+:root[data-theme=light] .hero h1 em{color:#806018}
+:root[data-theme=light] .lead,:root[data-theme=light] .trust,:root[data-theme=light] .categories button,:root[data-theme=light] .fulfilment button{color:var(--muted)}
+:root[data-theme=light] .status strong,:root[data-theme=light] .icon-button{color:var(--cream)}
+:root[data-theme=light] .bros-account-link,:root[data-theme=light] .icon-button b{color:var(--gold)}
+:root[data-theme=light] .language-picker,:root[data-theme=light] .language-picker select{background:var(--surface2);color:var(--gold);border-color:var(--line)}
+:root[data-theme=light] .categories button.active,:root[data-theme=light] .fulfilment button.active{color:#22251e}
+:root[data-theme=light] .product{border-color:var(--line)}
+:root[data-theme=light] .product-footer button{color:var(--gold)}
+:root[data-theme=light] .sheet,:root[data-theme=light] .legal-card{background:var(--surface);color:var(--cream)}
+:root[data-theme=light] .chip span{background:var(--surface2);color:var(--cream);border-color:var(--line)}
+:root[data-theme=light] .chip input:checked+span{background:var(--gold2);color:#22251e;border-color:#9a7728}
+:root[data-theme=light] .customer-fields input,:root[data-theme=light] .customer-fields textarea,:root[data-theme=light] .person-option input{background:#fffdf8;color:var(--cream);border-color:var(--line)}
+:root[data-theme=light] .cart-item,:root[data-theme=light] .cart-item strong{color:var(--cream);border-color:var(--line)}
+:root[data-theme=light] .cart-item small,:root[data-theme=light] .option-hint,:root[data-theme=light] .order-note,:root[data-theme=light] .timing-note{color:var(--muted)}
+:root[data-theme=light] .item-label{background:#f4e6b6;color:#654b10}
+:root[data-theme=light] .halal-badge,:root[data-theme=light] .trust span:nth-child(2){color:#176c34}
+:root[data-theme=light] .direct-order,:root[data-theme=light] .notice-banner,:root[data-theme=light] .customer-notice{background:#f5edd6;color:var(--cream);border-color:var(--line)}
+:root[data-theme=light] .direct-order:before{background:#faf8f2;color:var(--gold)}
+:root[data-theme=light] .quality .direct-order h3,:root[data-theme=light] .direct-order>strong{color:var(--cream)}
+:root[data-theme=light] .quality .direct-order p{color:var(--muted)}
+:root[data-theme=light] .hours-paper{background:#fffdf8;color:var(--cream);border-color:var(--line)}
+:root[data-theme=light] .hours-paper h2,:root[data-theme=light] .hours-paper strong{color:var(--cream)}
+:root[data-theme=light] .hours-paper p,:root[data-theme=light] .hours-paper small{color:var(--muted)}
+:root[data-theme=light] .remember-option a{color:var(--gold)}
+:root[data-theme=light] .shop-notice{background:linear-gradient(135deg,#fff6d7,#f4ecd6);color:#493914;border-color:#cfb36b}
+:root[data-theme=light] .shop-notice-content h2,:root[data-theme=light] .shop-notice-content h3,:root[data-theme=light] .shop-notice-content strong{color:#332b18}
+:root[data-theme=light] .shop-notice-content p,:root[data-theme=light] .shop-notice-content small{color:#665223}
+:root[data-theme=light] .shop-notice-cta{background:#e6d195;color:#493914}
+:root[data-theme=light] .overlay{background:rgba(40,37,28,.45)}
+@media(max-width:850px){:root[data-theme=light] .hero-copy{background:linear-gradient(180deg,rgba(250,248,242,.98),rgba(250,248,242,.88) 82%,rgba(250,248,242,.25))}}
