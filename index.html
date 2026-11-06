@@ -75,7 +75,7 @@
 
   <div class="overlay" id="configOverlay" hidden>
     <section class="sheet config-sheet" role="dialog" aria-modal="true" aria-labelledby="configTitle">
-      <button class="close" data-close="configOverlay" aria-label="Schließen">×</button>
+      <div class="sheet-controls"><button type="button" class="sheet-back" data-close="configOverlay">← Zur Speisekarte</button><button class="close" data-close="configOverlay" aria-label="Schließen">×</button></div>
       <div class="sheet-image"><img id="configImage" src="assets/products/kalb-steak.jpg" alt=""></div>
       <div class="sheet-body"><p class="eyebrow">Jetzt zusammenstellen</p><h2 id="configTitle"></h2><p id="configDesc" class="muted"></p><form id="configForm"></form><button class="primary full" id="addToCart" type="button">In den Warenkorb <span id="configPrice"></span></button></div>
     </section>
@@ -83,7 +83,7 @@
 
   <div class="overlay" id="cartOverlay" hidden>
     <section class="sheet cart-sheet" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
-      <button class="close" data-close="cartOverlay" aria-label="Schließen">×</button>
+      <div class="sheet-controls"><button type="button" class="sheet-back" data-close="cartOverlay">← Weiter einkaufen</button><button class="close" data-close="cartOverlay" aria-label="Schließen">×</button></div>
       <div class="sheet-body"><p class="eyebrow">Fast geschafft</p><h2 id="cartTitle">Deine Bestellung</h2><div id="cartItems"></div><div id="serviceFeeRow" hidden><p>Warenwert: <strong id="goodsSubtotal">0,00 €</strong><br>Servicegebühr Lieferung: <strong id="serviceFeeValue">2,00 €</strong></p></div><div class="cart-total"><span>Gesamt</span><strong id="cartTotal">0,00 €</strong></div>
         <div class="fulfilment"><button class="active" data-mode="Abholung">Abholung</button><button data-mode="Lieferung">Lieferung +2,00 €</button></div>
         <p class="order-note">Bei Lieferung berechnen wir 2,00 € Servicegebühr pro Bestellung. Mindestbestellwert: 22,00 € Warenwert ohne Servicegebühr. Bei Abholung entfällt die Gebühr.</p>
@@ -107,5 +107,5 @@
   </div>
   <script src="products.js?v=92ee07f5c49e155a"></script><script src="catalog-sync-config.js?v=2981b4450298"></script><script src="catalog-sync.js?v=2f7342bf0de9"></script>
   <script src="hours-config.js?v=f2fd79db6506"></script><script src="combo.js?v=26686386e585"></script><script src="app.js?v=customer-remember-1"></script>
-<link rel="stylesheet" href="combo-notice.css?v=02608b69d477"><script src="notice-config.js?v=85a36b85e70c"></script><script src="notice.js?v=91cd87912356"></script><script src="pricelist.js?v=0aa1c9eae65d"></script><script src="i18n.js?v=b6c09707526e"></script><script src="tv-notices-config.js?v=3d25706530b4"></script><script src="assortment-news.js?v=f3b101c3073f"></script><link rel="stylesheet" href="assortment-news.css?v=66d63f4c5caa"><link rel="stylesheet" href="remember-selection.css?v=account-2"><script src="remember-mapping.js?v=1"></script><script src="remember-selection.js?v=family-2"></script><link rel="stylesheet" href="mobile-header.css?v=1"><script src="cart-reorder.js?v=navigation-2"></script></body>
+<link rel="stylesheet" href="combo-notice.css?v=02608b69d477"><script src="notice-config.js?v=85a36b85e70c"></script><script src="notice.js?v=91cd87912356"></script><script src="pricelist.js?v=0aa1c9eae65d"></script><script src="i18n.js?v=b6c09707526e"></script><script src="tv-notices-config.js?v=3d25706530b4"></script><script src="assortment-news.js?v=f3b101c3073f"></script><link rel="stylesheet" href="assortment-news.css?v=66d63f4c5caa"><link rel="stylesheet" href="remember-selection.css?v=account-2"><script src="remember-mapping.js?v=1"></script><script src="remember-selection.js?v=family-2"></script><link rel="stylesheet" href="mobile-header.css?v=1"><script src="cart-reorder.js?v=navigation-2"></script><link rel="stylesheet" href="mobile-dialog.css?v=1"><script src="mobile-dialog.js?v=1"></script></body>
 </html>
