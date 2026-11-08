@@ -1,0 +1,20 @@
+#cartItems .cart-item-with-controls{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px 16px;align-items:start}
+#cartItems .cart-item-with-controls>div:first-child{min-width:0;overflow-wrap:anywhere}
+#cartItems .cart-item-with-controls>strong{white-space:nowrap}
+#cartItems .cart-quantity-controls{grid-column:1/-1;display:flex;align-items:center;gap:10px;min-width:0}
+#cartItems .cart-quantity-button{width:46px;height:46px;min-width:46px;display:inline-flex;align-items:center;justify-content:center;padding:0;border:1px solid var(--line, #7b6c3c);border-radius:12px;background:var(--surface2,#23231e);color:var(--cream,#f5f0e5);font-size:24px;line-height:1;cursor:pointer;touch-action:manipulation}
+#cartItems .cart-quantity-button:disabled{opacity:.4;cursor:default}
+#cartItems .cart-quantity-button:focus-visible,.cart-add-more:focus-visible{outline:3px solid var(--gold2,#f0d47b);outline-offset:3px}
+#cartItems .cart-quantity-value{min-width:28px;text-align:center;font-size:18px;font-weight:800;font-variant-numeric:tabular-nums}
+#cartItems .cart-trash{margin-left:auto;color:#f2a89a}
+#sendWhatsapp.cart-delivery-blocked{background:#2d332f!important;border:1px solid #56665b!important;color:#94f5ad!important;opacity:1!important;font-weight:900!important;white-space:normal;line-height:1.4;cursor:not-allowed}
+.cart-delivery-shortfall{margin:18px 0;padding:16px;border:1px solid var(--line,#7b6c3c);border-radius:14px;background:var(--surface2,#23231e)}
+.cart-delivery-shortfall[hidden]{display:none!important}
+.cart-delivery-shortfall p{margin:0 0 12px;color:#94f5ad;font-weight:800;font-size:15px;line-height:1.55}
+.cart-add-more{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 16px;background:var(--gold2,#f0d47b);border:0;border-radius:12px;color:#17180f;font-size:15px;font-weight:800;cursor:pointer}
+.cart-quantity-status{font-size:14px;line-height:1.4;color:var(--muted,#b8b8aa)}
+.cart-quantity-status:empty{display:none}
+html[data-theme="light"] #sendWhatsapp.cart-delivery-blocked{background:#e5e9e4!important;color:#176c36!important;border-color:#bbc8bd!important}
+html[data-theme="light"] .cart-delivery-shortfall p{color:#176c36}
+html[data-theme="light"] #cartItems .cart-trash{color:#9b3025}
+@media(max-width:360px){#cartItems .cart-item-with-controls{gap:12px 8px}#cartItems .cart-quantity-controls{gap:8px}#cartItems .cart-quantity-button{width:44px;height:44px;min-width:44px}}
