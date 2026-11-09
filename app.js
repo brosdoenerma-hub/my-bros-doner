@@ -109,14 +109,34 @@ const weekdayNames=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freit
 function toMinutes(time){const [h,m]=String(time||'0:0').split(':').map(Number);return h*60+m}
 function fmtTime(time){return String(time||'').replace(':','.')+' Uhr'}
 function fmtTimeShort(time){return String(time||'').replace(':','.')+' Uhr'}
-function localDateKey(date){const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`}
+function shopClock(now){
+ const formatter=new Intl.DateTimeFormat('en-GB',{timeZone:hoursConfig().timezone||'Europe/Berlin',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});
+ const parts=Object.fromEntries(formatter.formatToParts(now).map(part=>[part.type,part.value]));
+ return new Date(Date.UTC(+parts.year,+parts.month-1,+parts.day,+parts.hour,+parts.minute));
+}
 function hoursConfig(){return window.shopHours||(typeof shopHours!=='undefined'?shopHours:{})}
-function todaysHours(now=new Date()){const cfg=hoursConfig(),special=(cfg.specialDays||[]).find(day=>day.date===localDateKey(now));if(special)return {...special,isSpecial:true};const day=now.getDay();return {date:localDateKey(now),hours:(cfg.weekly||{})[day]||[],title:weekdayNames[day],isSpecial:false}}
-function nextOpening(now=new Date()){for(let add=0;add<8;add++){const d=new Date(now);d.setDate(now.getDate()+add);const info=todaysHours(d);if(info.closed)continue;const slot=(info.hours||[]).find(h=>!h.closed);if(!slot)continue;if(add===0&&toMinutes(slot.open)<=now.getHours()*60+now.getMinutes())continue;return {label:add===0?'heute':weekdayNames[d.getDay()],slot}}return null}
+function hoursForDay(day){
+ const date=day.toISOString().slice(0,10),weekday=day.getUTCDay(),cfg=hoursConfig();
+ const special=(cfg.specialDays||[]).find(entry=>entry.date===date);
+ if(special)return {...special,isSpecial:true};
+ return {date,hours:(cfg.weekly||{})[weekday]||[],title:weekdayNames[weekday],isSpecial:false};
+}
+function todaysHours(now=new Date()){return hoursForDay(shopClock(now))}
+function nextOpening(now=new Date()){
+ const clock=shopClock(now);
+ for(let add=0;add<8;add++){
+  const day=new Date(clock);day.setUTCDate(clock.getUTCDate()+add);
+  const info=hoursForDay(day);
+  if(info.closed)continue;
+  const slot=(info.hours||[]).find(h=>!h.closed&&(add>0||toMinutes(h.open)>clock.getUTCHours()*60+clock.getUTCMinutes()));
+  if(slot)return {label:add===0?'heute':weekdayNames[day.getUTCDay()],slot};
+ }
+ return null;
+}
 function nextOpeningText(now=new Date()){const next=nextOpening(now);return next?`öffnet ${next.label==='heute'?'heute':next.label} um ${fmtTimeShort(next.slot.open)}`:'bald wieder geöffnet'}
 function slotsText(slots){return (slots||[]).some(s=>s.closed)?((slots||[])[0]?.label||'Geschlossen'):(slots||[]).map(s=>`${fmtTime(s.open)} – ${fmtTime(s.close)}`).join(', ')||'Geschlossen'}
 function renderHoursRows(){const cfg=hoursConfig(),paper=document.querySelector('.hours-paper');if(!paper)return;paper.querySelectorAll('.hours-row,.hours-special-note').forEach(x=>x.remove());const title=paper.querySelector('h2');const mon=(cfg.weekly||{})[1]||[],sun=(cfg.weekly||{})[0]||[];[['Montag – Samstag',mon],['Sonn- & Feiertage',sun]].reverse().forEach(([label,slots])=>{const row=document.createElement('div');row.className='hours-row';row.innerHTML=`<span>${label}</span><strong>${slotsText(slots)}</strong>`;title.insertAdjacentElement('afterend',row)});const today=todaysHours();if(today.isSpecial){const note=document.createElement('p');note.className='hours-special-note';note.innerHTML=`<strong>${today.title||'Sonderöffnungszeit'}</strong><br>${today.note||''}`;paper.querySelector('.hours-address')?.insertAdjacentElement('beforebegin',note)}}
-function updateOpenState(){const now=new Date(),info=todaysHours(now),mins=now.getHours()*60+now.getMinutes(),slots=(info.hours||[]).filter(s=>!s.closed),current=slots.find(s=>mins>=toMinutes(s.open)&&mins<toMinutes(s.close)),isOpen=Boolean(current)&&!info.closed;document.querySelector('#openState').textContent=isOpen?'Geöffnet':'Geschlossen';document.querySelector('#openDetail').textContent=isOpen?`schließt um ${fmtTimeShort(current.close)}`:info.closed?(info.title||nextOpeningText(now)):nextOpeningText(now);hoursTrigger.classList.toggle('is-closed',!isOpen);const quick=quickHours?.querySelector('strong');if(quick)quick.textContent=isOpen?`schließt um ${fmtTimeShort(current.close)}`:(info.closed?(info.title||nextOpeningText(now)):nextOpeningText(now))}
+function updateOpenState(){const now=new Date(),info=todaysHours(now),clock=shopClock(now),mins=clock.getUTCHours()*60+clock.getUTCMinutes(),slots=(info.hours||[]).filter(s=>!s.closed),current=slots.find(s=>mins>=toMinutes(s.open)&&mins<toMinutes(s.close)),isOpen=Boolean(current)&&!info.closed;document.querySelector('#openState').textContent=isOpen?'Geöffnet':'Geschlossen';document.querySelector('#openDetail').textContent=isOpen?`schließt um ${fmtTimeShort(current.close)}`:info.closed?(info.title||nextOpeningText(now)):nextOpeningText(now);hoursTrigger.classList.toggle('is-closed',!isOpen);const quick=quickHours?.querySelector('strong');if(quick)quick.textContent=isOpen?`schließt um ${fmtTimeShort(current.close)}`:(info.closed?(info.title||nextOpeningText(now)):nextOpeningText(now))}
 renderHoursRows();
 updateOpenState();
 setInterval(updateOpenState,60000);

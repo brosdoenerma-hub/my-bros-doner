@@ -4,11 +4,6 @@ window.BROS_TV_NOTICES={
   "intervalMs": 3000,
   "slides": [
     {
-      "id": "sunday-1",
-      "type": "sunday",
-      "enabled": true
-    },
-    {
       "id": "soup-2",
       "type": "soup",
       "enabled": true,
