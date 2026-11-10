@@ -1,4 +1,4 @@
-// TV-Steuerung aus BRO’S-OS.
+// TV-Steuerung aus BRO’S-OS. Online über das bestehende Publish Center veröffentlichen.
 window.BROS_TV_NOTICES={
   "version": 1,
   "intervalMs": 3000,
@@ -8,7 +8,7 @@ window.BROS_TV_NOTICES={
       "type": "soup",
       "enabled": true,
       "title": "Tagessuppe",
-      "message": "„Täglich frisch – nur solange der Vorrat reicht.“\nLinsen- oder Yayla Çorbası nach Tagesangebot. Mit Dönerbrot, Brot inklusive.",
+      "message": "„Täglich frisch – nur solange der Vorrat reicht.“\nMercimek (LInsen)c- oder Yayla Çorbası (Joghurt) nach Tagesangebot. Mit Dönerbrot, Brot inklusive.",
       "image": "assets/products/neue-produkte/tagessuppe-linsen.jpg"
     },
     {
