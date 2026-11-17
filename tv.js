@@ -39,13 +39,33 @@ const noticeContent=()=>{
 };
 const tvImageSource=p=>/^(https?:|\/)/.test(p?.image||'')?p.image:'assets/products/'+(p?.image||'');
 const soupStrip=()=>{const soup=item('mercimek-corba');return tvAvailable(soup)?`<article class="tv-soup-strip"><img src="${safeTvText(tvImageSource(soup))}" alt="${safeTvText(soup.name)}"><div><span class="eyebrow">Neu im Sortiment</span><h2>${safeTvText(soup.name)}</h2><p>Linsen- oder Yayla Çorbası · inklusive Dönerbrot</p><small>Allergene: bitte Personal fragen.</small></div><strong>${money(soup.price)}</strong></article>`:'';};
+const tvSorted=(items,key)=>{
+ const ids=tvNoticeConfig.productOrder?.[key]||[];
+ const ranks=new Map(ids.map((id,i)=>[id,i]));
+ return [...items].sort((a,b)=>(ranks.get(a.id)??ids.length)-(ranks.get(b.id)??ids.length));
+};
+const tvSnackRows=()=>tvSorted([{id:'pommes'},{id:'nuggets'}],'snacks').map(p=>p.id==='pommes'?row('Pommes',item('pommes').price):item('nuggets').sizes.map(s=>row('Nuggets · '+s[0],s[1])).join('')).join('');
+function applyTvPresentationOrder(index){
+ const grid=document.querySelector('#board .grid');
+ if(!grid)return;
+ const keys={1:'classics',2:'menus',3:'deals',4:'sections'};
+ const key=keys[index];
+ if(!key)return;
+ const cards=[...grid.children].filter(card=>card.matches('article.card'));
+ const ids=index===4?['drinks','snacks','extras']:cards.map((_,i)=>'slot-'+(index+1)+'-'+(i+1));
+ if(!cards.length)return;
+ const anchor=document.createComment('TV-Produktreihenfolge');
+ grid.insertBefore(anchor,cards[0]);
+ tvSorted(cards.map((element,i)=>({id:ids[i],element})),key).forEach(card=>grid.insertBefore(card.element,anchor));
+ anchor.remove();
+}
 const dealsAndNotices=()=>`${head('04','Deine Deals. <em>Deine Neuigkeiten.</em>')}<div class="tv-deals-notices"><div class="deals-stack grid">${[['spar-chicken','Hähnchen'],['spar-steak','Kalb Steak']].map(([id,name])=>`<article class="card deal-card">${photo(id)}<div class="inside"><p class="eyebrow">Döner + Getränk</p><h2>${name}</h2><div class="row"><span>Döner</span><strong>${money(item(id).price)}</strong></div><div class="row"><span>Dürüm</span><strong>${money(item(id).sizes[1][1])}</strong></div></div></article>`).join('')}<p class="deals-drinks">Getränk zur Wahl: Cola · Fanta · Sprite · Uludağ · Ayran · Wasser</p></div><section class="tv-notice-area" aria-label="Aktuelle Mitteilungen"><div id="tvNoticeContent">${noticeContent()}</div></section></div>${foot()}`;
 const panels=[
 ()=>`${head('01','DEIN GESCHMACK. <em>DEINE ENTSCHEIDUNG.</em>')}<div class="tv-order-layout"><div class="tv-order-left"><div id="orderMessage">${orderMessage()}</div><div class="tv-order-steps"><span><b>1</b>Scannen</span><span><b>2</b>Zusammenstellen</span><span><b>3</b>Bestellen</span></div><p class="tv-order-contact">Abholung & Lieferung · 0178 5190405</p></div><div class="tv-qr-panel"><img src="assets/order-qr-tv.svg" alt="QR-Code zur BRO’S Bestellwebsite"><h2>Kamera auf. Scannen. Los!</h2><p>Direkt auf die Website.<br>Stell deinen Döner selbst zusammen.</p></div></div><div class="tv-simple-footer"><span>Maybachstraße 18 · Mannheim</span><strong>Frisch für dich. Nach deinem Geschmack.</strong></div>`,
 ()=>`${head('02','Unsere <em>Klassiker.</em>')}<div class="grid four">${classic('chicken','Hähnchen Döner',row('Döner',item('chicken').price)+row('Dürüm',item('dueruem-chicken').price))}${classic('steak','Kalb Steak Döner',row('Döner',item('steak').price)+row('Dürüm',item('dueruem-steak').price))}${classic('bowl-steak','Döner Bowl',row('Hähnchen',item('bowl-chicken').price)+row('Kalb Steak',item('bowl-steak').price)+'<p class="category-intro">Mit Pommes und<br>frischen Zutaten.</p>')}${classic('box-chicken','Döner Box',row('Hähnchen',item('box-chicken').price)+row('Kalb Steak',item('box-steak').price)+'<p class="category-intro">Nur Pommes & Fleisch.<br>Ohne Salat.</p>')}</div>${soupStrip()}<div class="note classics-sauce-note"><b>Soßen zu Döner & Dürüm:</b> Erste Soße gratis · jede weitere +0,50 €.</div>${foot()}`,
 ()=>`${head('03','Mehr drin. <em>Unsere Menüs.</em>')}<div class="grid three">${menuCard('menu-1','Kalb Steak')}${menuCard('menu-2','Hähnchen')}<article class="card compact">${photo('nugget-menu')}<div class="inside"><p class="eyebrow">Knusprig & komplett</p><h2>Nugget Menü</h2><p>Mit Pommes + Getränk</p>${item('nugget-menu').sizes.map(s=>row(s[0],s[1])).join('')}<p class="smallprint">1 Dip gratis · jeder weitere +0,50 €</p></div></article></div><div class="menu-bottom"><div class="note" style="margin:0;width:100%"><b>Alle Menüs mit Pommes & Getränk.</b> Getränk zur Wahl: Cola · Fanta · Sprite · Uludağ · Ayran · Wasser<br><b>Döner-Menüs:</b> 1. Soße gratis, weitere +0,50 €.</div></div>${foot()}`,
 ()=>dealsAndNotices(),
-()=>`${head('05','Drinks. Snacks. <em>Deine Extras.</em>')}<div class="grid three"><article class="card list"><h2>Gut gekühlt & heiß</h2>${products.filter(p=>p.category==='drink'&&tvAvailable(p)).map(p=>row(p.name,p.price+(p.deposit||0),p.deposit?`${money(p.price)} + 0,25 € Pfand`:p.id==='kaffee'?'Milch & Zucker kostenlos':'')).join('')}</article><article class="card list"><h2>Für den kleinen Hunger</h2>${photo('nuggets','snack-photo')}${row('Pommes',item('pommes').price)}${item('nuggets').sizes.map(s=>row('Nuggets · '+s[0],s[1])).join('')}<div class="note"><b>Pommes:</b> 1 Dip gratis, weitere +0,50 €.<br><b>Nuggets:</b> Dips je +0,50 €.<br>Ketchup · Mayo · Senf<br>Haussoßen als Extra je +1,00 €.</div></article><article class="card list"><h2>Mach’s zu deinem</h2>${products.filter(p=>p.category==='extra'&&tvAvailable(p)).map(p=>row(p.name,p.price)).join('')}<p class="smallprint">Haussoßen: Knoblauch · Kräuter<br>Cocktail · Scharf</p></article></div>${foot()}`,
+()=>`${head('05','Drinks. Snacks. <em>Deine Extras.</em>')}<div class="grid three"><article class="card list"><h2>Gut gekühlt & heiß</h2>${tvSorted(products.filter(p=>p.category==='drink'&&tvAvailable(p)),'drinks').map(p=>row(p.name,p.price+(p.deposit||0),p.deposit?`${money(p.price)} + 0,25 € Pfand`:p.id==='kaffee'?'Milch & Zucker kostenlos':'')).join('')}</article><article class="card list"><h2>Für den kleinen Hunger</h2>${photo('nuggets','snack-photo')}${tvSnackRows()}<div class="note"><b>Pommes:</b> 1 Dip gratis, weitere +0,50 €.<br><b>Nuggets:</b> Dips je +0,50 €.<br>Ketchup · Mayo · Senf<br>Haussoßen als Extra je +1,00 €.</div></article><article class="card list"><h2>Mach’s zu deinem</h2>${tvSorted(products.filter(p=>p.category==='extra'&&tvAvailable(p)),'extras').map(p=>row(p.name,p.price)).join('')}<p class="smallprint">Haussoßen: Knoblauch · Kräuter<br>Cocktail · Scharf</p></article></div>${foot()}`,
 ()=>dealsAndNotices()
 ];
 // Angaben aus allergene.html, vom Betreiber bestätigt. Keine ungeprüften Codes für Cocktailsoße ergänzen.
@@ -86,6 +106,7 @@ function showBoard(index){if(currentBoard===-1&&tvParams.has('notice'))currentNo
  const cards=[...document.querySelectorAll('#board article.card')];
  (cardAllergens[index===5?3:index]||[]).forEach((text,i)=>{const label=document.createElement('p');label.className='product-allergens';label.innerHTML='<b>Allergene</b> '+text;const card=cards[i];if(!card)return;(card.querySelector('.inside')||card.querySelector('.mini > div')||card).append(label)});
  applyTvProductPlan(index===5?3:index,cards);
+ applyTvPresentationOrder(index===5?3:index);
  if(index>0&&index<=5){const hint=document.createElement('div');hint.className='allergen-selection-hint';hint.textContent='Soßen & Extras je nach Auswahl: separate Übersicht. A* = mögliche Glutenspuren bei Pommes.';document.querySelector('.footer-meta').before(hint)}
  document.querySelectorAll('[data-board]').forEach(b=>b.classList.toggle('active',Number(b.dataset.board)===index));history.replaceState(null,'','#'+(index+1));resize()}
 function resize(){document.querySelector('#board').style.transform=`scale(${document.querySelector('#stage').clientWidth/1920})`}

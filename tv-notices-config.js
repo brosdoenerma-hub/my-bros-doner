@@ -1,5 +1,18 @@
 // TV-Steuerung aus BRO’S-OS. Online über das bestehende Publish Center veröffentlichen.
 window.BROS_TV_NOTICES={
+  "productOrder": {
+    "drinks": [
+      "redbull",
+      "softdrink",
+      "artikel-b303302c",
+      "salgam",
+      "kaffee",
+      "wasser",
+      "fruchtsaft",
+      "ayran",
+      "softdrink-1l"
+    ]
+  },
   "version": 1,
   "intervalMs": 3000,
   "slides": [

@@ -1,4 +1,17 @@
 {
+  "productOrder": {
+    "drinks": [
+      "redbull",
+      "softdrink",
+      "artikel-b303302c",
+      "salgam",
+      "kaffee",
+      "wasser",
+      "fruchtsaft",
+      "ayran",
+      "softdrink-1l"
+    ]
+  },
   "version": 1,
   "intervalMs": 3000,
   "slides": [
