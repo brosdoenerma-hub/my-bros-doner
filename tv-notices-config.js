@@ -19,7 +19,7 @@ window.BROS_TV_NOTICES={
     {
       "id": "soup-2",
       "type": "soup",
-      "enabled": true,
+      "enabled": false,
       "title": "Tagessuppe",
       "message": "„Täglich frisch – nur solange der Vorrat reicht.“\nMercimek (LInsen)c- oder Yayla Çorbası (Joghurt) nach Tagesangebot. Mit Dönerbrot, Brot inklusive.",
       "image": "assets/products/neue-produkte/tagessuppe-linsen.jpg"
