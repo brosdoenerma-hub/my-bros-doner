@@ -38,7 +38,7 @@ const noticeContent=()=>{
  return content+`<div class="notice-progress" aria-label="Mitteilung ${(currentNoticeSlide%Math.max(1,slides.length))+1} von ${slides.length}">${slides.map((_,i)=>`<span class="${i===currentNoticeSlide%slides.length?'active':''}"></span>`).join('')}</div>`;
 };
 const tvImageSource=p=>/^(https?:|\/)/.test(p?.image||'')?p.image:'assets/products/'+(p?.image||'');
-const soupStrip=()=>{const soup=item('mercimek-corba');return tvAvailable(soup)?`<article class="tv-soup-strip"><img src="${safeTvText(tvImageSource(soup))}" alt="${safeTvText(soup.name)}"><div><span class="eyebrow">Neu im Sortiment</span><h2>${safeTvText(soup.name)}</h2><p>Linsen- oder Yayla Çorbası · inklusive Dönerbrot</p><small>Allergene: bitte Personal fragen.</small></div><strong>${money(soup.price)}</strong></article>`:'';};
+const soupStrip=()=>{const soup=item('mercimek-corba');return configuredNoticeSlides.some(slide=>slide.type==='soup'&&slide.enabled!==false)&&tvAvailable(soup)?`<article class="tv-soup-strip"><img src="${safeTvText(tvImageSource(soup))}" alt="${safeTvText(soup.name)}"><div><span class="eyebrow">Neu im Sortiment</span><h2>${safeTvText(soup.name)}</h2><p>Linsen- oder Yayla Çorbası · inklusive Dönerbrot</p><small>Allergene: bitte Personal fragen.</small></div><strong>${money(soup.price)}</strong></article>`:'';};
 const tvSorted=(items,key)=>{
  const ids=tvNoticeConfig.productOrder?.[key]||[];
  const ranks=new Map(ids.map((id,i)=>[id,i]));
