@@ -66,9 +66,12 @@ window.BROS_TV_NOTICES={
       "enabled": true
     },
     {
-      "id": "logo-5",
+      "id": "mitteilung-5853bddc",
       "type": "logo",
-      "enabled": true
+      "enabled": true,
+      "kicker": "Aktuelle Mitteilung",
+      "title": "Neue Mitteilung",
+      "message": ""
     }
   ],
   "playlists": [
