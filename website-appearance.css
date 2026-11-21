@@ -28,9 +28,13 @@
 :root[data-theme=light] .hours-paper h2,:root[data-theme=light] .hours-paper strong{color:var(--cream)}
 :root[data-theme=light] .hours-paper p,:root[data-theme=light] .hours-paper small{color:var(--muted)}
 :root[data-theme=light] .remember-option a{color:var(--gold)}
-:root[data-theme=light] .shop-notice{background:linear-gradient(135deg,#fff6d7,#f4ecd6);color:#493914;border-color:#cfb36b}
+:root[data-theme=light] .shop-notice{background:linear-gradient(115deg,rgba(255,255,255,.75),rgba(255,255,255,.34)),rgba(248,246,240,.83);color:#292820;border-color:rgba(112,99,65,.24);border-top-color:rgba(255,255,255,.95);box-shadow:0 12px 32px rgba(60,52,27,.08),inset 0 1px 0 rgba(255,255,255,.85)}
 :root[data-theme=light] .shop-notice-content h2,:root[data-theme=light] .shop-notice-content h3,:root[data-theme=light] .shop-notice-content strong{color:#332b18}
 :root[data-theme=light] .shop-notice-content p,:root[data-theme=light] .shop-notice-content small{color:#665223}
 :root[data-theme=light] .shop-notice-cta{background:#e6d195;color:#493914}
 :root[data-theme=light] .overlay{background:rgba(40,37,28,.45)}
 @media(max-width:850px){:root[data-theme=light] .hero-copy{background:linear-gradient(180deg,rgba(250,248,242,.98),rgba(250,248,242,.88) 82%,rgba(250,248,242,.25))}}
+
+:root[data-theme=light] .shop-notice .shop-notice-message{color:#4b4941}
+:root[data-theme=light] .shop-notice-content>small{color:#79652c}
+:root[data-theme=light] .shop-notice-cta{background:none;color:#70603a}

@@ -11,7 +11,6 @@
    const translation=notice.translations?.[lang]||{};
    const textFor=key=>translation[key]||notice[key]||'';
    const box=document.createElement('section');box.className=`shop-notice ${notice.tone?`notice-${notice.tone}`:''}`;box.setAttribute('role','note');box.setAttribute('aria-label',textFor('title')||'Aktuelle Kundenmitteilung');
-   const icon=document.createElement('span');icon.className='shop-notice-icon';icon.textContent='!';
    const content=document.createElement('div');content.className='shop-notice-content';
    const eyebrow=document.createElement('small');eyebrow.textContent=preview?'Vorschau':textFor('eyebrow')||'Aktuelle Mitteilung';
    const title=document.createElement('strong');title.textContent=preview?'Sonderöffnungszeiten / Aktion':textFor('title');
@@ -23,7 +22,7 @@
     if(m&&until[lang])ctaText=until[lang]+' '+m[1];else if(ctaText==='Heute geschlossen'&&closed[lang])ctaText=closed[lang];
    }
    if(ctaText.trim()){const cta=document.createElement('b');cta.className='shop-notice-cta';cta.textContent=ctaText;content.append(cta);}
-   box.append(icon,content);host.append(box);
+   box.append(content);host.append(box);
   }
   host.hidden=!host.childNodes.length;
  }
