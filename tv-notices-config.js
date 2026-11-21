@@ -57,7 +57,7 @@ window.BROS_TV_NOTICES={
       "enabled": true,
       "kicker": "Freut euch – demnächst bei BRO’S",
       "title": "Lahmacun",
-      "message": "Demnächst wieder im Sortiment.",
+      "message": "Demnächst im Sortiment.",
       "image": "assets/products/lahmacun-vorschau.jpg"
     },
     {
