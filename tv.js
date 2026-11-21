@@ -142,8 +142,17 @@ if(tvSequence&&!activePlaylist){
  window.addEventListener('pageshow',event=>{if(event.persisted)location.reload()});
 }else if(!tvParams.has('slide')){
  // Standalone board: change only the text container, never the QR image.
- const textTimer=setInterval(()=>{if(currentBoard!==0)return;currentOrderSlide=(currentOrderSlide+1)%orderSlides.length;document.querySelector('#orderMessage').innerHTML=orderMessage();},1000);
- window.addEventListener('pagehide',()=>clearInterval(textTimer),{once:true});
+ let textTimer;
+ const scheduleOrderText=()=>{
+  const entrySeconds=activePlaylist?.entries?.find(e=>e.type==='board'&&Number(e.board)===1)?.seconds;
+  const textMs=entrySeconds?Math.max(1000,Number(entrySeconds)*1000/orderSlides.length):Math.max(1000,Number(tvNoticeConfig.intervalMs)||10000);
+  textTimer=setTimeout(()=>{
+   if(currentBoard===0){currentOrderSlide=(currentOrderSlide+1)%orderSlides.length;const message=document.querySelector('#orderMessage');if(message)message.innerHTML=orderMessage();}
+   scheduleOrderText();
+  },textMs);
+ };
+ scheduleOrderText();
+ window.addEventListener('pagehide',()=>clearTimeout(textTimer),{once:true});
 }
 
 // Update only the right half. The permanent offers and their photos never rerender on notice ticks.

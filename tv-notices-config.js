@@ -82,12 +82,12 @@ window.BROS_TV_NOTICES={
         {
           "type": "board",
           "board": 1,
-          "seconds": 4
+          "seconds": 16
         },
         {
           "type": "board",
           "board": 3,
-          "seconds": 7
+          "seconds": 12
         }
       ]
     },
