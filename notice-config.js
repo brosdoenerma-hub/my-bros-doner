@@ -33,5 +33,17 @@ const shopNotice = {
   "message": "Vergiss nicht danach zu fragen !",
   "cta": "",
   "tone": "gold",
-  "showOnWebsite": true
+  "showOnWebsite": true,
+  "additional": [
+    {
+      "id": "hinweis-f2f8103a",
+      "enabled": true,
+      "eyebrow": "",
+      "title": "3 Gratis Basis Soßen Auswahl 👍🏽",
+      "message": "",
+      "cta": "",
+      "tone": "gold",
+      "showOnWebsite": true
+    }
+  ]
 };
