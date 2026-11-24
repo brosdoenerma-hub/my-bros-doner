@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="i18n.css?v=d91f9b78b7e5"><script src="appearance-shared.js?v=1"></script><link rel="stylesheet" href="website-appearance.css?v=248b47d5e5b7"><link rel="stylesheet" href="fonts-local.css?v=20261111"></head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="Bro's Döner Startseite"><img src="assets/logo-premium-clean.png" alt="Bro's Döner"></a>
+    <a class="brand" href="#top" aria-label="Bro's Döner Startseite"><img src="assets/logo.png" alt="Bro's Döner"></a>
     <button class="status hours-trigger" id="hoursTrigger" type="button" aria-expanded="false" aria-controls="hoursRoll">
       <span class="status-dot"></span><span class="status-copy"><strong id="openState">Geöffnet</strong><small id="openDetail">bis 21:00</small></span><i>⌄</i>
     </button>
@@ -35,12 +35,12 @@
     <section class="hero">
       <div class="hero-copy">
         <p class="eyebrow">Mannheim · Maybachstraße 18</p>
-        <h1>Echter Geschmack.<br><em>Dein Döner.</em></h1>
+        <h1>Dein Döner.<br><em>Dein Geschmack.</em></h1>
         <p class="lead">Frisch belegt, so wie du ihn willst. In wenigen Schritten konfigurieren und über WhatsApp bestellen.</p>
         <a class="primary" href="#speisekarte">Jetzt bestellen <span>→</span></a>
         <div class="trust"><span>✦ Frisch zubereitet</span><span>✓ 100 % Halal</span><span>✦ Abholung & Lieferung</span></div>
       </div>
-      <div class="hero-food hero-range"><div class="glow"></div><img class="hero-main" src="assets/candidates/hero-variante-3-hell-web.jpg" alt="Dürüm, Bowls, Box, Nuggets, Pommes und Getränke von Bro's Döner"><img class="hero-watermark" src="assets/logo-premium-clean.png" alt=""></div>
+      <div class="hero-food hero-range"><img class="hero-main" src="assets/hero-original-20261124.jpg" alt="my Bro’s Döner – Dürüm, Bowls, Box, Nuggets, Pommes und Getränke"></div>
     </section>
 
     <section class="info-strip" aria-label="Schnellinformationen">
@@ -57,9 +57,7 @@
         <div><p class="eyebrow">Frisch für dich</p><h2>Was darf's sein?</h2></div>
         <p>Wähle dein Lieblingsgericht und passe jede Zutat nach deinem Geschmack an.</p>
       </div>
-      <nav class="categories" aria-label="Speisekarten-Kategorien">
-        <button class="active" data-filter="all">Alle</button><button class="offer-tab" data-filter="offer">Sparangebote</button><button class="offer-tab" data-filter="menu">Menüs</button><button data-filter="bowl">Bowls</button><button data-filter="doener">Döner</button><button data-filter="dueruem">Dürüm</button><button data-filter="box">Boxen</button><button data-filter="snack">Snacks</button><button data-filter="extra">Extras</button><button data-filter="drink">Getränke</button>
-      </nav>
+      <nav class="categories" aria-label="Speisekarten-Kategorien"></nav><div id="categoryProducts" class="category-products-heading"><h3 id="categoryTitle">Sparangebote</h3><p id="categoryCount"></p></div>
       <div class="product-grid" id="productGrid"></div>
     </section>
 
@@ -69,7 +67,7 @@
     </section>
   </main>
 
-  <footer><img src="assets/logo-premium-clean.png" alt=""><p>Maybachstraße 18 · Mannheim<br><a href="tel:+491785190405">+49 178 5190405</a></p><div><a href="rechtliches.html">Impressum</a><a href="rechtliches.html">Datenschutz</a><a href="allergene.html">Allergene</a></div></footer>
+  <footer><img src="assets/logo.png" alt=""><p>Maybachstraße 18 · Mannheim<br><a href="tel:+491785190405">+49 178 5190405</a></p><div><a href="rechtliches.html">Impressum</a><a href="rechtliches.html">Datenschutz</a><a href="allergene.html">Allergene</a></div></footer>
 
   <button class="floating-cart" id="floatingCart" hidden><span><b id="floatingCount">0</b> Artikel</span><strong id="floatingTotal">0,00 €</strong><i>Warenkorb →</i></button>
 
@@ -88,7 +86,7 @@
         <div class="fulfilment"><button class="active" data-mode="Abholung">Abholung</button><button data-mode="Lieferung">Lieferung +2,00 €</button></div>
         <p class="order-note">Bei Lieferung berechnen wir 2,00 € Servicegebühr pro Bestellung. Mindestbestellwert: 22,00 € Warenwert ohne Servicegebühr. Bei Abholung entfällt die Gebühr.</p>
         <div class="payment-choice"><p>Zahlungsart</p><div><button class="active" data-payment="Barzahlung">Bar bezahlen</button><button data-payment="Kartenzahlung">Mit Karte bezahlen</button></div><small id="paymentHint">Kartenzahlung ist bei Abholung möglich.</small></div>
-        <div class="customer-fields"><label>Name<input id="customerName" placeholder="Dein Name"></label><label>Gewünschte Uhrzeit<input id="customerTime" type="time"></label><label id="addressLabel" hidden>Lieferadresse<input id="customerAddress" placeholder="Straße, Hausnummer, Ort"></label><label>Anmerkung<textarea id="customerNote" placeholder="Optionaler Hinweis"></textarea></label></div>
+        <div class="customer-fields"><label>Name<input autocomplete="name" maxlength="100" id="customerName" placeholder="Dein Name"></label><label>Gewünschte Uhrzeit<input id="customerTime" type="time"></label><label>Telefonnummer<input id="customerPhone" type="tel" autocomplete="tel" maxlength="30" placeholder="Für Rückfragen zur Lieferung"></label><div id="addressLabel" hidden><label>Straße und Hausnummer<input id="customerAddress" autocomplete="street-address" maxlength="150"></label><label>PLZ<input id="customerPostcode" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code"></label><label>Ort<input id="customerCity" autocomplete="address-level2" maxlength="100"></label></div><label>Anmerkung<textarea id="customerNote" placeholder="Optionaler Hinweis"></textarea></label></div>
         <div class="delivery-note" id="deliveryNote" hidden><span>⌖</span><p><strong>Hinweis zum Liefergebiet</strong>Bei weiter entfernten Lieferadressen kann Bro's Döner eine Bestellung ablehnen. Durch die vielen Baustellen in Mannheim und Ludwigshafen sind manche Fahrten leider nicht effizient möglich. Wir bitten um dein Verständnis.</p></div>
         <div class="fair-order-note">
           <span>♡</span>
@@ -105,7 +103,7 @@
       <button class="close" data-close="minimumOverlay" aria-label="Schließen">×</button><span class="notice-icon">🛵</span><p class="eyebrow">Lieferung</p><h2 id="minimumTitle">Mindestbestellwert nicht erreicht</h2><p>Für Lieferungen gilt ein Mindestbestellwert von <strong>22,00 €</strong>. Bitte ergänze noch Artikel im Wert von <strong id="minimumMissing">0,00 €</strong> oder wähle Abholung.</p><button class="primary full" type="button" data-close="minimumOverlay">Bestellung ergänzen <span>→</span></button>
     </section>
   </div>
-  <script src="products.js?v=fec5ee6b60a306e0"></script><script src="catalog-sync-config.js?v=2981b4450298"></script><script src="catalog-sync.js?v=2f7342bf0de9"></script>
-  <script src="hours-config.js?v=37f34323b5f0"></script><script src="combo.js?v=26686386e585"></script><script src="app.js?v=4e008ca03e7c"></script>
-<link rel="stylesheet" href="combo-notice.css?v=9486a4e3e596"><script src="notice-config.js?v=218d2876ef7b"></script><script src="notice.js?v=94f3eb222268"></script><script src="pricelist.js?v=0aa1c9eae65d"></script><script src="i18n.js?v=b6c09707526e"></script><script src="tv-notices-config.js?v=699da6834d53"></script><script src="assortment-news.js?v=soup-20261118"></script><link rel="stylesheet" href="assortment-news.css?v=66d63f4c5caa"><link rel="stylesheet" href="remember-selection.css?v=account-2"><script src="remember-mapping.js?v=1"></script><script src="remember-selection.js?v=family-2"></script><link rel="stylesheet" href="mobile-header.css?v=1"><script src="cart-reorder.js?v=navigation-2"></script><link rel="stylesheet" href="mobile-dialog.css?v=1"><script src="mobile-dialog.js?v=1"></script><link rel="stylesheet" href="cart-controls.css?v=1"><script src="cart-controls-model.js?v=1"></script><script src="cart-controls.js?v=1"></script></body>
+  <script src="presentation-style.js?v=f93680a907e5"></script><script src="products.js?v=90fdbf76f8c47862"></script><script src="catalog-sync-config.js?v=2981b4450298"></script><script src="catalog-sync.js?v=ff3162a07ade"></script>
+  <script src="hours-config.js?v=37f34323b5f0"></script><script src="combo.js?v=26686386e585"></script><script src="app.js?v=c441942e2006"></script>
+<link rel="stylesheet" href="combo-notice.css?v=9486a4e3e596"><script src="notice-config.js?v=dce6c70ce6b2"></script><script src="notice.js?v=c495015f1f0a"></script><script src="pricelist.js?v=0aa1c9eae65d"></script><script src="i18n.js?v=91441a2a46d8"></script><script src="tv-notices-config.js?v=699da6834d53"></script><script src="assortment-news.js?v=soup-20261118"></script><link rel="stylesheet" href="assortment-news.css?v=66d63f4c5caa"><link rel="stylesheet" href="remember-selection.css?v=account-2"><script src="remember-mapping.js?v=1"></script><script src="remember-selection.js?v=family-2"></script><link rel="stylesheet" href="mobile-header.css?v=1"><script src="cart-reorder.js?v=navigation-2"></script><link rel="stylesheet" href="mobile-dialog.css?v=1"><script src="mobile-dialog.js?v=1"></script><link rel="stylesheet" href="cart-controls.css?v=1"><script src="cart-controls-model.js?v=1"></script><script src="cart-controls.js?v=1"></script><link rel="stylesheet" href="presentation-style.css?v=8784a817c912"><link rel="stylesheet" href="event-banner.css?v=a58fb924dc41"><script src="event-banner.js?v=353d8c92f1c3"></script><script src="config-start.js?v=aebbd61c52f6"></script><link rel="stylesheet" href="website-tiles.css?v=c9d27dd5c603"><script src="website-tiles.js?v=02df995efec7"></script></body>
 </html>

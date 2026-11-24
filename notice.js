@@ -11,11 +11,13 @@
    const translation=notice.translations?.[lang]||{};
    const textFor=key=>translation[key]||notice[key]||'';
    const box=document.createElement('section');box.className=`shop-notice ${notice.tone?`notice-${notice.tone}`:''}`;box.setAttribute('role','note');box.setAttribute('aria-label',textFor('title')||'Aktuelle Kundenmitteilung');
+   window.BROS_PRESENTATION?.apply(box,notice.style);
    const content=document.createElement('div');content.className='shop-notice-content';
    const eyebrow=document.createElement('small');eyebrow.textContent=preview?'Vorschau':textFor('eyebrow')||'Aktuelle Mitteilung';
    const title=document.createElement('strong');title.textContent=preview?'Sonderöffnungszeiten / Aktion':textFor('title');
    const text=document.createElement('span');text.className='shop-notice-message';formatted(text,preview?'Beispiel: Hier stehen deine Mitteilungen.':textFor('message'));
-   content.append(eyebrow,title,text);
+   if(notice.style?.labelVisible!==false)content.append(eyebrow);
+   content.append(title,text);
    let ctaText=textFor('cta');
    if(!translation.cta&&lang!=='de'){
     const m=ctaText.match(/^Heute bis (.+) Uhr$/);const until={tr:'Bugün kapanış:',en:'Today until',fr:'Aujourd’hui jusqu’à'};const closed={tr:'Bugün kapalı',en:'Closed today',fr:'Fermé aujourd’hui'};

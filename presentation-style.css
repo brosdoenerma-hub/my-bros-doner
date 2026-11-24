@@ -1,0 +1,32 @@
+/* Gemeinsame Gestaltung für Website-, TV- und Produkthinweise. */
+.shop-notice{background:linear-gradient(115deg,rgba(255,255,255,.065),rgba(255,255,255,.008) 65%),rgba(23,24,27,.87);border-color:rgba(227,198,125,.19);border-top-color:rgba(255,242,208,.27);box-shadow:0 16px 44px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.055)}
+.shop-notice.presentation-custom,:root[data-theme=light] .shop-notice.presentation-custom{background:linear-gradient(115deg,#ffffff0f,#ffffff02 65%),color-mix(in srgb,var(--presentation-background) 89%,transparent);border-color:color-mix(in srgb,var(--presentation-accent) 30%,transparent);color:var(--presentation-text)}
+.shop-notice.presentation-custom .shop-notice-content>strong,:root[data-theme=light] .shop-notice.presentation-custom .shop-notice-content>strong{color:var(--presentation-heading)}
+.shop-notice.presentation-custom .shop-notice-message,:root[data-theme=light] .shop-notice.presentation-custom .shop-notice-message{color:var(--presentation-text)}
+.shop-notice.presentation-custom .shop-notice-content>small,.shop-notice.presentation-custom .shop-notice-cta,:root[data-theme=light] .shop-notice.presentation-custom .shop-notice-content>small,:root[data-theme=light] .shop-notice.presentation-custom .shop-notice-cta{color:var(--presentation-accent)}
+.presentation-product-notices{display:grid;gap:8px;margin:10px 0}
+.presentation-product-note{display:grid;gap:5px;padding:12px 14px;background:rgba(227,198,125,.08);border:1px solid rgba(227,198,125,.18);border-radius:12px;overflow-wrap:anywhere;text-align:left}
+.presentation-product-note .presentation-label{font-size:11px;line-height:1.4;letter-spacing:.08em;text-transform:uppercase;color:inherit}
+.presentation-product-note .presentation-heading{font-family:inherit!important;font-size:15px!important;font-weight:700;line-height:1.4;text-transform:none!important;color:inherit}
+.presentation-product-note .presentation-message{font-size:14px;line-height:1.5;white-space:pre-wrap;color:inherit}
+.presentation-product-note.presentation-custom{background:var(--presentation-background);border-color:color-mix(in srgb,var(--presentation-accent) 40%,transparent);color:var(--presentation-text)}
+.presentation-product-note.presentation-custom .presentation-heading{color:var(--presentation-heading)}
+.presentation-product-note.presentation-custom .presentation-label{color:var(--presentation-accent)}
+.product-tag.presentation-custom,.presentation-tv-tag.presentation-custom{display:inline-block;align-self:start;background:var(--presentation-background);color:var(--presentation-text);padding:4px 8px;border-radius:6px;border:1px solid color-mix(in srgb,var(--presentation-accent) 35%,transparent)}
+.presentation-bold{font:inherit!important;font-weight:800!important;text-transform:none!important;color:inherit!important}
+.notice-slide.presentation-no-label>.notice-kicker{display:none}
+.notice-slide.presentation-custom{background:linear-gradient(135deg,#ffffff0c,#ffffff00),var(--presentation-background);color:var(--presentation-text);border:1px solid color-mix(in srgb,var(--presentation-accent) 30%,transparent)}
+.notice-slide.presentation-custom h2,.notice-slide.presentation-custom .notice-upcoming-caption h2{color:var(--presentation-heading)}
+.notice-slide.presentation-custom p,.notice-slide.presentation-custom .notice-upcoming-caption p{color:var(--presentation-text)}
+.notice-slide.presentation-custom .notice-kicker,.notice-slide.presentation-custom strong:not(.presentation-bold){color:var(--presentation-accent)}
+.notice-slide.presentation-custom h2 em{color:var(--presentation-heading)}
+.notice-slide.presentation-tv p{white-space:pre-wrap}
+.board .presentation-product-notices{gap:6px;margin:10px 0}
+.board .presentation-product-note{padding:8px 12px;border-radius:10px}
+.board .presentation-product-note .presentation-label{font-size:16px!important;line-height:1.25}
+.board .presentation-product-note .presentation-heading{font-size:23px!important;line-height:1.25}
+.board .presentation-product-note .presentation-message{font-size:21px!important;line-height:1.3}
+.board .presentation-tv-tag{font-size:18px;line-height:1.3}
+@supports not (background:color-mix(in srgb,black,white)){.shop-notice.presentation-custom,:root[data-theme=light] .shop-notice.presentation-custom{background:var(--presentation-background)}}
+
+.notice-slide.presentation-custom .notice-kicker{background:color-mix(in srgb,var(--presentation-accent) 12%,var(--presentation-background));border-color:color-mix(in srgb,var(--presentation-accent) 45%,transparent);box-shadow:none}

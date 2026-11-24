@@ -45,5 +45,13 @@ const shopNotice = {
       "tone": "gold",
       "showOnWebsite": true
     }
-  ]
+  ],
+  "eventBanner": {
+    "label": "Veranstaltung · unser Partner",
+    "title": "Mannheimer Weihnachtscircus",
+    "details": "18.12.2026 – 06.01.2027 · Neuer Messplatz Mannheim",
+    "link": "https://mannheimer-weihnachtscircus.de/",
+    "linkText": "Programm & Termine",
+    "enabled": false
+  }
 };

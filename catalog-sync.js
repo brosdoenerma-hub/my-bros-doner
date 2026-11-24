@@ -44,6 +44,8 @@
     target.workflow=catalogProduct.workflow;
     target.tvStatus=catalogProduct.tvStatus??target.tvStatus??'ready';
     target.tvPresentation=catalogProduct.tvPresentation;
+    target.tagStyle=catalogProduct.tagStyle;
+    target.notices=catalogProduct.notices;
     const keep = oldImageFields.get(catalogProduct.id) || {};
     target.name = catalogProduct.name ?? target.name;
     target.category = catalogProduct.category ?? target.category;
