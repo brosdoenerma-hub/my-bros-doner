@@ -4,3 +4,9 @@
 @media(max-width:700px){.hero{display:flex;flex-direction:column;gap:25px;padding-top:30px}.hero h1{font-size:clamp(48px,11vw,72px)}.hero-food.hero-range{width:100%}.categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.categories button{gap:8px;padding:8px;min-height:78px}.categories button img{width:62px;height:62px}.categories button span{font-size:14px}.product-grid{grid-template-columns:1fr}.product.visual{grid-template-columns:110px minmax(0,1fr)}.product.visual .product-image{min-height:170px}.product-body{padding:14px}.product-body h3{font-size:21px}.product-footer strong{font-size:20px}.product-footer button{min-height:44px}.category-products-heading{scroll-margin-top:130px}.category-products-heading h3{font-size:26px}.order-review{padding:18px}.review-header{top:-18px}.review-item-main{font-size:17px}.review-actions .primary{width:100%}}
 
 .assortment-news{max-width:1280px;margin:35px auto;padding:0 24px}.topbar .brand img{object-fit:contain}.review-total strong{font-weight:800}
+
+/* Keep category labels inside their tile at narrow widths and with long translations. */
+.categories button{min-width:0;box-sizing:border-box}
+.categories button img{flex-shrink:0}
+.categories button span{flex:1 1 0;min-width:0;white-space:normal;overflow-wrap:anywhere;hyphens:auto;line-height:1.3}
+@media(max-width:420px){.categories button img{width:48px;height:48px}.categories button{gap:7px}.categories button span{font-size:14px}}
