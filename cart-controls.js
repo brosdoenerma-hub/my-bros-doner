@@ -19,7 +19,7 @@
   }
   more.addEventListener('click',shop);
   function deliveryStatus(){
-   const state=model.delivery(cart,mode,22);hint.hidden=!state.blocked;
+   const state=model.delivery(cart,mode,22);const missing=Math.max(0,2200-Math.round(orderAmounts().payableSubtotal*100));state.blocked=mode==='Lieferung'&&cart.length>0&&missing>0;state.missingCents=missing;hint.hidden=!state.blocked;
    send.classList.toggle('cart-delivery-blocked',state.blocked);
    send.setAttribute('aria-disabled',String(state.blocked));
    // Native disabling also prevents keyboard activation. Existing WhatsApp validation remains.
