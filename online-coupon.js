@@ -22,3 +22,12 @@ window.brosCouponOrderText=check;
 const previous=window.brosValidateCheckout;window.brosValidateCheckout=()=>previous()&&check()!==null;
 const review=window.brosReviewOrder;window.brosReviewOrder=()=>{if(check()===null)return;review();const dialog=document.querySelector('.order-review');if(input.value.trim()&&dialog?.open){const text=document.createElement('p');text.textContent='Gutscheincode '+input.value.trim().toUpperCase()+': 2 € Rabatt angefragt. Gesamtbetrag vor Prüfung; Einlösung erst durch unsere Bestätigung.';dialog.querySelector('.review-actions').before(text);}};
 })();
+// A choice made in the customer portal is fetched with the existing authenticated
+// same-site bridge. Never put coupon codes or customer identifiers in URLs.
+(async()=>{
+ try{
+  const r=await fetch('https://kunden.mybros-doner.de/api/customer/website-session',{credentials:'include',cache:'no-store'});if(!r.ok)return;
+  const session=await r.json(),input=document.getElementById('onlineCoupon');if(!input||input.value.trim())return;
+  if(/^BRO-2-[A-F0-9]{12}$/.test(session.couponIntent?.code||'')){input.value=session.couponIntent.code;input.dispatchEvent(new Event('input'));}
+ }catch{}
+})();
